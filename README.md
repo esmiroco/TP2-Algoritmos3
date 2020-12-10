@@ -15,6 +15,16 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 Corrector: **{Corrector}**
 
+### Informe
+
+```
+Link para editar: https://www.overleaf.com/9175334598mvsgnmkxxzkf
+Link para Visualizar: https://www.overleaf.com/read/tdcwcgynxvcs
+...
+```
+
+
+
 ### Pre-requisitos
 
 Listado de software/herramientas necesarias para el proyecto
