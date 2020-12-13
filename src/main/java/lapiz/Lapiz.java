@@ -1,4 +1,4 @@
-package Lapiz;
+package lapiz;
 
 public class Lapiz {
 

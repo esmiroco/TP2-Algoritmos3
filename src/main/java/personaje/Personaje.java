@@ -1,6 +1,6 @@
-package Personaje;
+package personaje;
 
-import Lapiz.Lapiz;
+import lapiz.Lapiz;
 
 public class Personaje {
 	private Lapiz lapiz;

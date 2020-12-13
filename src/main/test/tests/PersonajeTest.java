@@ -1,8 +1,8 @@
-package PersonajeTest;
+package tests;
 
 import org.junit.jupiter.api.Test;
 
-import Personaje.Personaje;
+import personaje.Personaje;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 

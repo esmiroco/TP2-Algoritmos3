@@ -1,8 +1,8 @@
-package LapizTest;
+package tests;
 
 import org.junit.jupiter.api.Test;
 
-import Lapiz.Lapiz;
+import lapiz.Lapiz;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
