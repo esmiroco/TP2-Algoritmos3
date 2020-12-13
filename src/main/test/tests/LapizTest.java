@@ -17,27 +17,11 @@ public class LapizTest {
 		
 	}
 	
+	@Test
+	public void test02SeCreaLapizArribaSinPintarLasPosicionesQueSeLeDan() {
+		Posicion mockPosicion = mock(Posicion.class);
+		Lapiz lapiz = new Lapiz();
 
-	@Test
-	public void test02SeCreaLapizAbajoPintandoLasPosicionesQueSeLeDan() {
-		Lapiz lapiz = new Lapiz();
-		
-		Posicion mockPosicion = mock(Posicion.class);
-		
-		lapiz.pintar(mockPosicion);
-		
-		verify(mockPosicion).pintate();
-		
-	}
-	
-	@Test
-	public void test03SeLevantaElLapizYNoPintaLasPosicionesQueSeLeDan() {
-		
-		Posicion mockPosicion = mock(Posicion.class);
-		Lapiz lapiz = new Lapiz();
-		
-		lapiz.levantarLapiz();
-		
 		lapiz.pintar(mockPosicion);
 		
 		verify(mockPosicion, never()).pintate();
@@ -45,12 +29,10 @@ public class LapizTest {
 	}
 	
 	@Test
-	public void test04SeLevantaElLapizYNoPintaLasPosicionesPeroLuegoSeBajaYLasPinta() {
+	public void test03SeBajaElLapizRecienCreadoYPintaLasPosicionesQueSeLeDan() {
 		
 		Posicion mockPosicion = mock(Posicion.class);
 		Lapiz lapiz = new Lapiz();
-		
-		lapiz.levantarLapiz();
 		
 		lapiz.pintar(mockPosicion);
 		
@@ -61,4 +43,5 @@ public class LapizTest {
 		lapiz.pintar(mockPosicion);
 		verify(mockPosicion).pintate();
 	}
+	
 }

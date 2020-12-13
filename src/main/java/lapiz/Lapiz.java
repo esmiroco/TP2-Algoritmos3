@@ -4,7 +4,7 @@ import posicion.Posicion;
 
 public class Lapiz {
 	
-	private EstadoLapiz estado = new LapizAbajo();
+	private EstadoLapiz estado = new LapizArriba();
 	
 	public void pintar(Posicion posicion) {
 		
