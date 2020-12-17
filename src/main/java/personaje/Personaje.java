@@ -13,16 +13,6 @@ public class Personaje {
 		this.posicion = posicion;
 	}
 
-	public Personaje() {
-	}
-
-
-	public void mover(Posicion nuevaPosicion) {
-		posicion = nuevaPosicion;
-		lapiz.pintar(nuevaPosicion);
-		
-	}
-
 	public void levantarLapiz() {
 		lapiz.levantarLapiz();
 		
@@ -35,6 +25,7 @@ public class Personaje {
 
 	public void mover(Movimiento movimiento){
 		posicion.mover(movimiento);
+		lapiz.pintar(posicion);
 	}
 
 }

@@ -3,7 +3,8 @@ package bloque;
 import personaje.Personaje;
 import movimiento.Movimiento;
 
-public class BloqueMovimiento {
+public class BloqueMovimiento extends Bloque {
+
     private Movimiento movimiento;
 
     public BloqueMovimiento(Movimiento movimiento){

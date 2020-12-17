@@ -1,6 +1,9 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
+
+import movimiento.Movimiento;
+
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
@@ -12,7 +15,8 @@ import posicion.Posicion;
 public class PersonajeTest {
 	@Test
 	public void test01CreoPersonajeNoNulo() {
-		Personaje personaje = new Personaje();
+		Posicion mockPosicion = mock(Posicion.class);
+		Personaje personaje = new Personaje(mockPosicion);
 		
 		assertNotNull(personaje);
 		
@@ -20,9 +24,10 @@ public class PersonajeTest {
 	
 	@Test
 	public void test02CreoPersonajeConLapizArribaAlMoverseNoPintaPosicionNueva() {
-		Personaje personaje = new Personaje();
 		Posicion mockPosicion = mock(Posicion.class);
-		personaje.mover(mockPosicion);
+		Movimiento mockMovimiento = mock(Movimiento.class);
+		Personaje personaje = new Personaje(mockPosicion);
+		personaje.mover(mockMovimiento);
 		
 		verify(mockPosicion, never()).pintate();
 		
@@ -30,45 +35,47 @@ public class PersonajeTest {
 	
 	@Test
 	public void test03SeBajaLapizDePersonajeYSePintaPosicionAlMoverse() {
-		Personaje personaje = new Personaje();
+		Movimiento mockMovimiento = mock(Movimiento.class);
 		Posicion mockPosicion = mock(Posicion.class);
+		Personaje personaje = new Personaje(mockPosicion);
 		
 		personaje.bajarLapiz();
 		
-		personaje.mover(mockPosicion);
+		personaje.mover(mockMovimiento);
 		
 		verify(mockPosicion).pintate();
 		}
 	
 	@Test
 	public void test04SeLevantaLapizYaLevantadoYNoCambiaComportamiento() {
-		Personaje personaje = new Personaje();
+		Movimiento mockMovimiento = mock(Movimiento.class);
 		Posicion mockPosicion = mock(Posicion.class);
+		Personaje personaje = new Personaje(mockPosicion);
 		
-		personaje.mover(mockPosicion);
+		personaje.mover(mockMovimiento);
 		
 		verify(mockPosicion, never()).pintate();
 		
 		personaje.levantarLapiz();
 		
-		personaje.mover(mockPosicion);
+		personaje.mover(mockMovimiento);
 		verify(mockPosicion, never()).pintate();
 	}
 
 	@Test
 	public void test05SeBajaLapizYaBajoYNoCambiaComportamiento() {
-		Personaje personaje = new Personaje();
-		Posicion mockPosicion1 = mock(Posicion.class);
-		Posicion mockPosicion2 = mock(Posicion.class);
+		Movimiento mockMovimiento = mock(Movimiento.class);
+		Posicion mockPosicion = mock(Posicion.class);
+		Personaje personaje = new Personaje(mockPosicion);
 		
 		personaje.bajarLapiz();
-		personaje.mover(mockPosicion1);
+		personaje.mover(mockMovimiento);
 		
-		verify(mockPosicion1).pintate();
+		verify(mockPosicion).pintate();
 		
 		personaje.bajarLapiz();
 		
-		personaje.mover(mockPosicion2);
-		verify(mockPosicion2).pintate();
+		personaje.mover(mockMovimiento);
+		verify(mockPosicion, times(2)).pintate();
 		}
 }
