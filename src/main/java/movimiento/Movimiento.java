@@ -1,7 +1,7 @@
 package movimiento;
 
-public interface Movimiento {
+import posicion.Posicion;
 
-    public int desplazarX(int posX);
-    public int desplazarY(int posY);
+public interface Movimiento {
+    public void calcularNuevaPosicion(Posicion posicion);
 }

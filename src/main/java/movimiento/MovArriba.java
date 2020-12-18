@@ -1,10 +1,9 @@
 package movimiento;
 
+import posicion.Posicion;
+
 public class MovArriba implements Movimiento {
-
-    public int desplazarX(int x){
-        return x;
+    public void calcularNuevaPosicion(Posicion posicion){
+        posicion.moverArriba();
     }
-
-    public int desplazarY(int y){ return y = y + 1; }
 }

@@ -1,13 +1,9 @@
 package movimiento;
 
+import posicion.Posicion;
 
 public class MovDerecha implements Movimiento {
-
-    public int desplazarX(int x){
-        return x = x + 1;
-    }
-
-    public int desplazarY(int y){
-        return y;
+    public void calcularNuevaPosicion(Posicion posicion){
+        posicion.moverDerecha();
     }
 }

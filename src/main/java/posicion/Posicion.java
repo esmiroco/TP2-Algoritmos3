@@ -15,9 +15,20 @@ public class Posicion {
 		this.posY = posY;
 	}
 
-	public void mover(Movimiento movimiento){
-		posX = movimiento.desplazarX(posX);
-		posY = movimiento.desplazarY(posY);
+	public void moverArriba(){
+		posY = posY+1;
+	}
+
+	public void moverAbajo(){
+		posY = posY-1;
+	}
+
+	public void moverDerecha(){
+		posX = posX+1;
+	}
+
+	public void moverIzquierda(){
+		posX= posX-1;
 	}
 
 	public int obtenerX(){
