@@ -1,0 +1,176 @@
+---------- diagrama 1 -----------
+skinparam classAttributeIconSize 0
+
+class Personaje{
+
++ejecutarBloques()
++pintarPosicionActual()
++mover(movimiento : Movimiento);
++levantarLapiz()
++bajarLapiz()
+
+}
+
+class Mapa{
+
++cambiarPosicion(personaje : Personaje, nuevaPosicion : Posicion)
+
+}
+
+class Posicion{
+
+-posicionX : int
+-posicionY : int
++pintate()
+}
+
+abstract class Bloque{
+
+-accion
+
++ejecutar(personaje : Personaje)
++pintarPosicion()
+
+}
+
+
+abstract class Lapiz{
+
++dibujar(posicion : Posicion)
+
+}
+
+interface EstadoLapiz{
++levantarLapiz() : EstadoLapiz
++bajarLapiz() : EstadoLapiz
++pintar(posicion : Posicion)
+}
+
+class LapizArriba{
+
++levantarLapiz() : EstadoLapiz
++bajarLapiz() : EstadoLapiz
++pintar(posicion : Posicion)
+
+}
+
+class LapizAbajo{
+
++levantarLapiz() : EstadoLapiz
++bajarLapiz() : EstadoLapiz
++pintar(posicion : Posicion)
+
+}
+
+interface Movimiento {
+
++desplazarX(posX : int) : int
++desplazarY(posY : int) : int
+}
+
+Mapa -->"1" Personaje
+Mapa -->"*" Posicion
+
+
+Personaje -left->"1" Posicion
+Personaje -right->"1" Lapiz
+
+LapizArriba -up-|> EstadoLapiz
+LapizAbajo -up-|> EstadoLapiz
+
+EstadoLapiz --* Lapiz
+
+Personaje "1"<.. Bloque
+Movimiento --* Bloque
+
+------- diagrama 2 ---------
+skinparam classAttributeIconSize 0
+
+abstract class Bloque{
+
+-accion
+
++ejecutar(personaje : Personaje)
++pintarPosicion()
+
+}
+
+class BloqueMovimiento{
++ejecutar(personaje : Personaje)
++pintarPosicion()
+
+}
+
+class BloqueRepetir{
+
+-unBloque
+-cantidadARepetir
+
++ejecutar(personaje : Personaje)
++pintarPosicion()
++invertite()
+
+}
+class BloqueInvertir{
+
+-unBloque
+
++setBloqueARepetir(unBloque : Bloque)
++ejecutar(personaje : Personaje)
++pintarPosicion()
++invertite()
+
+}
+
+class BloqueAlgoritmo{
+
+-bloques : Array[Bloque]
+
++agregarBloque(unBloque : Bloque)
++ejecutar(personaje : Personaje)
++pintarPosicion()
++invertite()
+
+}
+
+interface Movimiento{
++desplazarX(posX : int) : int
++desplazarY(posY : int) : int
+}
+
+class MovDerecha{
++desplazarX(posX : int) : int
++desplazarY(posY : int) : int
+}
+
+class MovIzquierda{
++desplazarX(posX : int) : int
++desplazarY(posY : int) : int
+}
+
+class MovArriba{
++desplazarX(posX : int) : int
++desplazarY(posY : int) : int
+}
+
+class MovAbajo{
++desplazarX(posX : int) : int
++desplazarY(posY : int) : int
+}
+
+BloqueMovimiento -up-|> Bloque
+BloqueRepetir -up-|> Bloque
+BloqueInvertir -up-|> Bloque
+BloqueAlgoritmo -right-|> Bloque
+Movimiento --* Bloque
+MovDerecha -up-|> Movimiento
+MovIzquierda -up-|> Movimiento
+MovArriba -up-|> Movimiento
+MovAbajo -up-|> Movimiento
+
+---------- diagrama 3 ---------
+usuario -> BloqueMovimiento : ejecutar(Personaje)
+BloqueMovimiento -> Personaje : mover(movimiento : MovDerecha)
+Personaje -> Posicion : mover(movimiento : MovDerecha)
+Posicion -> MovDerecha : desplazarX(posX : int) : int
+Posicion -> MovDerecha : desplazarY(posY : int) : int
