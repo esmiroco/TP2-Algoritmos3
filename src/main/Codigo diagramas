@@ -174,3 +174,32 @@ BloqueMovimiento -> Personaje : mover(movimiento : MovDerecha)
 Personaje -> Posicion : mover(movimiento : MovDerecha)
 Posicion -> MovDerecha : desplazarX(posX : int) : int
 Posicion -> MovDerecha : desplazarY(posY : int) : int
+
+-------- diagrama 4 ---------
+
+
+Personaje -> Lapiz : pintar(posicion : Posicion, pizarra : Pizarra)
+
+Lapiz -> EstadoLapizAbajo : pintar(posicion, pizarra)
+
+EstadoLapizAbajo -> Pizarra : pintarCoordenadasPosicion(posicion)
+
+Pizarra -> Posicion : getCoordenadas()
+
+Posicion --> Pizarra : [x, y]
+
+Pizarra -> Pizarra : agregarCoordenadasPintadas()
+
+---------- diagrama 5 ---------
+
+Personaje -> Lapiz : pintar(posicion : Posicion, pizarra : Pizarra)
+
+Lapiz -> EstadoLapizArriba : pintar(posicion, pizarra)
+
+EstadoLapizArriba -> Pizarra : agregarCoordenadasPisadas(posicion)
+
+Pizarra -> Posicion : getCoordenadas()
+
+Posicion --> Pizarra : [x, y]
+
+Pizarra -> Pizarra : agregarCoordenadasPisadas()
