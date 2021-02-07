@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import personaje.Personaje;
 import posicion.Posicion;
 
-public class BloqueTest {
+public class BloqueMovimientoTest {
 
     @Test
     public void test01BloqueConMovimientoALaDerechaMueveUnaPosicion(){

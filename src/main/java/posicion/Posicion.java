@@ -6,8 +6,10 @@ public class Posicion {
 
 	private int posX;
 	private int posY;
+	private EstadoPintar estado = new EstadoSinPintar();
 
 	public void pintate(){
+		estado = estado.pintar();
 	}
 
 	public Posicion(int posX, int posY){
