@@ -1,3 +1,4 @@
+
 package tests;
 
 import bloque.BloqueMovimiento;
@@ -22,8 +23,9 @@ public class BloqueMovimientoTest {
 
             bloqueDerecha.ejecutar(personaje);
 
-            assertEquals(1, posicion.obtenerX());
-            assertEquals(0, posicion.obtenerY());
+            Posicion posicion1 = new Posicion(1,0);
+
+            assertEquals(true, posicion.esIgualA(posicion1));
 
 
     }
@@ -37,9 +39,9 @@ public class BloqueMovimientoTest {
 
         bloqueIzquierda.ejecutar(personaje);
 
-        assertEquals(1, posicion.obtenerX());
-        assertEquals(2, posicion.obtenerY());
+        Posicion posicion1 = new Posicion(1,2);
 
+        assertEquals(true, posicion.esIgualA(posicion1));
 
     }
 
@@ -52,8 +54,9 @@ public class BloqueMovimientoTest {
 
         bloqueArriba.ejecutar(personaje);
 
-        assertEquals(2, posicion.obtenerX());
-        assertEquals(3, posicion.obtenerY());
+        Posicion posicion1 = new Posicion(2,3);
+
+        assertEquals(true, posicion.esIgualA(posicion1));
 
 
     }
@@ -67,8 +70,10 @@ public class BloqueMovimientoTest {
 
         bloqueAbajo.ejecutar(personaje);
 
-        assertEquals(2, posicion.obtenerX());
-        assertEquals(1, posicion.obtenerY());
+        Posicion posicion1 = new Posicion(2,1);
+
+        assertEquals(true, posicion.esIgualA(posicion1));
+
 
     }
 }

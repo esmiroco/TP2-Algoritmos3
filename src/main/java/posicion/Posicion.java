@@ -1,7 +1,5 @@
 package posicion;
 
-import movimiento.Movimiento;
-
 public class Posicion {
 
 	private int posX;

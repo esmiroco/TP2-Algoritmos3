@@ -7,7 +7,6 @@ public class Lapiz {
 	private EstadoLapiz estado = new LapizArriba();
 	
 	public void pintar(Posicion posicion) {
-		
 		estado.pintar(posicion);
 	}
 
