@@ -70,6 +70,5 @@ public class BloqueMovimientoTest {
         assertEquals(2, posicion.obtenerX());
         assertEquals(1, posicion.obtenerY());
 
-
     }
 }
