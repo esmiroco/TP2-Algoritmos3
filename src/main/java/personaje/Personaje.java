@@ -24,8 +24,9 @@ public class Personaje {
 	}
 
 	public void mover(Movimiento movimiento){
+		Posicion posicionPrevia = posicion;
 		movimiento.calcularNuevaPosicion(posicion);
-		lapiz.pintar(posicion);
+		lapiz.pintar(posicionPrevia, posicion);
 	}
 
 }

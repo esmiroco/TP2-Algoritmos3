@@ -20,9 +20,10 @@ public class LapizTest {
 	@Test
 	public void test02SeCreaLapizArribaSinPintarLasPosicionesQueSeLeDan() {
 		Posicion mockPosicion = mock(Posicion.class);
-		Lapiz lapiz = new Lapiz();
+		Posicion mockPosicionPrevia = mock(Posicion.class);
 
-		lapiz.pintar(mockPosicion);
+		Lapiz lapiz = new Lapiz();
+		lapiz.pintar(mockPosicionPrevia, mockPosicion);
 		
 		verify(mockPosicion, never()).pintate();
 		
@@ -32,15 +33,16 @@ public class LapizTest {
 	public void test03SeBajaElLapizRecienCreadoYPintaLasPosicionesQueSeLeDan() {
 		
 		Posicion mockPosicion = mock(Posicion.class);
+		Posicion mockPosicionPrevia = mock(Posicion.class);
 		Lapiz lapiz = new Lapiz();
 		
-		lapiz.pintar(mockPosicion);
+		lapiz.pintar(mockPosicionPrevia, mockPosicion);
 		
 		verify(mockPosicion, never()).pintate();
 		
 		lapiz.bajarLapiz();
 		
-		lapiz.pintar(mockPosicion);
+		lapiz.pintar(mockPosicionPrevia, mockPosicion);
 		verify(mockPosicion).pintate();
 	}
 	
