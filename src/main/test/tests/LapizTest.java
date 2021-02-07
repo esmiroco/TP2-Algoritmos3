@@ -6,6 +6,7 @@ import static org.mockito.Mockito.*;
 
 import lapiz.Lapiz;
 import posicion.Posicion;
+import tablero.Tablero;
 
 public class LapizTest {
 	
@@ -19,31 +20,32 @@ public class LapizTest {
 	
 	@Test
 	public void test02SeCreaLapizArribaSinPintarLasPosicionesQueSeLeDan() {
+		Tablero mockTablero = mock(Tablero.class);
 		Posicion mockPosicion = mock(Posicion.class);
 		Posicion mockPosicionPrevia = mock(Posicion.class);
 
 		Lapiz lapiz = new Lapiz();
-		lapiz.pintar(mockPosicionPrevia, mockPosicion);
+		lapiz.pintar(mockPosicionPrevia, mockPosicion, mockTablero);
 		
-		verify(mockPosicion, never()).pintate();
+		verify(mockPosicion, never()).pintate(mockTablero);
 		
 	}
 	
 	@Test
 	public void test03SeBajaElLapizRecienCreadoYPintaLasPosicionesQueSeLeDan() {
-		
+		Tablero mockTablero = mock(Tablero.class);
 		Posicion mockPosicion = mock(Posicion.class);
 		Posicion mockPosicionPrevia = mock(Posicion.class);
 		Lapiz lapiz = new Lapiz();
 		
-		lapiz.pintar(mockPosicionPrevia, mockPosicion);
+		lapiz.pintar(mockPosicionPrevia, mockPosicion, mockTablero);
 		
-		verify(mockPosicion, never()).pintate();
+		verify(mockPosicion, never()).pintate(mockTablero);
 		
 		lapiz.bajarLapiz();
 		
-		lapiz.pintar(mockPosicionPrevia, mockPosicion);
-		verify(mockPosicion).pintate();
+		lapiz.pintar(mockPosicionPrevia, mockPosicion, mockTablero);
+		verify(mockPosicion).pintate(mockTablero);
 	}
 	
 }

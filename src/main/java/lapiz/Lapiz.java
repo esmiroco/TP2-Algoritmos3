@@ -4,10 +4,9 @@ import posicion.Posicion;
 import tablero.Tablero;
 
 public class Lapiz {
-	private Tablero tablero = new Tablero();
 	private EstadoLapiz estado = new LapizArriba();
 	
-	public void pintar(Posicion posicionPrevia, Posicion posicion) {
+	public void pintar(Posicion posicionPrevia, Posicion posicion, Tablero tablero) {
 		estado.pintar(posicionPrevia, posicion, tablero);
 	}
 

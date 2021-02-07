@@ -1,13 +1,16 @@
 package posicion;
 
+import tablero.Tablero;
+
 public class Posicion {
 
 	private int posX;
 	private int posY;
 	private EstadoPintar estado = new EstadoSinPintar();
 
-	public void pintate(){
+	public void pintate(Tablero tablero){
 		estado = estado.pintar();
+		// avisar a tablero que estoy pintado
 	}
 
 	public Posicion(int posX, int posY){
