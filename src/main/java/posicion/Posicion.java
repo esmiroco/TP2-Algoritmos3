@@ -1,5 +1,6 @@
 package posicion;
 
+import coordenada.Coordenada;
 import tablero.Tablero;
 
 public class Posicion {
