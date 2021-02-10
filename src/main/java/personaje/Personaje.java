@@ -4,7 +4,6 @@ package personaje;
 import lapiz.Lapiz;
 import posicion.Posicion;
 import tablero.Tablero;
-import movimiento.MovDerecha;
 import movimiento.Movimiento;
 
 public class Personaje {
