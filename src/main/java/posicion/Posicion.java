@@ -7,11 +7,13 @@ public class Posicion {
 
 	private int posX;
 	private int posY;
+	private Coordenada coordenada;
 	private EstadoPintar estado = new EstadoSinPintar();
 
 	public void pintate(Tablero tablero){
 		estado = estado.pintar();
-		// avisar a tablero que estoy pintado
+		// avisar a tablero que estoy
+		tablero.almacenarCoordenadas(Coordenada coordenada);
 	}
 
 	public Posicion(int posX, int posY){
