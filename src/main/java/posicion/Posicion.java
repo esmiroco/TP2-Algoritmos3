@@ -9,10 +9,6 @@ public class Posicion {
 	private int posY;
 	private Coordenada coordenada;
 
-	public void pintate(Tablero tablero){
-		tablero.almacenarCoordenada(coordenada);
-	}
-
 	public Posicion(int posX, int posY){
 		this.posX = posX;
 		this.posY = posY;

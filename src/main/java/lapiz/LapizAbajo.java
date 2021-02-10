@@ -7,7 +7,7 @@ public class LapizAbajo implements EstadoLapiz {
 
 //	@Override
 	public void pintar(Posicion posicionPrevia, Posicion posicion, Tablero tablero) {
-		posicion.pintate(tablero);
+		tablero.almacenarPosicion(posicion);
 	}
 
 //	@Override
