@@ -13,15 +13,15 @@ public class Tablero {
     }
 
     public void almacenarPosicion(Posicion posicion){
-        Boolean flag = false;
-        for (Posicion pos : posiciones) {
-        	if(posicion.esIgualA(pos)){
-                flag = true;
-            }
-        }
-        if(!flag){
-            posiciones.add(posicion);
-        }
+        boolean existe = posiciones.contains(posicion);
+        if(!existe){ posiciones.add(posicion); }
+
+    }
+
+    public boolean existePosicion(Posicion posicion){
+        return posiciones.contains(posicion);
 
     }
 }
+
+

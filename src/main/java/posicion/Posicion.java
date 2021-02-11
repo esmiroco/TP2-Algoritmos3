@@ -1,13 +1,11 @@
 package posicion;
 
-import coordenada.Coordenada;
 import tablero.Tablero;
 
 public class Posicion {
 
 	private int posX;
 	private int posY;
-	private Coordenada coordenada;
 
 	public Posicion(int posX, int posY){
 		this.posX = posX;
