@@ -25,4 +25,6 @@ public class BloqueLapizArribaTest {
 		
 		verify(mockPersonaje).levantarLapiz();
 	}
+	
+	
 }

@@ -1,3 +1,4 @@
+
 package tests;
 
 import bloque.BloqueMovimiento;
@@ -10,50 +11,56 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import personaje.Personaje;
 import posicion.Posicion;
+import tablero.Tablero;
 
-public class BloqueTest {
+public class BloqueMovimientoTest {
 
     @Test
     public void test01BloqueConMovimientoALaDerechaMueveUnaPosicion(){
-            MovDerecha movDerecha = new MovDerecha();
-            BloqueMovimiento bloqueDerecha = new BloqueMovimiento(movDerecha);
-            Posicion posicion = new Posicion(0,0);
-            Personaje personaje = new Personaje(posicion);
+    	Tablero tablero = new Tablero();
+        MovDerecha movDerecha = new MovDerecha();
+        BloqueMovimiento bloqueDerecha = new BloqueMovimiento(movDerecha);
+        Posicion posicion = new Posicion(0,0);
+        Personaje personaje = new Personaje(posicion, tablero);
 
-            bloqueDerecha.ejecutar(personaje);
+        bloqueDerecha.ejecutar(personaje);
 
-            assertEquals(1, posicion.obtenerX());
-            assertEquals(0, posicion.obtenerY());
+        Posicion posicion1 = new Posicion(1,0);
+
+        assertEquals(true, posicion.esIgualA(posicion1));
 
 
     }
 
     @Test
     public void test02BloqueConMovimientoALaIzquierdaMueveUnaPosicion(){
+    	Tablero tablero = new Tablero();
         MovIzquierda movIzquierda = new MovIzquierda();
         BloqueMovimiento bloqueIzquierda = new BloqueMovimiento(movIzquierda);
         Posicion posicion = new Posicion(2,2);
-        Personaje personaje = new Personaje(posicion);
+        Personaje personaje = new Personaje(posicion, tablero);
 
         bloqueIzquierda.ejecutar(personaje);
 
-        assertEquals(1, posicion.obtenerX());
-        assertEquals(2, posicion.obtenerY());
+        Posicion posicion1 = new Posicion(1,2);
 
+        assertEquals(true, posicion.esIgualA(posicion1));
 
     }
 
     @Test
     public void test03BloqueConMovimientoArribaMueveUnaPosicion(){
+    	Tablero tablero = new Tablero();
         MovArriba movArriba = new MovArriba();
         BloqueMovimiento bloqueArriba = new BloqueMovimiento(movArriba);
         Posicion posicion = new Posicion(2, 2);
-        Personaje personaje = new Personaje(posicion);
+        Personaje personaje = new Personaje(posicion, tablero);
 
         bloqueArriba.ejecutar(personaje);
 
-        assertEquals(2, posicion.obtenerX());
-        assertEquals(3, posicion.obtenerY());
+        Posicion posicion1 = new Posicion(2,3);
+
+        assertEquals(true, posicion.esIgualA(posicion1));
 
 
     }
@@ -62,13 +69,15 @@ public class BloqueTest {
     public void test04BloqueConMovimientoAbajoMueveUnaPosicion(){
         MovAbajo movAbajo = new MovAbajo();
         BloqueMovimiento bloqueAbajo = new BloqueMovimiento(movAbajo);
+        Tablero tablero = new Tablero();
         Posicion posicion = new Posicion(2,2);
-        Personaje personaje = new Personaje(posicion);
+        Personaje personaje = new Personaje(posicion, tablero);
 
         bloqueAbajo.ejecutar(personaje);
 
-        assertEquals(2, posicion.obtenerX());
-        assertEquals(1, posicion.obtenerY());
+        Posicion posicion1 = new Posicion(2,1);
+
+        assertEquals(true, posicion.esIgualA(posicion1));
 
 
     }

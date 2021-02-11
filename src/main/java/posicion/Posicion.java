@@ -1,14 +1,13 @@
 package posicion;
 
-import movimiento.Movimiento;
+import coordenada.Coordenada;
+import tablero.Tablero;
 
 public class Posicion {
 
 	private int posX;
 	private int posY;
-
-	public void pintate(){
-	}
+	private Coordenada coordenada;
 
 	public Posicion(int posX, int posY){
 		this.posX = posX;
@@ -38,5 +37,12 @@ public class Posicion {
 	public int obtenerY(){
 		return posY;
 	}
-	
+
+	public boolean esIgualA(Posicion otraPosicion){
+		if ((posX==otraPosicion.obtenerX()) & (posY==otraPosicion.obtenerY())){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }

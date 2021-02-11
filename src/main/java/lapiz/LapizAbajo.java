@@ -1,12 +1,13 @@
 package lapiz;
 
 import posicion.Posicion;
+import tablero.Tablero;
 
 public class LapizAbajo implements EstadoLapiz {
 
 //	@Override
-	public void pintar(Posicion posicion) {
-		posicion.pintate();
+	public void pintar(Posicion posicion, Tablero tablero) {
+		tablero.almacenarPosicion(posicion);
 	}
 
 //	@Override
