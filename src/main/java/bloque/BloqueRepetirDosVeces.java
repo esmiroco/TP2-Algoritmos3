@@ -1,21 +1,20 @@
 package bloque;
 
-import movimiento.Movimiento;
 import personaje.Personaje;
 
 public class BloqueRepetirDosVeces extends Bloque {
     private int repeticiones;
 
-    private Movimiento movimiento;
+    private Bloque bloque;
 
-    public BloqueRepetirDosVeces(Movimiento movimiento){
-        this.movimiento = movimiento;
+    public BloqueRepetirDosVeces(Bloque bloqueEnviado){
+        this.bloque = bloqueEnviado;
     }
 
     @Override
     public void ejecutar(Personaje personaje){
         for(int i = 0; i < 2; i++){
-            personaje.mover(movimiento);
+        	bloque.ejecutar(personaje);
         }
     }
 }

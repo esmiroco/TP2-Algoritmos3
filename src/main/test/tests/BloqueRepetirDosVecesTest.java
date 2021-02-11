@@ -1,5 +1,6 @@
 package tests;
 
+import bloque.BloqueMovimiento;
 import bloque.BloqueRepetirDosVeces;
 import movimiento.MovDerecha;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,8 @@ public class BloqueRepetirDosVecesTest {
     public void test01BloqueRepetirDosVecesSinMovimientoNoSeDeberiaMover() {
         Tablero tablero = new Tablero();
         MovDerecha movDerecha = new MovDerecha();
-        BloqueRepetirDosVeces bloqueRep = new BloqueRepetirDosVeces(movDerecha);
+        BloqueMovimiento bloqueMov = new BloqueMovimiento(movDerecha);
+        BloqueRepetirDosVeces bloqueRep = new BloqueRepetirDosVeces(bloqueMov);
         Posicion posicion = new Posicion(0,0);
         Personaje personaje = new Personaje(posicion, tablero);
 

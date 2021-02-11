@@ -9,7 +9,6 @@ import personaje.Personaje;
 import tablero.Tablero;
 import posicion.Posicion;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TableroTest {

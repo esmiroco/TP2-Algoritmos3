@@ -55,7 +55,9 @@ public class BloqueAlgoritmoTest {
         BloqueMovimiento bloqIzquierda = new BloqueMovimiento(new MovIzquierda());
         BloqueMovimiento bloqAbajo = new BloqueMovimiento(new MovAbajo());
         BloqueRepetirTresVeces bloqueRepTres = new BloqueRepetirTresVeces(new MovArriba());
-        BloqueRepetirDosVeces bloqueRepDos = new BloqueRepetirDosVeces(new MovDerecha());
+        BloqueMovimiento bloqDerecha2 = new BloqueMovimiento(new MovDerecha());
+        
+        BloqueRepetirDosVeces bloqueRepDos = new BloqueRepetirDosVeces(bloqDerecha2);
 
 
         //(0,3)
