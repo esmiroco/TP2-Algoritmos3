@@ -7,5 +7,5 @@ public interface EstadoLapiz {
 
 	public EstadoLapiz levantarLapiz();
 	public EstadoLapiz bajarLapiz();
-	public void pintar(Posicion posicionPrevia, Posicion posicion, Tablero tablero);
+	public void pintar(Posicion posicion, Tablero tablero) throws NoSePintaConLapizArribaException;
 }

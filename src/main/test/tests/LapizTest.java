@@ -2,9 +2,11 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 import lapiz.Lapiz;
+import lapiz.NoSePintaConLapizArribaException;
 import posicion.Posicion;
 import tablero.Tablero;
 
@@ -22,10 +24,9 @@ public class LapizTest {
 	public void test02SeCreaLapizArribaSinPintarLasPosicionesQueSeLeDan() {
 		Tablero mockTablero = mock(Tablero.class);
 		Posicion mockPosicion = mock(Posicion.class);
-		Posicion mockPosicionPrevia = mock(Posicion.class);
 
 		Lapiz lapiz = new Lapiz();
-		lapiz.pintar(mockPosicionPrevia, mockPosicion, mockTablero);
+		lapiz.pintar(mockPosicion, mockTablero);
 		
 		verify(mockTablero, never()).almacenarPosicion(mockPosicion);
 		
@@ -35,16 +36,15 @@ public class LapizTest {
 	public void test03SeBajaElLapizRecienCreadoYPintaLasPosicionesQueSeLeDan() {
 		Tablero mockTablero = mock(Tablero.class);
 		Posicion mockPosicion = mock(Posicion.class);
-		Posicion mockPosicionPrevia = mock(Posicion.class);
 		Lapiz lapiz = new Lapiz();
 		
-		lapiz.pintar(mockPosicionPrevia, mockPosicion, mockTablero);
+		lapiz.pintar(mockPosicion, mockTablero);
 		
 		verify(mockTablero, never()).almacenarPosicion(mockPosicion);
 		
 		lapiz.bajarLapiz();
 		
-		lapiz.pintar(mockPosicionPrevia, mockPosicion, mockTablero);
+		lapiz.pintar(mockPosicion, mockTablero);
 		verify(mockTablero).almacenarPosicion(mockPosicion);
 	}
 	

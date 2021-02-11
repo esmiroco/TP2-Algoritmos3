@@ -2,6 +2,7 @@
 package personaje;
 
 import lapiz.Lapiz;
+import lapiz.NoSePintaConLapizArribaException;
 import posicion.Posicion;
 import tablero.Tablero;
 import movimiento.Movimiento;
@@ -27,9 +28,7 @@ public class Personaje {
 	}
 
 	public void mover(Movimiento movimiento){
-		Posicion posicionPrevia = posicion;
 		movimiento.calcularNuevaPosicion(posicion);
-		lapiz.pintar(posicionPrevia, posicion, tablero);
+		lapiz.pintar(posicion, tablero);
 	}
-
 }

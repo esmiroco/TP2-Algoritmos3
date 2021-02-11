@@ -6,8 +6,13 @@ import tablero.Tablero;
 public class Lapiz {
 	private EstadoLapiz estado = new LapizArriba();
 	
-	public void pintar(Posicion posicionPrevia, Posicion posicion, Tablero tablero) {
-		estado.pintar(posicionPrevia, posicion, tablero);
+	public void pintar(Posicion posicion, Tablero tablero){
+		try {
+			estado.pintar(posicion, tablero);
+		} 
+		catch (NoSePintaConLapizArribaException e) {
+		}
+
 	}
 
 	public void levantarLapiz() {

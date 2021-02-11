@@ -17,8 +17,8 @@ public class LapizArriba implements EstadoLapiz {
 	}
 	
 	@Override
-	public void pintar(Posicion posicionPrevia, Posicion posicion, Tablero tablero) {
-		//no hace nada
+	public void pintar(Posicion posicion, Tablero tablero) throws NoSePintaConLapizArribaException {
+		throw new NoSePintaConLapizArribaException();
 	}
 
 }

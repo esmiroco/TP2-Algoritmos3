@@ -6,7 +6,7 @@ import tablero.Tablero;
 public class LapizAbajo implements EstadoLapiz {
 
 //	@Override
-	public void pintar(Posicion posicionPrevia, Posicion posicion, Tablero tablero) {
+	public void pintar(Posicion posicion, Tablero tablero) {
 		tablero.almacenarPosicion(posicion);
 	}
 
