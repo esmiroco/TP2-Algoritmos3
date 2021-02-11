@@ -12,13 +12,21 @@ public class Tablero {
     }
 
     public void almacenarPosicion(Posicion posicion){
-        boolean existe = posiciones.contains(posicion);
-        if(!existe){ posiciones.add(posicion); }
+       
+        if(!existePosicion(posicion)){
+        	posiciones.add(posicion); 
+        }
 
     }
 
     public boolean existePosicion(Posicion posicion){
-        return posiciones.contains(posicion);
+    	 boolean existe = false;
+         for(Posicion pos : posiciones) {
+         	if(posicion.esIgualA(pos)) {
+         		existe = true;
+         	}
+         }
+         return existe;
     }
 }
 

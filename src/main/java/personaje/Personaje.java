@@ -2,7 +2,6 @@
 package personaje;
 
 import lapiz.Lapiz;
-import lapiz.NoSePintaConLapizArribaException;
 import posicion.Posicion;
 import tablero.Tablero;
 import movimiento.Movimiento;
