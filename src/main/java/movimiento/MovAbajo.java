@@ -3,7 +3,7 @@ package movimiento;
 import posicion.Posicion;
 
 public class MovAbajo implements Movimiento {
-    public void calcularNuevaPosicion(Posicion posicion){
+    public void actualizarPosicion(Posicion posicion){
         posicion.moverAbajo();
     }
 }
