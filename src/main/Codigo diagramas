@@ -1,7 +1,6 @@
 ---------- diagrama 1 -----------
 
 @startuml
-title "Diagrama de clases"
 abstract class Bloque{
 +ejecutar(presonaje:Personaje)
 }
@@ -47,19 +46,19 @@ class LapizAbajo{
 enum NoSePintaConLapizArribaExcepcion
 
 Interface Movimiento{
-+calcularNuevaPosicion(posicion:Posicion)
++actualizarPosicion(posicion:Posicion)
 }
 class MovArriba{
-+calcularNuevaPosicion(posicion:Posicion)
++actualizarPosicion(posicion:Posicion)
 }
 class MovAbajo{
-+calcularNuevaPosicion(posicion:Posicion)
++actualizarPosicion(posicion:Posicion)
 }
 class MovDerecha{
-+calcularNuevaPosicion(posicion:Posicion)
++actualizarPosicion(posicion:Posicion)
 }
 class MovIzquierda{
-+calcularNuevaPosicion(posicion:Posicion)
++actualizarPosicion(posicion:Posicion)
 }
 
 class Personaje{
@@ -118,6 +117,6 @@ return personaje:Personaje
 
 test01 -> "bloqueDerecha:BloqueMovimiento" **:ejercutar(personaje)
 "bloqueDerecha:BloqueMovimiento" -> "personaje:Personaje" **:mover(movDerecha)
-"personaje:Personaje" -> "movDerecha:MovDerecha" **:calcularNuevaPosicion(posicion)
+"personaje:Personaje" -> "movDerecha:MovDerecha" **:actualizarPosicion(posicion)
 "movDerecha:MovDerecha" -> "posicion:Posicion" **:moverDerecha(posicion)
 @enduml
