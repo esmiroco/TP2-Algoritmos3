@@ -2,7 +2,6 @@ package tablero;
 
 import posicion.Posicion;
 import java. util. ArrayList;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Tablero {
@@ -13,7 +12,7 @@ public class Tablero {
     }
 
     public void almacenarPosicion(Posicion posicion){
-        Boolean flag = false;
+        boolean flag = false;
         for (Posicion pos : posiciones) {
         	if(posicion.esIgualA(pos)){
                 flag = true;
