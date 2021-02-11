@@ -1,3 +1,4 @@
+package tests;
 import bloque.BloqueAlgoritmo;
 import bloque.BloqueMovimiento;
 import movimiento.MovAbajo;

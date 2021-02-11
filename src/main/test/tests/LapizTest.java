@@ -27,7 +27,7 @@ public class LapizTest {
 		Lapiz lapiz = new Lapiz();
 		lapiz.pintar(mockPosicionPrevia, mockPosicion, mockTablero);
 		
-		verify(mockPosicion, never()).pintate(mockTablero);
+		verify(mockTablero, never()).almacenarPosicion(mockPosicion);
 		
 	}
 	
@@ -40,12 +40,12 @@ public class LapizTest {
 		
 		lapiz.pintar(mockPosicionPrevia, mockPosicion, mockTablero);
 		
-		verify(mockPosicion, never()).pintate(mockTablero);
+		verify(mockTablero, never()).almacenarPosicion(mockPosicion);
 		
 		lapiz.bajarLapiz();
 		
 		lapiz.pintar(mockPosicionPrevia, mockPosicion, mockTablero);
-		verify(mockPosicion).pintate(mockTablero);
+		verify(mockTablero).almacenarPosicion(mockPosicion);
 	}
 	
 }

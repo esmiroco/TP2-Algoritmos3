@@ -32,7 +32,7 @@ public class PersonajeTest {
 		Personaje personaje = new Personaje(mockPosicion, mockTablero);
 		personaje.mover(mockMovimiento);
 		
-		verify(mockPosicion, never()).pintate(mockTablero);
+		verify(mockTablero, never()).almacenarPosicion(mockPosicion);
 		
 		}
 	
@@ -47,7 +47,7 @@ public class PersonajeTest {
 		
 		personaje.mover(mockMovimiento);
 		
-		verify(mockPosicion).pintate(mockTablero);
+		verify(mockTablero).almacenarPosicion(mockPosicion);
 		}
 	
 	@Test
@@ -59,12 +59,12 @@ public class PersonajeTest {
 		
 		personaje.mover(mockMovimiento);
 		
-		verify(mockPosicion, never()).pintate(mockTablero);
+		verify(mockTablero, never()).almacenarPosicion(mockPosicion);
 		
 		personaje.levantarLapiz();
 		
 		personaje.mover(mockMovimiento);
-		verify(mockPosicion, never()).pintate(mockTablero);
+		verify(mockTablero, never()).almacenarPosicion(mockPosicion);
 	}
 
 	@Test
@@ -77,11 +77,11 @@ public class PersonajeTest {
 		personaje.bajarLapiz();
 		personaje.mover(mockMovimiento);
 		
-		verify(mockPosicion).pintate(mockTablero);
+		verify(mockTablero).almacenarPosicion(mockPosicion);
 		
 		personaje.bajarLapiz();
 		
 		personaje.mover(mockMovimiento);
-		verify(mockPosicion, times(2)).pintate(mockTablero);
+		verify(mockTablero, times(2)).almacenarPosicion(mockPosicion);
 		}
 }
