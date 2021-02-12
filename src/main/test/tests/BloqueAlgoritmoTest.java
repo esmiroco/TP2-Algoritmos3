@@ -76,7 +76,7 @@ public class BloqueAlgoritmoTest {
         algoritmoPersonalizado.agregarBloque(bloqArriba);
 
         //(6,4)
-        algoritmoPersonalizado.agregarBloque(new BloqueRepetir(bloqArriba,3));
+        algoritmoPersonalizado.agregarBloque(new BloqueRepetir(bloqDerecha,3));
 
         //(6,3)
         algoritmoPersonalizado.agregarBloque(bloqAbajo);
