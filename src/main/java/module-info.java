@@ -1,4 +1,4 @@
-module edu.fiuba.algo3 {
+module juego.Main {
     requires javafx.controls;
     exports juego;
 }

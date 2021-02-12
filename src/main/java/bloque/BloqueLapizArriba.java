@@ -10,4 +10,9 @@ public class BloqueLapizArriba extends Bloque{
 		
 	}
 
+	@Override
+	public Bloque obtenerBloqueInvertido() {
+		return new BloqueLapizAbajo();
+	}
+
 }

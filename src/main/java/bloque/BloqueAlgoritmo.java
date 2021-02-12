@@ -20,4 +20,12 @@ public class BloqueAlgoritmo extends Bloque {
     public void ejecutar(Personaje personaje) {
         this.listaBloques.forEach(bloque -> bloque.ejecutar(personaje));
     }
+
+    @Override
+    public Bloque obtenerBloqueInvertido() {
+        BloqueAlgoritmo bloqInvertidos = new BloqueAlgoritmo();
+        this.listaBloques.forEach(bloque -> bloqInvertidos.agregarBloque(bloque.obtenerBloqueInvertido()));
+        return bloqInvertidos;
+    }
+
 }

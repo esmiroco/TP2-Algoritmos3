@@ -4,4 +4,5 @@ import posicion.Posicion;
 
 public interface Movimiento {
     public void actualizarPosicion(Posicion posicion);
+    public Movimiento obtenerMovimientoInvertido();
 }

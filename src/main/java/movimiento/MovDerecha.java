@@ -6,4 +6,8 @@ public class MovDerecha implements Movimiento {
     public void actualizarPosicion(Posicion posicion){
         posicion.moverDerecha();
     }
+
+    public Movimiento obtenerMovimientoInvertido() {
+        return new MovIzquierda();
+    }
 }

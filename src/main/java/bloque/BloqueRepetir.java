@@ -21,4 +21,9 @@ public class BloqueRepetir extends Bloque {
         }
     }
 
+    @Override
+    public Bloque obtenerBloqueInvertido() {
+        return bloque.obtenerBloqueInvertido();
+    }
+
 }
