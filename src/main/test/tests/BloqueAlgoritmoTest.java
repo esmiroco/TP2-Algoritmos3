@@ -71,7 +71,10 @@ public class BloqueAlgoritmoTest {
 
         algoritmoPersonalizado.agregarBloque(bloqArriba);
 
+
         algoritmoPersonalizado.agregarBloque(new BloqueRepetir(bloqArriba,3));
+        //(6,4)
+        algoritmoPersonalizado.agregarBloque(new BloqueRepetir(bloqDerecha,3));
 
         algoritmoPersonalizado.agregarBloque(bloqAbajo);
 
@@ -82,7 +85,7 @@ public class BloqueAlgoritmoTest {
 
 
         algoritmoPersonalizado.ejecutar(unPj);
-        Posicion posicion1 = new Posicion(2,6);
+        Posicion posicion1 = new Posicion(5,6);
 
         assertEquals(true, posicion.esIgualA(posicion1));
 
