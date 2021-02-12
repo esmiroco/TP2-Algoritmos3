@@ -60,28 +60,21 @@ public class BloqueAlgoritmoTest {
         BloqueRepetir bloqueRepDos = new BloqueRepetir(bloqDerecha2,2);
 
 
-        //(0,3)
         algoritmoPersonalizado.agregarBloque(bloqueRepTres);
 
-        //(2,3)
         algoritmoPersonalizado.agregarBloque(bloqueRepDos);
 
         algoritmoPersonalizado.agregarBloque(bloqLapizArriba);
         algoritmoPersonalizado.agregarBloque(bloqLapizAbajo);
 
-        //(3,3)
         algoritmoPersonalizado.agregarBloque(bloqDerecha);
 
-        //(3,4)
         algoritmoPersonalizado.agregarBloque(bloqArriba);
 
-        //(6,4)
         algoritmoPersonalizado.agregarBloque(new BloqueRepetir(bloqArriba,3));
 
-        //(6,3)
         algoritmoPersonalizado.agregarBloque(bloqAbajo);
 
-        //(5,3)
         algoritmoPersonalizado.agregarBloque(bloqIzquierda);
 
         Posicion posicion = new Posicion(0,0);
@@ -89,7 +82,7 @@ public class BloqueAlgoritmoTest {
 
 
         algoritmoPersonalizado.ejecutar(unPj);
-        Posicion posicion1 = new Posicion(5,3);
+        Posicion posicion1 = new Posicion(2,6);
 
         assertEquals(true, posicion.esIgualA(posicion1));
 
