@@ -54,10 +54,10 @@ public class BloqueAlgoritmoTest {
         BloqueMovimiento bloqArriba = new BloqueMovimiento(new MovArriba());
         BloqueMovimiento bloqIzquierda = new BloqueMovimiento(new MovIzquierda());
         BloqueMovimiento bloqAbajo = new BloqueMovimiento(new MovAbajo());
-        BloqueRepetirTresVeces bloqueRepTres = new BloqueRepetirTresVeces(new MovArriba());
+        BloqueRepetir bloqueRepTres = new BloqueRepetir(bloqArriba,3);
         BloqueMovimiento bloqDerecha2 = new BloqueMovimiento(new MovDerecha());
         
-        BloqueRepetirDosVeces bloqueRepDos = new BloqueRepetirDosVeces(bloqDerecha2);
+        BloqueRepetir bloqueRepDos = new BloqueRepetir(bloqDerecha2,2);
 
 
         //(0,3)
@@ -76,7 +76,7 @@ public class BloqueAlgoritmoTest {
         algoritmoPersonalizado.agregarBloque(bloqArriba);
 
         //(6,4)
-        algoritmoPersonalizado.agregarBloque(new BloqueRepetirTresVeces(new MovDerecha()));
+        algoritmoPersonalizado.agregarBloque(new BloqueRepetir(bloqArriba,3));
 
         //(6,3)
         algoritmoPersonalizado.agregarBloque(bloqAbajo);
