@@ -1,5 +1,6 @@
 package bloque;
 
+import mapa.Mapa;
 import personaje.Personaje;
 
 public class BloqueRepetir extends Bloque {
@@ -15,9 +16,9 @@ public class BloqueRepetir extends Bloque {
 
 
     @Override
-    public void ejecutar(Personaje personaje) {
+    public void ejecutar(Personaje personaje, Mapa mapa) {
         for (int i = 0; i < this.repeticiones; i++) {
-            bloque.ejecutar(personaje);
+            bloque.ejecutar(personaje, mapa);
         }
     }
 

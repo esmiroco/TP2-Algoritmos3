@@ -1,5 +1,6 @@
 package bloque;
 
+import mapa.Mapa;
 import personaje.Personaje;
 
 public class BloqueInvertirComportamiento extends Bloque{
@@ -19,8 +20,8 @@ public class BloqueInvertirComportamiento extends Bloque{
 
 
     @Override
-    public void ejecutar(Personaje personaje) {
-        this.bloque.obtenerBloqueInvertido().ejecutar(personaje);
+    public void ejecutar(Personaje personaje, Mapa mapa) {
+        this.bloque.obtenerBloqueInvertido().ejecutar(personaje,mapa);
     }
 
     @Override

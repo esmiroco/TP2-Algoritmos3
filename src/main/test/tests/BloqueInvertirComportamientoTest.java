@@ -2,6 +2,7 @@ package tests;
 
 import bloque.BloqueInvertirComportamiento;
 import bloque.BloqueMovimiento;
+import mapa.Mapa;
 import movimiento.MovAbajo;
 import movimiento.MovArriba;
 import movimiento.MovDerecha;
@@ -9,14 +10,12 @@ import movimiento.MovIzquierda;
 import org.junit.jupiter.api.Test;
 import personaje.Personaje;
 import posicion.Posicion;
-import tablero.Tablero;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BloqueInvertirComportamientoTest {
     @Test
     public void test01(){
-        Tablero tablero = new Tablero();
         BloqueInvertirComportamiento bloqInvertir = new BloqueInvertirComportamiento();
 
         BloqueMovimiento bloqDerecha = new BloqueMovimiento(new MovDerecha());
@@ -33,13 +32,14 @@ public class BloqueInvertirComportamientoTest {
         //algoritmoPersonalizado.agregarBloque(bloqAbajo);
 
         Posicion posicion = new Posicion(0,0);
-        Personaje unPj = new Personaje(posicion, tablero);
+        Personaje unPj = new Personaje(posicion);
+        Mapa unMapa = new Mapa();
 
 
-        bloqInvertir.ejecutar(unPj);
+        bloqInvertir.ejecutar(unPj, unMapa);
         Posicion posicion1 = new Posicion(0,-1);
 
-        assertEquals(true, posicion.esIgualA(posicion1));
+        assertEquals(true, unPj.obtenerPosicion().esIgualA(posicion1));
     }
 
 }
