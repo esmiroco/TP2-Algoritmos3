@@ -1,11 +1,13 @@
 package tests;
 
 import mapa.Mapa;
+import movimiento.MovDerecha;
+import movimiento.MovIzquierda;
 import org.junit.jupiter.api.Test;
 
 import movimiento.Movimiento;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 
@@ -14,13 +16,11 @@ import posicion.Posicion;
 
 
 public class PersonajeTest {
-    /*
 
     @Test
     public void test01CreoPersonajeNoNulo() {
-        Posicion mockPosicion = mock(Posicion.class);
-        Tablero mockTablero = mock(Tablero.class);
-        Personaje personaje = new Personaje(mockPosicion, mockTablero);
+        Posicion mockPosicion = new Posicion(1,1);
+        Personaje personaje = new Personaje(mockPosicion);
 
         assertNotNull(personaje);
 
@@ -28,66 +28,62 @@ public class PersonajeTest {
 
     @Test
     public void test02CreoPersonajeConLapizArribaAlMoverseNoPintaPosicionNueva() {
-        Tablero mockTablero = mock(Tablero.class);
-        Posicion mockPosicion = mock(Posicion.class);
-        Movimiento mockMovimiento = mock(Movimiento.class);
-        Personaje personaje = new Personaje(mockPosicion, mockTablero);
+        Posicion mockPosicion = new Posicion(1,1);
+        MovDerecha mockMovimiento = new MovDerecha();
+        Personaje personaje = new Personaje(mockPosicion);
         Mapa mapa=new Mapa();
         personaje.mover(mockMovimiento, mapa);
 
-        verify(mockTablero, never()).almacenarPosicion(mockPosicion);
+        assertFalse(personaje.obtenerPosicion().estoyPintado());
 
     }
 
     @Test
     public void test03SeBajaLapizDePersonajeYSePintaPosicionAlMoverse() {
-        Tablero mockTablero = mock(Tablero.class);
-        Movimiento mockMovimiento = mock(Movimiento.class);
-        Posicion mockPosicion = mock(Posicion.class);
-        Personaje personaje = new Personaje(mockPosicion, mockTablero);
+        MovIzquierda mockMovimiento = new MovIzquierda();
+        Posicion mockPosicion = new Posicion(1,2);
+        Personaje personaje = new Personaje(mockPosicion);
         Mapa mapa=new Mapa();
 
         personaje.bajarLapiz();
 
         personaje.mover(mockMovimiento, mapa);
 
-        verify(mockTablero).almacenarPosicion(mockPosicion);
+        assertTrue(personaje.obtenerPosicion().estoyPintado());
     }
 
     @Test
     public void test04SeLevantaLapizYaLevantadoYNoCambiaComportamiento() {
-        Tablero mockTablero = mock(Tablero.class);
-        Movimiento mockMovimiento = mock(Movimiento.class);
-        Posicion mockPosicion = mock(Posicion.class);
-        Personaje personaje = new Personaje(mockPosicion, mockTablero);
+        MovDerecha mockMovimiento = new MovDerecha();
+        Posicion mockPosicion = new Posicion(1,1);
+        Personaje personaje = new Personaje(mockPosicion);
         Mapa mapa=new Mapa();
 
         personaje.mover(mockMovimiento, mapa);
 
-        verify(mockTablero, never()).almacenarPosicion(mockPosicion);
+        assertFalse(personaje.obtenerPosicion().estoyPintado());
 
         personaje.levantarLapiz();
 
         personaje.mover(mockMovimiento, mapa);
-        verify(mockTablero, never()).almacenarPosicion(mockPosicion);
+        assertFalse(personaje.obtenerPosicion().estoyPintado());
     }
 
     @Test
     public void test05SeBajaLapizYaBajoYNoCambiaComportamiento() {
-        Tablero mockTablero = mock(Tablero.class);
-        Movimiento mockMovimiento = mock(Movimiento.class);
-        Posicion mockPosicion = mock(Posicion.class);
-        Personaje personaje = new Personaje(mockPosicion, mockTablero);
+        MovDerecha mockMovimiento = new MovDerecha();
+        Posicion mockPosicion = new Posicion(2,2);
+        Personaje personaje = new Personaje(mockPosicion);
         Mapa mapa=new Mapa();
 
         personaje.bajarLapiz();
         personaje.mover(mockMovimiento, mapa);
 
-        verify(mockTablero).almacenarPosicion(mockPosicion);
+        assertTrue(personaje.obtenerPosicion().estoyPintado());
 
         personaje.bajarLapiz();
 
         personaje.mover(mockMovimiento, mapa);
-        verify(mockTablero, times(2)).almacenarPosicion(mockPosicion);
-    }*/
+        assertTrue(personaje.obtenerPosicion().estoyPintado());
+    }
 }
