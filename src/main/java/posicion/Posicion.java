@@ -37,10 +37,6 @@ public class Posicion {
 	}
 
 	public boolean esIgualA(Posicion otraPosicion){
-		if ((posX==otraPosicion.obtenerX()) & (posY==otraPosicion.obtenerY())){
-			return true;
-		}else{
-			return false;
-		}
+		return posX==otraPosicion.obtenerX() & posY==otraPosicion.obtenerY();
 	}
 }
