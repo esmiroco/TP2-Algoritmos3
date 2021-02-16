@@ -13,17 +13,15 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import posicion.Posicion;
+import tablero.Tablero;
+import ui.PersonajeUI;
 import ui.PosicionUI;
 
 public class Main extends Application {
@@ -32,7 +30,12 @@ public class Main extends Application {
 	private int x = 4;
 	private int y = 4;
 	private boolean pintar = false;
-	
+
+	Image image = new Image(getClass().getResourceAsStream("/recursos/down1.png"));
+	ImageView imageView = new ImageView(image);
+	PersonajeUI personaje = new PersonajeUI(imageView);
+	static Pane root = new Pane();
+
 	public static void main(String[] args) {
 		launch();
 
@@ -132,8 +135,8 @@ public class Main extends Application {
         pane.getChildren().add(botonAbajo);
         pane.getChildren().add(botonDerecha);
         pane.getChildren().add(botonIzquierda);
-
-        
+        pane.getChildren().addAll(personaje);
+        //stage.getIcons().add(personaje);
         
         var scene = new Scene(pane, 720, 720);
         
