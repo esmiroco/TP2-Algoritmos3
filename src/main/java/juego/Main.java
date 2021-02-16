@@ -2,6 +2,8 @@ package juego;
 
 import javafx.scene.control.Label;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Random;
 
 import javafx.application.Application;
@@ -20,7 +22,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import posicion.Posicion;
-import tablero.Tablero;
+import mapa.Mapa;
 import ui.PersonajeUI;
 import ui.PosicionUI;
 
@@ -31,18 +33,18 @@ public class Main extends Application {
 	private int y = 4;
 	private boolean pintar = false;
 
-	Image image = new Image(getClass().getResourceAsStream("/recursos/down1.png"));
-	ImageView imageView = new ImageView(image);
-	PersonajeUI personaje = new PersonajeUI(imageView);
-	static Pane root = new Pane();
-
 	public static void main(String[] args) {
 		launch();
 
 	}
 
 	@Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws FileNotFoundException {
+
+		FileInputStream inputstream = new FileInputStream("src/main/java/recursos/down1.png");
+		Image image = new Image(inputstream);
+		ImageView imageView = new ImageView(image);
+		PersonajeUI personaje = new PersonajeUI(imageView);
 		
 		Random rand = new Random();
 		
