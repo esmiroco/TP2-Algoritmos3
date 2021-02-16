@@ -22,16 +22,23 @@ public class PersonajeUI extends Pane {
     int ancho = 32;
     int alto = 50;
     public PersonajeUI(ImageView imageView) {
-        this.imagen = imageView;
-        this.imagen.setViewport(new Rectangle2D(offsetX,offsetY,ancho,alto));
-        getChildren().addAll(imageView);
+        establecerImagen(imageView);
 
     }
 
-    public Posicion moverVertical(Movimiento movimiento, Mapa mapa){
+    public Posicion moverIzquierda(Movimiento movimiento, Mapa mapa) {
         personaje.mover(movimiento, mapa);
         Posicion aux = personaje.obtenerPosicion();
         setTranslateX((aux.obtenerX()) * ancho / 20);
+
+        return aux;
+    }
+
+    public Posicion moverDerecha(Movimiento movimiento, Mapa mapa){
+        personaje.mover(movimiento, mapa);
+        Posicion aux = personaje.obtenerPosicion();
+        setTranslateX((aux.obtenerX()) * ancho / 20);
+
 
         return aux;
     }
@@ -56,6 +63,10 @@ public class PersonajeUI extends Pane {
         return aux.estoyPintado();
     }
 
-
+    public void establecerImagen(ImageView imageView){
+        this.imagen = imageView;
+        this.imagen.setViewport(new Rectangle2D(offsetX,offsetY,ancho,alto));
+        getChildren().addAll(imageView);
+    }
 
 }

@@ -46,10 +46,16 @@ public class Main extends Application {
 	@Override
     public void start(Stage stage) throws FileNotFoundException {
 
-		FileInputStream inputstream = new FileInputStream("src/main/java/recursos/down1.png");
-		Image image = new Image(inputstream);
-		ImageView imageView = new ImageView(image);
-		PersonajeUI personaje = new PersonajeUI(imageView);
+		FileInputStream inputstreamFrente = new FileInputStream("src/main/java/recursos/down1.png");
+		Image imageFrente = new Image(inputstreamFrente);
+		ImageView imageViewFrente = new ImageView(imageFrente);
+		PersonajeUI personaje = new PersonajeUI(imageViewFrente);
+		FileInputStream inputstreamIzq = new FileInputStream("src/main/java/recursos/left1.png");
+		Image imageIzq = new Image(inputstreamIzq);
+		ImageView imageViewIzq = new ImageView(imageIzq);
+		FileInputStream inputstreamDer = new FileInputStream("src/main/java/recursos/right1.png");
+		Image imageDer = new Image(inputstreamDer);
+		ImageView imageViewDer = new ImageView(imageDer);
 
 		
 		Random rand = new Random();
@@ -104,7 +110,8 @@ public class Main extends Application {
 			public void handle(ActionEvent e) {
 				x = x-1;
 				MovIzquierda movimiento = new MovIzquierda();
-				Posicion posicion = personaje.moverVertical(movimiento, mapa);
+				Posicion posicion = personaje.moverIzquierda(movimiento, mapa);
+				personaje.establecerImagen(imageViewIzq);
 				if(personaje.estoyPintado()) {
 					gridArray[x][y].pintate();
 				}
@@ -117,7 +124,8 @@ public class Main extends Application {
 			public void handle(ActionEvent e) {
 				x = x+1;
 				MovDerecha movimiento = new MovDerecha();
-				Posicion posicion = personaje.moverVertical(movimiento, mapa);
+				Posicion posicion = personaje.moverDerecha(movimiento, mapa);
+				personaje.establecerImagen(imageViewDer);
 				if(personaje.estoyPintado()) {
 					gridArray[x][y].pintate();
 				}
