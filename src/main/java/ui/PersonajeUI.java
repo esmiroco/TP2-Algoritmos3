@@ -5,10 +5,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import personaje.Personaje;
+import movimiento.Movimiento;
+import posicion.Posicion;
+import mapa.Mapa;
 
 public class PersonajeUI extends Pane {
 
-    private Personaje personaje;
+    Posicion posicion = new Posicion(0,0);
+    private Personaje personaje = new Personaje(posicion);
     private ImageView imagen;
     int offsetX = 0;
     int offsetY = 0;
@@ -21,5 +25,36 @@ public class PersonajeUI extends Pane {
         getChildren().addAll(imageView);
 
     }
+
+    public Posicion moverVertical(Movimiento movimiento, Mapa mapa){
+        personaje.mover(movimiento, mapa);
+        Posicion aux = personaje.obtenerPosicion();
+        setTranslateX((aux.obtenerX()) * ancho / 20);
+
+        return aux;
+    }
+
+    public Posicion moverHorizontal(Movimiento movimiento, Mapa mapa){
+        personaje.mover(movimiento, mapa);
+        Posicion aux = personaje.obtenerPosicion();
+        setTranslateY((aux.obtenerY()) * alto / 20);
+
+        return aux;
+    }
+
+    public void bajarLapiz(){
+        personaje.bajarLapiz();
+    }
+
+    public void levantarLapiz(){
+        personaje.levantarLapiz();
+    }
+
+    public boolean estoyPintado(){
+        Posicion aux = personaje.obtenerPosicion();
+        return aux.estoyPintado();
+    }
+
+
 
 }

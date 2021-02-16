@@ -6,6 +6,7 @@ import mapa.Mapa;
 import posicion.Posicion;
 import movimiento.Movimiento;
 
+
 public class Personaje {
 	private Lapiz lapiz = new Lapiz();
 	private Posicion posicion;

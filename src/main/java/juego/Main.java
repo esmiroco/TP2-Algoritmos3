@@ -21,6 +21,10 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import movimiento.MovDerecha;
+import movimiento.MovIzquierda;
+import movimiento.MovAbajo;
+import movimiento.MovArriba;
 import posicion.Posicion;
 import mapa.Mapa;
 import ui.PersonajeUI;
@@ -32,6 +36,7 @@ public class Main extends Application {
 	private int x = 4;
 	private int y = 4;
 	private boolean pintar = false;
+	Mapa mapa = new Mapa();
 
 	public static void main(String[] args) {
 		launch();
@@ -45,6 +50,7 @@ public class Main extends Application {
 		Image image = new Image(inputstream);
 		ImageView imageView = new ImageView(image);
 		PersonajeUI personaje = new PersonajeUI(imageView);
+
 		
 		Random rand = new Random();
 		
@@ -61,8 +67,11 @@ public class Main extends Application {
         
         //botones. Despues dividir en objetos
         
-        Button boton = new Button();
-        boton.setText("color");
+        Button botonLapizArriba = new Button();
+        botonLapizArriba.setText("Lapiz Arriba");
+
+		Button botonLapizAbajo = new Button();
+		botonLapizAbajo.setText("Lapiz Abajo");
         
         Button botonIzquierda = new Button();
         botonIzquierda.setText("Izquierda");
@@ -76,18 +85,27 @@ public class Main extends Application {
         Button botonArriba = new Button();
         botonArriba.setText("Arriba");
         
-        boton.setOnAction(new EventHandler<ActionEvent>() {
+        botonLapizAbajo.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
-				pintar = !pintar;			
+				personaje.bajarLapiz();
 			}
         });
+
+		botonLapizArriba.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent e) {
+				personaje.levantarLapiz();
+			}
+		});
         
         botonIzquierda.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
 				x = x-1;
-				if(pintar) {
+				MovIzquierda movimiento = new MovIzquierda();
+				Posicion posicion = personaje.moverVertical(movimiento, mapa);
+				if(personaje.estoyPintado()) {
 					gridArray[x][y].pintate();
 				}
 				
@@ -98,7 +116,9 @@ public class Main extends Application {
 			@Override
 			public void handle(ActionEvent e) {
 				x = x+1;
-				if(pintar) {
+				MovDerecha movimiento = new MovDerecha();
+				Posicion posicion = personaje.moverVertical(movimiento, mapa);
+				if(personaje.estoyPintado()) {
 					gridArray[x][y].pintate();
 				}
 				
@@ -108,8 +128,10 @@ public class Main extends Application {
         botonAbajo.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
-				y = y+1;
-				if(pintar) {
+				y = y-1;
+				MovArriba movimiento = new MovArriba();
+				Posicion posicion = personaje.moverHorizontal(movimiento, mapa);
+				if(personaje.estoyPintado()) {
 					gridArray[x][y].pintate();
 				}
 				
@@ -119,8 +141,10 @@ public class Main extends Application {
         botonArriba.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
-				y = y-1;
-				if(pintar) {
+				y = y+1;
+				MovAbajo movimiento = new MovAbajo();
+				Posicion posicion = personaje.moverHorizontal(movimiento, mapa);
+				if(personaje.estoyPintado()) {
 					gridArray[x][y].pintate();
 				}
 				
@@ -132,7 +156,8 @@ public class Main extends Application {
         VBox pane = new VBox();
         pane.getChildren().add(grid);
         
-        pane.getChildren().add(boton);
+        pane.getChildren().add(botonLapizAbajo);
+        pane.getChildren().add(botonLapizArriba);
         pane.getChildren().add(botonArriba);
         pane.getChildren().add(botonAbajo);
         pane.getChildren().add(botonDerecha);
