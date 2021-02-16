@@ -9,6 +9,9 @@ import movimiento.Movimiento;
 import posicion.Posicion;
 import mapa.Mapa;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 public class PersonajeUI extends Pane {
 
     Posicion posicion = new Posicion(0,0);
@@ -19,7 +22,6 @@ public class PersonajeUI extends Pane {
     int ancho = 32;
     int alto = 50;
     public PersonajeUI(ImageView imageView) {
-
         this.imagen = imageView;
         this.imagen.setViewport(new Rectangle2D(offsetX,offsetY,ancho,alto));
         getChildren().addAll(imageView);
@@ -38,7 +40,6 @@ public class PersonajeUI extends Pane {
         personaje.mover(movimiento, mapa);
         Posicion aux = personaje.obtenerPosicion();
         setTranslateY((aux.obtenerY()) * alto / 20);
-
         return aux;
     }
 
