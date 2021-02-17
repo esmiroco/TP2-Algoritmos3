@@ -14,39 +14,22 @@ import java.io.FileNotFoundException;
 
 public class PersonajeUI extends Pane {
 
-    Posicion posicion = new Posicion(0,0);
-    private Personaje personaje = new Personaje(posicion);
+    private Personaje personaje;
     private ImageView imagen;
     int offsetX = 0;
     int offsetY = 0;
     int ancho = 32;
     int alto = 50;
-    public PersonajeUI(ImageView imageView) {
+
+    public PersonajeUI(ImageView imageView, Personaje personaje) {
         establecerImagen(imageView);
+        this.personaje = personaje;
 
     }
 
-    public Posicion moverIzquierda(Movimiento movimiento, Mapa mapa) {
+    public Posicion mover(Movimiento movimiento, Mapa mapa) {
         personaje.mover(movimiento, mapa);
         Posicion aux = personaje.obtenerPosicion();
-        setTranslateX((aux.obtenerX()) * ancho / 20);
-
-        return aux;
-    }
-
-    public Posicion moverDerecha(Movimiento movimiento, Mapa mapa){
-        personaje.mover(movimiento, mapa);
-        Posicion aux = personaje.obtenerPosicion();
-        setTranslateX((aux.obtenerX()) * ancho / 20);
-
-
-        return aux;
-    }
-
-    public Posicion moverHorizontal(Movimiento movimiento, Mapa mapa){
-        personaje.mover(movimiento, mapa);
-        Posicion aux = personaje.obtenerPosicion();
-        setTranslateY((aux.obtenerY()) * alto / 20);
         return aux;
     }
 
@@ -67,6 +50,10 @@ public class PersonajeUI extends Pane {
         this.imagen = imageView;
         this.imagen.setViewport(new Rectangle2D(offsetX,offsetY,ancho,alto));
         getChildren().addAll(imageView);
+    }
+
+    public Posicion obtenerPosicion(){
+        return personaje.obtenerPosicion();
     }
 
 }

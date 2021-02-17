@@ -1,5 +1,7 @@
 package juego;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 
 import java.io.FileInputStream;
@@ -25,27 +27,23 @@ import movimiento.MovDerecha;
 import movimiento.MovIzquierda;
 import movimiento.MovAbajo;
 import movimiento.MovArriba;
+import personaje.Personaje;
 import posicion.Posicion;
 import mapa.Mapa;
-import ui.PersonajeUI;
-import ui.BotonAgregarBloqueMoverAbajo;
-import ui.BotonAgregarBloqueMoverArriba;
-import ui.BotonAgregarBloqueMoverDerecha;
-import ui.BotonAgregarBloqueMoverIzquierda;
-import ui.BotonAgregarBloqueRepetirDosVeces;
-import ui.BotonEjecutar;
-import ui.BotonUI;
-import ui.PosicionUI;
+import ui.*;
 
 public class Main extends Application {
-	
-	public PosicionUI[][] gridArray = new PosicionUI[10][10];
+
 	ArrayList<Button> botones;
 	
 	private int x = 4;
 	private int y = 4;
 	private boolean pintar = false;
-	Mapa mapa = new Mapa();
+    MapaUI mapaUI = new MapaUI();
+    Mapa mapa = new Mapa();
+    Posicion posicion = new Posicion(0,0);
+    Personaje personaje = new Personaje(posicion);
+
 
 	public static void main(String[] args) {
 		launch();
@@ -58,7 +56,7 @@ public class Main extends Application {
 		FileInputStream inputstreamFrente = new FileInputStream("src/main/java/recursos/down1.png");
 		Image imageFrente = new Image(inputstreamFrente);
 		ImageView imageViewFrente = new ImageView(imageFrente);
-		PersonajeUI personaje = new PersonajeUI(imageViewFrente);
+		PersonajeUI personajeUI = new PersonajeUI(imageViewFrente, personaje);
 		FileInputStream inputstreamIzq = new FileInputStream("src/main/java/recursos/left1.png");
 		Image imageIzq = new Image(inputstreamIzq);
 		ImageView imageViewIzq = new ImageView(imageIzq);
@@ -66,26 +64,18 @@ public class Main extends Application {
 		Image imageDer = new Image(inputstreamDer);
 		ImageView imageViewDer = new ImageView(imageDer);
 
-		
+        mapaUI.grid.setGridLinesVisible(true);
+
+        mapaUI.colocarPersonaje(personajeUI, posicion);
+
 		Random rand = new Random();
-		
-        GridPane grid = new GridPane();
-        //grid.setGridLinesVisible(true);
-        
-        for(int i = 1; i < 10; i++) {
-        	for(int j = 1; j < 10; j++) {
-        		PosicionUI pos = new PosicionUI();
-        		grid.add(pos, i, j);
-        		gridArray[i][j] = pos;
-        	}
-        }
-        
+
         VBox contenedorVertical = new VBox();
 
         VBox contenedorBloques = new VBox();
 
         HBox contenedorHorizontal = new HBox();
-        contenedorHorizontal.getChildren().add(grid);
+        contenedorHorizontal.getChildren().add(mapaUI.grid);
         contenedorHorizontal.getChildren().add(contenedorBloques);
         
         contenedorVertical.getChildren().add(contenedorHorizontal);
@@ -94,6 +84,7 @@ public class Main extends Application {
         BotonUI botonMoverIzquierda = new BotonAgregarBloqueMoverIzquierda(contenedorBloques);
         BotonUI botonMoverArriba = new BotonAgregarBloqueMoverArriba(contenedorBloques);
         BotonUI botonMoverAbajo = new BotonAgregarBloqueMoverAbajo(contenedorBloques);
+        //
         
         BotonAgregarBloqueRepetirDosVeces botonBloqueInvertir = new BotonAgregarBloqueRepetirDosVeces(contenedorBloques);        
         
@@ -115,8 +106,10 @@ public class Main extends Application {
 
         BotonEjecutar botonEjecutar = new BotonEjecutar(contenedorBloques);
         contenedorVertical.getChildren().add(botonEjecutar);
-        
-        var scene = new Scene(contenedorVertical, 720, 720);
+
+
+
+       var scene = new Scene(contenedorVertical, 720, 720);
         
 
         stage.setScene(scene);
