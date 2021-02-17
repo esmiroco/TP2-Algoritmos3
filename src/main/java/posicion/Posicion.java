@@ -1,14 +1,11 @@
 package posicion;
 
-import movimiento.Movimiento;
+import tablero.Tablero;
 
 public class Posicion {
 
 	private int posX;
 	private int posY;
-
-	public void pintate(){
-	}
 
 	public Posicion(int posX, int posY){
 		this.posX = posX;
@@ -38,5 +35,8 @@ public class Posicion {
 	public int obtenerY(){
 		return posY;
 	}
-	
+
+	public boolean esIgualA(Posicion otraPosicion){
+		return posX==otraPosicion.obtenerX() & posY==otraPosicion.obtenerY();
+	}
 }

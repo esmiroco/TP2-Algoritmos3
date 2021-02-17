@@ -1,6 +1,7 @@
 package lapiz;
 
 import posicion.Posicion;
+import tablero.Tablero;
 
 public class LapizArriba implements EstadoLapiz {
 
@@ -16,8 +17,8 @@ public class LapizArriba implements EstadoLapiz {
 	}
 	
 	@Override
-	public void pintar(Posicion posicion) {
-		//no hace nada
+	public void pintar(Posicion posicion, Tablero tablero) throws NoSePintaConLapizArribaException {
+		throw new NoSePintaConLapizArribaException();
 	}
 
 }

@@ -1,205 +1,122 @@
 ---------- diagrama 1 -----------
-skinparam classAttributeIconSize 0
 
-class Personaje{
+@startuml
+abstract class Bloque{
++ejecutar(presonaje:Personaje)
+}
+class BloqueLapizArriba{
++ejecutar(presonaje:Personaje)
+}
+class BloqueLapizAbajo{
++ejecutar(presonaje:Personaje)
+}
+class BloqueMovimiento{
++ejecutar(presonaje:Personaje)
+}
+class BloqueAlgoritmo{
++ejecutar(presonaje:Personaje)
++agregarBloque(unBloque:Bloque)
+}
+class BloqueRepetirDosVeces{
++ejecutar(presonaje:Personaje)
+}
+class BloqueRepetirTresVeces{
++ejecutar(presonaje:Personaje)
+}
+class Lapiz{
++levantarLapiz() : EstadoLapiz
++bajarLapiz() : EstadoLapiz
++pintar(posicion : Posicion)
+}
+Interface EstadoLapiz{
++levantarLapiz() : EstadoLapiz
++bajarLapiz() : EstadoLapiz
++pintar(posicion : Posicion)
+}
+class LapizArriba{
++levantarLapiz() : EstadoLapiz
++bajarLapiz() : EstadoLapiz
++pintar(posicion : Posicion)
+}
+class LapizAbajo{
++levantarLapiz() : EstadoLapiz
++bajarLapiz() : EstadoLapiz
++pintar(posicion : Posicion)
+}
+enum NoSePintaConLapizArribaExcepcion
 
-+ejecutarBloques()
-+pintarPosicionActual()
-+mover(movimiento : Movimiento);
-+levantarLapiz()
-+bajarLapiz()
-
+Interface Movimiento{
++actualizarPosicion(posicion:Posicion)
+}
+class MovArriba{
++actualizarPosicion(posicion:Posicion)
+}
+class MovAbajo{
++actualizarPosicion(posicion:Posicion)
+}
+class MovDerecha{
++actualizarPosicion(posicion:Posicion)
+}
+class MovIzquierda{
++actualizarPosicion(posicion:Posicion)
 }
 
-class Mapa{
-
-+cambiarPosicion(personaje : Personaje, nuevaPosicion : Posicion)
-
+class Personaje{
++mover(movimiento : Movimiento)
++levantarLapiz()
++bajarLapiz()
 }
 
 class Posicion{
 
 -posicionX : int
 -posicionY : int
-+pintate()
++esIgualA(posicion : Posicion): boolean
++mover()
+}
+class Tablero{
++almacenarPosicion(posicion:Posicion)
 }
 
-abstract class Bloque{
+EstadoLapiz <|.. LapizArriba
+EstadoLapiz <|.. LapizAbajo
+Lapiz *-- EstadoLapiz
+Lapiz ..> NoSePintaConLapizArribaExcepcion
+Bloque <|- BloqueLapizArriba
+Bloque <|- BloqueLapizAbajo
+Bloque <|-- BloqueMovimiento
+Bloque ...> Personaje
+Bloque <|-- BloqueAlgoritmo
+Bloque <|-- BloqueRepetirDosVeces
+Bloque <|-- BloqueRepetirTresVeces
+Movimiento <|.. MovArriba
+Movimiento <|.. MovAbajo
+Movimiento <|.. MovDerecha
+Movimiento <|.. MovIzquierda
+Posicion <. Movimiento
+Personaje *- Lapiz
+Personaje *--Posicion
+Personaje --> Tablero
+Tablero *-- "*" Posicion
+@enduml
 
--accion
+---------- diagrama 2 -----------
 
-+ejecutar(personaje : Personaje)
-+pintarPosicion()
+@startuml
+title test01BloqueConMovimientoALaDerechaMueveUnaPosicion
+test01 -> Tablero :new()
+return tablero:Tablero
+test01 -> MovDerecha **:new()
+return movDerecha:MovDerecha
+test01 -> BloqueMovimiento **:new(movDerecha)
+return bloqueDerecha:BloqueMovimiento
+test01 -> Posicion **:new(0,0)
+return posicion:Posicion
+test01 -> Personaje **:new(posicion,tablero)
+return personaje:Personaje
 
-}
-
-
-abstract class Lapiz{
-
-+dibujar(posicion : Posicion)
-
-}
-
-interface EstadoLapiz{
-+levantarLapiz() : EstadoLapiz
-+bajarLapiz() : EstadoLapiz
-+pintar(posicion : Posicion)
-}
-
-class LapizArriba{
-
-+levantarLapiz() : EstadoLapiz
-+bajarLapiz() : EstadoLapiz
-+pintar(posicion : Posicion)
-
-}
-
-class LapizAbajo{
-
-+levantarLapiz() : EstadoLapiz
-+bajarLapiz() : EstadoLapiz
-+pintar(posicion : Posicion)
-
-}
-
-interface Movimiento {
-
-+desplazarX(posX : int) : int
-+desplazarY(posY : int) : int
-}
-
-Mapa -->"1" Personaje
-Mapa -->"*" Posicion
-
-
-Personaje -left->"1" Posicion
-Personaje -right->"1" Lapiz
-
-LapizArriba -up-|> EstadoLapiz
-LapizAbajo -up-|> EstadoLapiz
-
-EstadoLapiz --* Lapiz
-
-Personaje "1"<.. Bloque
-Movimiento --* Bloque
-
-------- diagrama 2 ---------
-skinparam classAttributeIconSize 0
-
-abstract class Bloque{
-
--accion
-
-+ejecutar(personaje : Personaje)
-+pintarPosicion()
-
-}
-
-class BloqueMovimiento{
-+ejecutar(personaje : Personaje)
-+pintarPosicion()
-
-}
-
-class BloqueRepetir{
-
--unBloque
--cantidadARepetir
-
-+ejecutar(personaje : Personaje)
-+pintarPosicion()
-+invertite()
-
-}
-class BloqueInvertir{
-
--unBloque
-
-+setBloqueARepetir(unBloque : Bloque)
-+ejecutar(personaje : Personaje)
-+pintarPosicion()
-+invertite()
-
-}
-
-class BloqueAlgoritmo{
-
--bloques : Array[Bloque]
-
-+agregarBloque(unBloque : Bloque)
-+ejecutar(personaje : Personaje)
-+pintarPosicion()
-+invertite()
-
-}
-
-interface Movimiento{
-+desplazarX(posX : int) : int
-+desplazarY(posY : int) : int
-}
-
-class MovDerecha{
-+desplazarX(posX : int) : int
-+desplazarY(posY : int) : int
-}
-
-class MovIzquierda{
-+desplazarX(posX : int) : int
-+desplazarY(posY : int) : int
-}
-
-class MovArriba{
-+desplazarX(posX : int) : int
-+desplazarY(posY : int) : int
-}
-
-class MovAbajo{
-+desplazarX(posX : int) : int
-+desplazarY(posY : int) : int
-}
-
-BloqueMovimiento -up-|> Bloque
-BloqueRepetir -up-|> Bloque
-BloqueInvertir -up-|> Bloque
-BloqueAlgoritmo -right-|> Bloque
-Movimiento --* Bloque
-MovDerecha -up-|> Movimiento
-MovIzquierda -up-|> Movimiento
-MovArriba -up-|> Movimiento
-MovAbajo -up-|> Movimiento
-
----------- diagrama 3 ---------
-usuario -> BloqueMovimiento : ejecutar(Personaje)
-BloqueMovimiento -> Personaje : mover(movimiento : MovDerecha)
-Personaje -> Posicion : mover(movimiento : MovDerecha)
-Posicion -> MovDerecha : desplazarX(posX : int) : int
-Posicion -> MovDerecha : desplazarY(posY : int) : int
-
--------- diagrama 4 ---------
-
-
-Personaje -> Lapiz : pintar(posicion : Posicion, pizarra : Pizarra)
-
-Lapiz -> EstadoLapizAbajo : pintar(posicion, pizarra)
-
-EstadoLapizAbajo -> Pizarra : pintarCoordenadasPosicion(posicion)
-
-Pizarra -> Posicion : getCoordenadas()
-
-Posicion --> Pizarra : [x, y]
-
-Pizarra -> Pizarra : agregarCoordenadasPintadas()
-
----------- diagrama 5 ---------
-
-Personaje -> Lapiz : pintar(posicion : Posicion, pizarra : Pizarra)
-
-Lapiz -> EstadoLapizArriba : pintar(posicion, pizarra)
-
-EstadoLapizArriba -> Pizarra : agregarCoordenadasPisadas(posicion)
-
-Pizarra -> Posicion : getCoordenadas()
-
-Posicion --> Pizarra : [x, y]
-
-Pizarra -> Pizarra : agregarCoordenadasPisadas()
+test01 -> "bloqueDerecha:BloqueMovimiento" **:ejercutar(personaje)
+"bloqueDerecha:BloqueMovimiento" -> "personaje:Personaje" **:mover(movDerecha)
+"personaje:Personaje" -> "movDerecha:MovDerecha" **:actualizarPosicion(posicion)
+"movDerecha:MovDerecha" -> "posicion:Posicion" **:moverDerecha(posicion)
+@enduml

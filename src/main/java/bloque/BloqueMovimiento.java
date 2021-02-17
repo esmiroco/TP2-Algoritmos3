@@ -17,5 +17,9 @@ public class BloqueMovimiento extends Bloque {
 
     }
 
+    public Bloque obtenerBloqueInvertido(){
+        return new BloqueMovimiento(movimiento.obtenerMovimientoInvertido());
+    }
+
 }
 
