@@ -4,17 +4,17 @@ import bloque.Bloque;
 import bloque.BloqueRepetir;
 import javafx.scene.control.Label;
 
-public class BloqueRepetirDosVecesUI extends BloqueUI {
+public class BloqueRepetirTresVecesUI extends BloqueUI {
 	
-	String msj = "Bloque Repetir Dos Veces - ";
+	String msj = "Bloque Repetir Tres Veces - ";
 	BloqueRepetir bloque; 
 	
-	public BloqueRepetirDosVecesUI(BloqueUI bloqueARepetir) {
+	public BloqueRepetirTresVecesUI(BloqueUI bloqueARepetir) {
 		
 		msj = msj + bloqueARepetir.mensaje();
 		Label label = new Label(msj);
 		this.getChildren().add(label);
-		bloque = new BloqueRepetir(bloqueARepetir.devolverBloque(), 2);
+		bloque = new BloqueRepetir(bloqueARepetir.devolverBloque(), 3);
 	}
 
 	@Override

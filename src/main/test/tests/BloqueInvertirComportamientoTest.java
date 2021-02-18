@@ -37,7 +37,7 @@ public class BloqueInvertirComportamientoTest {
 
 
         bloqInvertir.ejecutar(unPj, unMapa);
-        Posicion posicion1 = new Posicion(0,-1);
+        Posicion posicion1 = new Posicion(0,1);
 
         assertEquals(true, unPj.obtenerPosicion().esIgualA(posicion1));
     }

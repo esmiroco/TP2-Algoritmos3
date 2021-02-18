@@ -5,11 +5,11 @@ import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
-import juegoCodigo.JuegoCodigo;
+import juego.Main;
 
 public class BotonEjecutar extends Button {
 	
-	public BotonEjecutar(Pane panel, JuegoCodigo juego) {
+	public BotonEjecutar(Pane panel, Main juego) {
 		this.setText("Boton Ejecutar");
 		this.setOnAction(new EventHandler<ActionEvent>() {
 			@Override

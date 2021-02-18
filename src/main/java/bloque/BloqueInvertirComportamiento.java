@@ -1,18 +1,14 @@
 package bloque;
 
+import java.util.ArrayList;
+
 import mapa.Mapa;
 import personaje.Personaje;
+import posicion.Posicion;
 
 public class BloqueInvertirComportamiento extends Bloque{
 
-
-    //private ArrayList<Bloque> listaBloques;
-
     BloqueAlgoritmo bloque = new BloqueAlgoritmo();
-
-    //public BloqueInvertirComportamiento() {
-     //   this.listaBloques = new ArrayList<>();
-    //}
 
     public void agregarBloque(Bloque unBloque) {
         this.bloque.agregarBloque(unBloque);
@@ -20,8 +16,8 @@ public class BloqueInvertirComportamiento extends Bloque{
 
 
     @Override
-    public void ejecutar(Personaje personaje, Mapa mapa) {
-        this.bloque.obtenerBloqueInvertido().ejecutar(personaje,mapa);
+    public ArrayList<Posicion> ejecutar(Personaje personaje, Mapa mapa) {
+    	return this.bloque.obtenerBloqueInvertido().ejecutar(personaje,mapa);
     }
 
     @Override

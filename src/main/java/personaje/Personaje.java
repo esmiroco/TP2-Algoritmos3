@@ -15,19 +15,22 @@ public class Personaje {
 		this.posicion = posicion;
 	}
 
-	public void levantarLapiz() {
+	public Posicion levantarLapiz() {
 		lapiz.levantarLapiz();
+		return posicion;
 		
 	}
 
-	public void bajarLapiz() {
+	public Posicion bajarLapiz() {
 		lapiz.bajarLapiz();
+		return posicion;
 		
 	}
 
-	public void mover(Movimiento movimiento, Mapa mapa){
+	public Posicion mover(Movimiento movimiento, Mapa mapa){
 		posicion=movimiento.actualizarPosicion(posicion, mapa);
 		lapiz.pintar(posicion);
+		return posicion;
 	}
 
 	public Posicion obtenerPosicion(){

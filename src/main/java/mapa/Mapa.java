@@ -25,14 +25,14 @@ public class Mapa {
 
     public Posicion moverAbajo(Posicion posicion) {
         int nuevaY = posicion.obtenerY();
-        nuevaY = nuevaY - 1;
+        nuevaY = nuevaY + 1;
         Posicion nuevaPosicion = new Posicion(posicion.obtenerX(), nuevaY);
         return checkearYDevolverPosicion(nuevaPosicion);
     }
 
     public Posicion moverArriba(Posicion posicion) {
         int nuevaY = posicion.obtenerY();
-        nuevaY = nuevaY + 1;
+        nuevaY = nuevaY - 1;
         Posicion nuevaPosicion = new Posicion(posicion.obtenerX(), nuevaY);
         return checkearYDevolverPosicion(nuevaPosicion);
     }

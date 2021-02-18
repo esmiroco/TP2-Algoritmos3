@@ -2,6 +2,7 @@ package bloque;
 
 import mapa.Mapa;
 import personaje.Personaje;
+import posicion.Posicion;
 
 import java.util.ArrayList;
 
@@ -18,8 +19,11 @@ public class BloqueAlgoritmo extends Bloque {
     }
 
     @Override
-    public void ejecutar(Personaje personaje, Mapa mapa) {
-        this.listaBloques.forEach(bloque -> bloque.ejecutar(personaje,mapa));
+    public ArrayList<Posicion> ejecutar(Personaje personaje, Mapa mapa) {
+    	ArrayList<Posicion> listaPos = new ArrayList<Posicion>();
+    	
+        this.listaBloques.forEach(bloque -> listaPos.addAll(bloque.ejecutar(personaje,mapa)));
+        return listaPos;
     }
 
     @Override

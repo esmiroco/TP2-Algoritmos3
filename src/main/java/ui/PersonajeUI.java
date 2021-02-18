@@ -18,15 +18,14 @@ public class PersonajeUI extends Pane {
     private ImageView imagen;
     int offsetX = 0;
     int offsetY = 0;
-    int ancho = 32;
+    int ancho = 50;
     int alto = 50;
 
-    public PersonajeUI(ImageView imageView, Personaje personaje) {
+    public PersonajeUI(ImageView imageView) {
         establecerImagen(imageView);
-        this.personaje = personaje;
 
     }
-
+/*
     public Posicion mover(Movimiento movimiento, Mapa mapa) {
         personaje.mover(movimiento, mapa);
         Posicion aux = personaje.obtenerPosicion();
@@ -45,15 +44,15 @@ public class PersonajeUI extends Pane {
         Posicion aux = personaje.obtenerPosicion();
         return aux.estoyPintado();
     }
-
+*/
     public void establecerImagen(ImageView imageView){
         this.imagen = imageView;
         this.imagen.setViewport(new Rectangle2D(offsetX,offsetY,ancho,alto));
         getChildren().addAll(imageView);
     }
-
+/*
     public Posicion obtenerPosicion(){
         return personaje.obtenerPosicion();
-    }
+    }*/
 
 }

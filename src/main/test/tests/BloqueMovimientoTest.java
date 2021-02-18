@@ -56,7 +56,7 @@ public class BloqueMovimientoTest {
 
         bloqueArriba.ejecutar(personaje, unMapa);
 
-        Posicion posicion1 = new Posicion(2,3);
+        Posicion posicion1 = new Posicion(2, 1);
 
         assertEquals(true, personaje.obtenerPosicion().esIgualA(posicion1));
 
@@ -73,7 +73,7 @@ public class BloqueMovimientoTest {
 
         bloqueAbajo.ejecutar(personaje, unMapa);
 
-        Posicion posicion1 = new Posicion(2,1);
+        Posicion posicion1 = new Posicion(2,3);
 
         assertEquals(true, personaje.obtenerPosicion().esIgualA(posicion1));
 

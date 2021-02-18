@@ -7,10 +7,20 @@ import javafx.scene.control.Label;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
+
+import bloque.Bloque;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -22,7 +32,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
+import javafx.util.Duration;
+import juegoCodigo.JuegoCodigo;
 import movimiento.MovDerecha;
 import movimiento.MovIzquierda;
 import movimiento.MovAbajo;
@@ -39,10 +50,9 @@ public class Main extends Application {
 	private int x = 4;
 	private int y = 4;
 	private boolean pintar = false;
-    MapaUI mapaUI = new MapaUI();
-    Mapa mapa = new Mapa();
-    Posicion posicion = new Posicion(0,0);
-    Personaje personaje = new Personaje(posicion);
+    MapaUI mapaUI;
+    PersonajeUI personajeUI;
+    JuegoCodigo juegoCodigo;
 
 
 	public static void main(String[] args) {
@@ -52,32 +62,38 @@ public class Main extends Application {
 
 	@Override
     public void start(Stage stage) throws FileNotFoundException {
+		
+		
+		
 
 		//imagenes personaje
+		
 		FileInputStream inputstreamFrente = new FileInputStream("src/main/java/recursos/down1.png");
 		Image imageFrente = new Image(inputstreamFrente);
 		ImageView imageViewFrente = new ImageView(imageFrente);
-		PersonajeUI personajeUI = new PersonajeUI(imageViewFrente, personaje);
+		PersonajeUI personajeUI = new PersonajeUI(imageViewFrente);
 		FileInputStream inputstreamIzq = new FileInputStream("src/main/java/recursos/left1.png");
 		Image imageIzq = new Image(inputstreamIzq);
 		ImageView imageViewIzq = new ImageView(imageIzq);
 		FileInputStream inputstreamDer = new FileInputStream("src/main/java/recursos/right1.png");
 		Image imageDer = new Image(inputstreamDer);
 		ImageView imageViewDer = new ImageView(imageDer);
-
-
-        mapaUI.colocarPersonaje(personajeUI, posicion);
-
-        VBox contenedorVertical = new VBox();
-
-        VBox contenedorBloques = new VBox();
-
-        HBox contenedorHorizontal = new HBox();
-        contenedorHorizontal.getChildren().add(mapaUI.grid);
-        contenedorHorizontal.getChildren().add(contenedorBloques);
+		//fin imagenes personaje       
         
-        contenedorVertical.getChildren().add(contenedorHorizontal);
-        
+        juegoCodigo = new JuegoCodigo();
+		mapaUI = new MapaUI(personajeUI);
+		mapaUI.colocarPersonaje(new Posicion(0,0));
+		
+		
+		 VBox contenedorVertical = new VBox();
+
+	     VBox contenedorBloques = new VBox();
+
+	     HBox contenedorHorizontal = new HBox();
+	     contenedorHorizontal.getChildren().add(mapaUI);
+	     contenedorHorizontal.getChildren().add(contenedorBloques);
+	        
+	     contenedorVertical.getChildren().add(contenedorHorizontal);
         
         //botones
         BotonUI botonMoverDerecha = new BotonAgregarBloqueMoverDerecha(contenedorBloques);
@@ -85,31 +101,40 @@ public class Main extends Application {
         BotonUI botonMoverArriba = new BotonAgregarBloqueMoverArriba(contenedorBloques);
         BotonUI botonMoverAbajo = new BotonAgregarBloqueMoverAbajo(contenedorBloques);
         
-        BotonAgregarBloqueRepetirDosVeces botonBloqueInvertir = new BotonAgregarBloqueRepetirDosVeces(contenedorBloques);        
+        BotonUI botonBloqueLapizAbajo = new BotonAgregarBloqueLapizAbajo(contenedorBloques);
+        BotonUI botonBloqueLapizArriba = new BotonAgregarBloqueLapizArriba(contenedorBloques);
         
         contenedorVertical.getChildren().add(botonMoverDerecha);
         contenedorVertical.getChildren().add(botonMoverAbajo);
         contenedorVertical.getChildren().add(botonMoverIzquierda);
-        contenedorVertical.getChildren().add(botonMoverArriba);
-        contenedorVertical.getChildren().add(botonBloqueInvertir);
+        contenedorVertical.getChildren().add(botonMoverArriba);;
+        contenedorVertical.getChildren().add(botonBloqueLapizAbajo);
+        contenedorVertical.getChildren().add(botonBloqueLapizArriba);
 
         HashMap<String, BotonUI> botones = new HashMap<String, BotonUI>();
 
-        botones.put("Boton mover derecha", botonMoverDerecha);
-        botones.put("Boton mover izquierda", botonMoverIzquierda);
-        botones.put("Boton mover arriba", botonMoverArriba);
-        botones.put("Boton mover abajo", botonMoverAbajo);
+        botones.put("Boton Mover Derecha", botonMoverDerecha);
+        botones.put("Boton Mover Izquierda", botonMoverIzquierda);
+        botones.put("Boton Mover Arriba", botonMoverArriba);
+        botones.put("Boton Mover Abajo", botonMoverAbajo); 
+        botones.put("Boton Lapiz Abajo", botonMoverAbajo); 
+        botones.put("Boton Lapiz Arriba", botonMoverAbajo); 
 
-        botonBloqueInvertir.addBotones(botones);
-
-        BotonEjecutar botonEjecutar = new BotonEjecutar(contenedorBloques);
+        
+        BotonUI botonBloqueRepetir2 = new BotonAgregarBloqueRepetirDosVeces(contenedorBloques, botones);     
+        BotonUI botonBloqueRepetir3 = new BotonAgregarBloqueRepetirTresVeces(contenedorBloques, botones);
+        BotonUI botonBloqueInvertir = new BotonAgregarBloqueInvertir(contenedorBloques, botones);
+        
+        contenedorVertical.getChildren().add(botonBloqueRepetir2);
+        contenedorVertical.getChildren().add(botonBloqueRepetir3);
+        contenedorVertical.getChildren().add(botonBloqueInvertir);
+        
+        BotonEjecutar botonEjecutar = new BotonEjecutar(contenedorBloques, this);
         contenedorVertical.getChildren().add(botonEjecutar);
         
         //fin botones
-
-
-
-       var scene = new Scene(contenedorVertical, 900, 720);
+        
+        var scene = new Scene(contenedorVertical, 900, 720);
         
 
         stage.setScene(scene);
@@ -117,5 +142,9 @@ public class Main extends Application {
 		
 	}
 	
+	public void ejecutarBloque(Bloque bloque) {
+		ArrayList<Posicion> posiciones = juegoCodigo.ejecutarBloque(bloque);
+		mapaUI.actualizarPosiciones(posiciones);
+	}	
 
 }

@@ -38,7 +38,7 @@ public class BloqueAlgoritmoTest {
 
 
             algoritmoPersonalizado.ejecutar(unPj,unMapa);
-            Posicion posicion1 = new Posicion(0,1);
+            Posicion posicion1 = new Posicion(0,-1);
 
             assertEquals(true, unPj.obtenerPosicion().esIgualA(posicion1));
     }
@@ -85,7 +85,7 @@ public class BloqueAlgoritmoTest {
 
 
         algoritmoPersonalizado.ejecutar(unPj, unMapa);
-        Posicion posicion1 = new Posicion(5,6);
+        Posicion posicion1 = new Posicion(5,-6);
 
         assertEquals(true, unPj.obtenerPosicion().esIgualA(posicion1));
 
