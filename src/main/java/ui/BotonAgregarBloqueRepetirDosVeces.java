@@ -46,7 +46,6 @@ public class BotonAgregarBloqueRepetirDosVeces extends BotonUI{
             public void handle(ActionEvent e) 
             { 
             	bloque = botones.get(((MenuItem) e.getSource()).getText()).crearBloque();
-            	System.out.print(bloque + "\n");
     		    panel.getChildren().add(crearBloque());
             } 
         }; 
