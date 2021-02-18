@@ -53,6 +53,7 @@ public class Main extends Application {
 	@Override
     public void start(Stage stage) throws FileNotFoundException {
 
+		//imagenes personaje
 		FileInputStream inputstreamFrente = new FileInputStream("src/main/java/recursos/down1.png");
 		Image imageFrente = new Image(inputstreamFrente);
 		ImageView imageViewFrente = new ImageView(imageFrente);
@@ -64,11 +65,8 @@ public class Main extends Application {
 		Image imageDer = new Image(inputstreamDer);
 		ImageView imageViewDer = new ImageView(imageDer);
 
-        mapaUI.grid.setGridLinesVisible(true);
 
         mapaUI.colocarPersonaje(personajeUI, posicion);
-
-		Random rand = new Random();
 
         VBox contenedorVertical = new VBox();
 
@@ -80,11 +78,12 @@ public class Main extends Application {
         
         contenedorVertical.getChildren().add(contenedorHorizontal);
         
+        
+        //botones
         BotonUI botonMoverDerecha = new BotonAgregarBloqueMoverDerecha(contenedorBloques);
         BotonUI botonMoverIzquierda = new BotonAgregarBloqueMoverIzquierda(contenedorBloques);
         BotonUI botonMoverArriba = new BotonAgregarBloqueMoverArriba(contenedorBloques);
         BotonUI botonMoverAbajo = new BotonAgregarBloqueMoverAbajo(contenedorBloques);
-        //
         
         BotonAgregarBloqueRepetirDosVeces botonBloqueInvertir = new BotonAgregarBloqueRepetirDosVeces(contenedorBloques);        
         
@@ -96,7 +95,6 @@ public class Main extends Application {
 
         HashMap<String, BotonUI> botones = new HashMap<String, BotonUI>();
 
-
         botones.put("Boton mover derecha", botonMoverDerecha);
         botones.put("Boton mover izquierda", botonMoverIzquierda);
         botones.put("Boton mover arriba", botonMoverArriba);
@@ -106,10 +104,12 @@ public class Main extends Application {
 
         BotonEjecutar botonEjecutar = new BotonEjecutar(contenedorBloques);
         contenedorVertical.getChildren().add(botonEjecutar);
+        
+        //fin botones
 
 
 
-       var scene = new Scene(contenedorVertical, 720, 720);
+       var scene = new Scene(contenedorVertical, 900, 720);
         
 
         stage.setScene(scene);

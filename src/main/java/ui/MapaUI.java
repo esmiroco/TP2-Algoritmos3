@@ -12,6 +12,8 @@ public class MapaUI extends Pane {
     public PosicionUI[][] gridArray = new PosicionUI[10][10];
 
     public MapaUI() {
+    	grid.setGridLinesVisible(true);
+    	
         for(int i = 1; i < 10; i++) {
             for(int j = 1; j < 10; j++) {
                 PosicionUI pos = new PosicionUI();
