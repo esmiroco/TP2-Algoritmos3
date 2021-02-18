@@ -31,7 +31,6 @@ public class MapaUI extends Pane {
     }
 
     public void colocarPersonaje(Posicion posicion){
-      	System.out.println(posicion.obtenerX() + " - " + posicion.obtenerY());
     	posicionActual = gridArray[posicion.obtenerX()][posicion.obtenerY()];
     	posicionActual.getChildren().add(personaje);
     }

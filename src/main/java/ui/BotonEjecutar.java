@@ -16,7 +16,7 @@ public class BotonEjecutar extends Button {
 			public void handle(ActionEvent e) {
 				for (Node children : panel.getChildren()) {
 					juego.ejecutarBloque(((BloqueUI) children).devolverBloque());
-					System.out.print(((BloqueUI)children).mensaje() + "\n");
+					//System.out.print(((BloqueUI)children).mensaje() + "\n");
 				}
 				panel.getChildren().clear();
 			}

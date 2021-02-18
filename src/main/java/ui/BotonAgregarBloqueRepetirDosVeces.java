@@ -25,7 +25,8 @@ public class BotonAgregarBloqueRepetirDosVeces extends BotonUI{
 	MenuButton menu;
 	
 	public BotonAgregarBloqueRepetirDosVeces(Pane panelEnviado, HashMap<String, BotonUI> botonesEnviados){
-			
+		
+		panel = panelEnviado;	
 		menu = new MenuButton("Bloque Repetir Dos Veces");
 		this.getChildren().add(menu);
 		botones = botonesEnviados;
@@ -45,6 +46,7 @@ public class BotonAgregarBloqueRepetirDosVeces extends BotonUI{
             public void handle(ActionEvent e) 
             { 
             	bloque = botones.get(((MenuItem) e.getSource()).getText()).crearBloque();
+            	System.out.print(bloque + "\n");
     		    panel.getChildren().add(crearBloque());
             } 
         }; 

@@ -117,12 +117,13 @@ public class Main extends Application {
         botones.put("Boton Mover Izquierda", botonMoverIzquierda);
         botones.put("Boton Mover Arriba", botonMoverArriba);
         botones.put("Boton Mover Abajo", botonMoverAbajo); 
-        botones.put("Boton Lapiz Abajo", botonMoverAbajo); 
-        botones.put("Boton Lapiz Arriba", botonMoverAbajo); 
+        botones.put("Boton Lapiz Abajo", botonBloqueLapizAbajo); 
+        botones.put("Boton Lapiz Arriba", botonBloqueLapizArriba); 
 
         
-        BotonUI botonBloqueRepetir2 = new BotonAgregarBloqueRepetirDosVeces(contenedorBloques, botones);     
         BotonUI botonBloqueRepetir3 = new BotonAgregarBloqueRepetirTresVeces(contenedorBloques, botones);
+        BotonUI botonBloqueRepetir2 = new BotonAgregarBloqueRepetirDosVeces(contenedorBloques, botones);     
+        
         BotonUI botonBloqueInvertir = new BotonAgregarBloqueInvertir(contenedorBloques, botones);
         
         contenedorVertical.getChildren().add(botonBloqueRepetir2);
