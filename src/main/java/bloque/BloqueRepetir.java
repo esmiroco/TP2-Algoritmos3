@@ -10,11 +10,15 @@ public class BloqueRepetir extends Bloque {
 
     private int repeticiones;
 
-    private Bloque bloque;
+    BloqueAlgoritmo bloque;
 
-    public BloqueRepetir(Bloque bloqueEnviado, int conRepeticiones) {
-        this.bloque = bloqueEnviado;
+    public void agregarBloque(Bloque unBloque) {
+        this.bloque.agregarBloque(unBloque);
+    }
+    
+    public BloqueRepetir(int conRepeticiones) {
         this.repeticiones = conRepeticiones;
+        bloque = new BloqueAlgoritmo();
     }
 
 
@@ -22,7 +26,7 @@ public class BloqueRepetir extends Bloque {
     public ArrayList<Posicion> ejecutar(Personaje personaje, Mapa mapa) {
     	ArrayList<Posicion> listaPos = new ArrayList<Posicion>();
         for (int i = 0; i < this.repeticiones; i++) {
-            listaPos.addAll(bloque.ejecutar(personaje, mapa));
+        	listaPos.addAll(bloque.ejecutar(personaje, mapa));
         }
         return listaPos;
     }

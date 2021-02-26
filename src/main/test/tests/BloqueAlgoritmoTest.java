@@ -12,13 +12,11 @@ import posicion.Posicion;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BloqueAlgoritmoTest {
+	/*
     @Test
     public void test01CreoUnBloqueAlgoritmoPersonalizadoRecorriendoUnCuadradoYDeberiaVolverALaPosicionOriginal() {
             BloqueAlgoritmo algoritmoPersonalizado = new BloqueAlgoritmo();
-           /* MovDerecha movDerecha = new MovDerecha();
-            MovArriba movArriba = new MovArriba();
-            MovIzquierda movIzquierda = new MovIzquierda();
-            MovAbajo movAbajo = new MovAbajo();*/
+
 
             BloqueMovimiento bloqDerecha = new BloqueMovimiento(new MovDerecha());
             BloqueMovimiento bloqArriba = new BloqueMovimiento(new MovArriba());
@@ -104,5 +102,5 @@ public class BloqueAlgoritmoTest {
 
         assertEquals(true, unPj.obtenerPosicion().esIgualA(posicion1));
     }
-
+*/
 }

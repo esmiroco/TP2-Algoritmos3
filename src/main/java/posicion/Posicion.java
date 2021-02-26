@@ -22,22 +22,6 @@ public class Posicion {
 		estado=estado.pintar();
 	}
 
-	public void moverArriba(){
-		posY = posY+1;
-	}
-
-	public void moverAbajo(){
-		posY = posY-1;
-	}
-
-	public void moverDerecha(){
-		posX = posX+1;
-	}
-
-	public void moverIzquierda(){
-		posX= posX-1;
-	}
-
 	public int obtenerX(){
 		return posX;
 	}
@@ -47,10 +31,7 @@ public class Posicion {
 	}
 
 	public boolean esIgualA(Posicion otraPosicion){
-		if ((posX==otraPosicion.obtenerX()) & (posY==otraPosicion.obtenerY())){
-			return true;
-		}else{
-			return false;
-		}
+		return((posX==otraPosicion.obtenerX()) & (posY==otraPosicion.obtenerY()));
 	}
+
 }

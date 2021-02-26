@@ -13,7 +13,7 @@ public class Mapa {
     }
 
 
-    public Posicion checkearYDevolverPosicion(Posicion posicion) {
+    private Posicion agregarYDevolver(Posicion posicion) {
         for (Posicion pos : posiciones) {
             if (posicion.esIgualA(pos)) {
                 return pos;
@@ -23,32 +23,33 @@ public class Mapa {
         return posicion;
     }
 
-    public Posicion moverAbajo(Posicion posicion) {
+    public Posicion obtenerPosicionAbajo(Posicion posicion) {
         int nuevaY = posicion.obtenerY();
         nuevaY = nuevaY + 1;
         Posicion nuevaPosicion = new Posicion(posicion.obtenerX(), nuevaY);
-        return checkearYDevolverPosicion(nuevaPosicion);
+        nuevaPosicion = agregarYDevolver(nuevaPosicion);
+        return nuevaPosicion;
     }
 
     public Posicion moverArriba(Posicion posicion) {
         int nuevaY = posicion.obtenerY();
         nuevaY = nuevaY - 1;
         Posicion nuevaPosicion = new Posicion(posicion.obtenerX(), nuevaY);
-        return checkearYDevolverPosicion(nuevaPosicion);
+        return agregarYDevolver(nuevaPosicion);
     }
 
     public Posicion moverDerecha(Posicion posicion) {
         int nuevaX = posicion.obtenerX();
         nuevaX = nuevaX + 1;
         Posicion nuevaPosicion = new Posicion(nuevaX, posicion.obtenerY());
-        return checkearYDevolverPosicion(nuevaPosicion);
+        return agregarYDevolver(nuevaPosicion);
     }
 
     public Posicion moverIzquierda(Posicion posicion) {
         int nuevaX = posicion.obtenerX();
         nuevaX = nuevaX - 1;
         Posicion nuevaPosicion = new Posicion(nuevaX, posicion.obtenerY());
-        return checkearYDevolverPosicion(nuevaPosicion);
+        return agregarYDevolver(nuevaPosicion);
     }
 
 

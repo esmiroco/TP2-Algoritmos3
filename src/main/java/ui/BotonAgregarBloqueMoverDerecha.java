@@ -7,7 +7,7 @@ public class BotonAgregarBloqueMoverDerecha extends BotonUI{
 	Pane panel;
 	BotonAgregarBloqueMover boton;
 	
-	public BotonAgregarBloqueMoverDerecha(Pane panelEnviado){
+	public BotonAgregarBloqueMoverDerecha(ContenedorBloques panelEnviado){
 		
 		boton = new BotonAgregarBloqueMover(panelEnviado, "Agregar Bloque Derecha", this);
 		this.getChildren().add(boton);

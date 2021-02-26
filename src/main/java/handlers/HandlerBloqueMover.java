@@ -5,20 +5,21 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.layout.Pane;
 import ui.BotonUI;
+import ui.ContenedorBloques;
 
 public class HandlerBloqueMover implements EventHandler<ActionEvent>{
 	
 	private BotonUI botonPadre;
-	private Pane panel;
+	private ContenedorBloques panel;
 
-	public HandlerBloqueMover(Pane panelEnviado, BotonUI botonPadreEnviado) {
+	public HandlerBloqueMover(ContenedorBloques panelEnviado, BotonUI botonPadreEnviado) {
 		panel = panelEnviado;
 		botonPadre = botonPadreEnviado;
 	}
 	
 	@Override
 	public void handle(ActionEvent e) {
-		panel.getChildren().add(botonPadre.crearBloque());
+		panel.agregarBloque(botonPadre.crearBloque());
 		
 	}
 }

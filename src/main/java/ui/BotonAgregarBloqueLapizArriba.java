@@ -10,14 +10,14 @@ public class BotonAgregarBloqueLapizArriba extends BotonUI{
 	Button boton;
 	String msj = "Bloque Lapiz Arriba";
 	
-	public BotonAgregarBloqueLapizArriba(Pane panelEnviado){
+	public BotonAgregarBloqueLapizArriba(ContenedorBloques panelEnviado){
 		boton = new Button();
 		boton.setText(msj);
 		
 		boton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
-				panelEnviado.getChildren().add(crearBloque());
+				panelEnviado.agregarBloque(crearBloque());
 			}
         });		
 		this.getChildren().add(boton);

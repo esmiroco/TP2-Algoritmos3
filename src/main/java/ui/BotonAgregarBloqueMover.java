@@ -11,7 +11,7 @@ import javafx.scene.layout.Pane;
 public class BotonAgregarBloqueMover extends Button{
 	String mensaje;
 	
-	public BotonAgregarBloqueMover(Pane panelEnviado, String msj, BotonUI botonPadre){
+	public BotonAgregarBloqueMover(ContenedorBloques panelEnviado, String msj, BotonUI botonPadre){
 		
 		mensaje = msj;
 		this.setText(mensaje);

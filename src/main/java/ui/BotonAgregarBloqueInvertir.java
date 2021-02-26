@@ -1,50 +1,35 @@
 package ui;
 
-import java.util.HashMap;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.layout.Pane;
+import javafx.scene.control.Button;
 
 public class BotonAgregarBloqueInvertir extends BotonUI{
 	
-	Pane panel;
-	HashMap<String, BotonUI> botones;
+	ContenedorBloques panel;
 	BloqueUI bloque;
-	MenuButton menu;
+	Button boton;
 	
-	public BotonAgregarBloqueInvertir(Pane panelEnviado, HashMap<String, BotonUI> botonesEnviados){
+	public BotonAgregarBloqueInvertir(ContenedorBloques panelEnviado){
 		panel = panelEnviado;
-		menu = new MenuButton("Bloque Invertir");
-		this.getChildren().add(menu);
-		botones = botonesEnviados;
-		this.addBotones();
+		boton = new Button("Bloque Invertir");
+		this.getChildren().add(boton);
+		boton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent e) {
+				bloque = crearBloque();
+				panel.agregarBloque(bloque);
+				panel.activarRecoleccionBloques((RecolectorBloques)bloque);
+			}
+        });
 	}
 	
 	
 	@Override
 	public BloqueUI crearBloque() {
-		BloqueUI invertir = new BloqueInvertirUI(bloque);
+		BloqueUI invertir = new BloqueInvertirUI();
 		return invertir;
 	}
 	
-	private void addBotones() {
-
-		EventHandler<ActionEvent> evento = new EventHandler<ActionEvent>() { 
-            public void handle(ActionEvent e) 
-            { 
-            	bloque = botones.get(((MenuItem) e.getSource()).getText()).crearBloque();
-    		    panel.getChildren().add(crearBloque());
-            } 
-        }; 
-		
-		for ( String key : botones.keySet() ) {
-			MenuItem item = new MenuItem(key);
-			item.setOnAction(evento);
-			menu.getItems().add(item);
-		}
-		
-	}
 
 }

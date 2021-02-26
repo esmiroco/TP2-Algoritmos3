@@ -7,7 +7,7 @@ public class BotonAgregarBloqueMoverAbajo extends BotonUI{
 	
 	Button boton;
 	
-	public BotonAgregarBloqueMoverAbajo(Pane panelEnviado){
+	public BotonAgregarBloqueMoverAbajo(ContenedorBloques panelEnviado){
 		boton = new BotonAgregarBloqueMover(panelEnviado, "Bloque Mover Abajo",  this);
 		this.getChildren().add(boton);
 	}

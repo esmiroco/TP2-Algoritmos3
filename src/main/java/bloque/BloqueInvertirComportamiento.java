@@ -24,4 +24,10 @@ public class BloqueInvertirComportamiento extends Bloque{
     public Bloque obtenerBloqueInvertido() {
         return this.bloque.obtenerBloqueInvertido();
     }
+
+
+	public Bloque devolverBloque() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -1,21 +1,21 @@
 package ui;
 
+import java.util.ArrayList;
+
 import bloque.Bloque;
 import bloque.BloqueInvertirComportamiento;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
-public class BloqueInvertirUI extends BloqueUI {
+public class BloqueInvertirUI extends BloqueUI implements RecolectorBloques {
 	
 	String msj = "Bloque Invertir - ";
-	BloqueInvertirComportamiento bloque; 
+	BloqueInvertirComportamiento bloque;
 	
-	public BloqueInvertirUI(BloqueUI bloqueAInvertir) {
-		
-		msj = msj + bloqueAInvertir.mensaje();
+	public BloqueInvertirUI() {
 		Label label = new Label(msj);
 		this.getChildren().add(label);
 		bloque = new BloqueInvertirComportamiento();
-		bloque.agregarBloque(bloqueAInvertir.devolverBloque());
 	}
 
 	@Override
@@ -27,5 +27,10 @@ public class BloqueInvertirUI extends BloqueUI {
 	public Bloque devolverBloque() {
 		return bloque;
 	}
-
+	
+	@Override
+	public void agregarBloque(Pane bloqueEnviado) {
+		this.getChildren().add(bloqueEnviado);
+		bloque.agregarBloque(((BloqueUI) bloqueEnviado).devolverBloque());
+	}
 }

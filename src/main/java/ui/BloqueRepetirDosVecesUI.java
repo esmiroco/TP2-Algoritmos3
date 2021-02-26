@@ -3,18 +3,18 @@ package ui;
 import bloque.Bloque;
 import bloque.BloqueRepetir;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
-public class BloqueRepetirDosVecesUI extends BloqueUI {
+public class BloqueRepetirDosVecesUI extends BloqueUI implements RecolectorBloques{
 	
 	String msj = "Bloque Repetir Dos Veces - ";
 	BloqueRepetir bloque; 
 	
-	public BloqueRepetirDosVecesUI(BloqueUI bloqueARepetir) {
+	public BloqueRepetirDosVecesUI() {
 		
-		msj = msj + bloqueARepetir.mensaje();
 		Label label = new Label(msj);
 		this.getChildren().add(label);
-		bloque = new BloqueRepetir(bloqueARepetir.devolverBloque(), 2);
+		bloque = new BloqueRepetir(2);
 	}
 
 	@Override
@@ -25,6 +25,12 @@ public class BloqueRepetirDosVecesUI extends BloqueUI {
 	@Override
 	public Bloque devolverBloque() {
 		return bloque;
+	}
+	
+	@Override
+	public void agregarBloque(Pane bloqueEnviado) {
+		this.getChildren().add(bloqueEnviado);
+		bloque.agregarBloque(((BloqueUI) bloqueEnviado).devolverBloque());
 	}
 
 }

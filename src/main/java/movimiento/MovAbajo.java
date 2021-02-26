@@ -5,7 +5,7 @@ import posicion.Posicion;
 
 public class MovAbajo implements Movimiento {
     public Posicion actualizarPosicion(Posicion posicion, Mapa mapa){
-        posicion=mapa.moverAbajo(posicion);
+        posicion=mapa.obtenerPosicionAbajo(posicion);
         return posicion;
     }
 

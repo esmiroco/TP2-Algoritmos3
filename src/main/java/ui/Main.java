@@ -1,4 +1,4 @@
-package juego;
+package ui;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -41,7 +41,6 @@ import movimiento.MovArriba;
 import personaje.Personaje;
 import posicion.Posicion;
 import mapa.Mapa;
-import ui.*;
 
 public class Main extends Application {
 
@@ -85,13 +84,13 @@ public class Main extends Application {
 		mapaUI.colocarPersonaje(new Posicion(0,0));
 		
 		
-		 VBox contenedorVertical = new VBox();
+		VBox contenedorVertical = new VBox();
 
-	     VBox contenedorBloques = new VBox();
+		ContenedorBloques contenedorBloques = new ContenedorBloques();
 
-	     HBox contenedorHorizontal = new HBox();
-	     contenedorHorizontal.getChildren().add(mapaUI);
-	     contenedorHorizontal.getChildren().add(contenedorBloques);
+	    HBox contenedorHorizontal = new HBox();
+	    contenedorHorizontal.getChildren().add(mapaUI);
+	    contenedorHorizontal.getChildren().add(contenedorBloques);
 	        
 	     contenedorVertical.getChildren().add(contenedorHorizontal);
         
@@ -121,10 +120,10 @@ public class Main extends Application {
         botones.put("Boton Lapiz Arriba", botonBloqueLapizArriba); 
 
         
-        BotonUI botonBloqueRepetir3 = new BotonAgregarBloqueRepetirTresVeces(contenedorBloques, botones);
-        BotonUI botonBloqueRepetir2 = new BotonAgregarBloqueRepetirDosVeces(contenedorBloques, botones);     
+        BotonUI botonBloqueRepetir3 = new BotonAgregarBloqueRepetirTresVeces(contenedorBloques);
+        BotonUI botonBloqueRepetir2 = new BotonAgregarBloqueRepetirDosVeces(contenedorBloques);     
         
-        BotonUI botonBloqueInvertir = new BotonAgregarBloqueInvertir(contenedorBloques, botones);
+        BotonUI botonBloqueInvertir = new BotonAgregarBloqueInvertir(contenedorBloques);
         
         contenedorVertical.getChildren().add(botonBloqueRepetir2);
         contenedorVertical.getChildren().add(botonBloqueRepetir3);

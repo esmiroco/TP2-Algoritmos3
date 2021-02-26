@@ -19,43 +19,31 @@ import javafx.scene.layout.StackPane;
 
 public class BotonAgregarBloqueRepetirDosVeces extends BotonUI{
 	
-	Pane panel;
-	HashMap<String, BotonUI> botones;
+	ContenedorBloques panel;
 	BloqueUI bloque;
-	MenuButton menu;
+	Button boton;
 	
-	public BotonAgregarBloqueRepetirDosVeces(Pane panelEnviado, HashMap<String, BotonUI> botonesEnviados){
+	public BotonAgregarBloqueRepetirDosVeces(ContenedorBloques panelEnviado){
 		
 		panel = panelEnviado;	
-		menu = new MenuButton("Bloque Repetir Dos Veces");
-		this.getChildren().add(menu);
-		botones = botonesEnviados;
-		this.addBotones();
+		boton = new Button("Bloque Repetir Dos Veces");
+		this.getChildren().add(boton);
+		boton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent e) {
+				bloque = crearBloque();
+				panel.agregarBloque(bloque);
+				panel.activarRecoleccionBloques((RecolectorBloques)bloque);
+			}
+        });
 	}
 	
 	
 	@Override
 	public BloqueUI crearBloque() {
-		BloqueUI repetir = new BloqueRepetirDosVecesUI(bloque);
+		BloqueUI repetir = new BloqueRepetirDosVecesUI();
 		return repetir;
 	}
 	
-	private void addBotones() {
-		
-		EventHandler<ActionEvent> evento = new EventHandler<ActionEvent>() { 
-            public void handle(ActionEvent e) 
-            { 
-            	bloque = botones.get(((MenuItem) e.getSource()).getText()).crearBloque();
-    		    panel.getChildren().add(crearBloque());
-            } 
-        }; 
-		
-		for ( String key : botones.keySet() ) {
-			MenuItem item = new MenuItem(key);
-			item.setOnAction(evento);
-			menu.getItems().add(item);
-		}
-		
-	}
 
 }
