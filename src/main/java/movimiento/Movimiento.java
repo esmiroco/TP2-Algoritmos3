@@ -1,8 +1,9 @@
 package movimiento;
 
+import mapa.Mapa;
 import posicion.Posicion;
 
 public interface Movimiento {
-    public void actualizarPosicion(Posicion posicion);
+    public Posicion actualizarPosicion(Posicion posicion, Mapa mapa);
     public Movimiento obtenerMovimientoInvertido();
 }

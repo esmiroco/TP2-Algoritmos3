@@ -1,10 +1,12 @@
 package movimiento;
 
+import mapa.Mapa;
 import posicion.Posicion;
 
 public class MovAbajo implements Movimiento {
-    public void actualizarPosicion(Posicion posicion){
-        posicion.moverAbajo();
+    public Posicion actualizarPosicion(Posicion posicion, Mapa mapa){
+        posicion=mapa.moverAbajo(posicion);
+        return posicion;
     }
 
     @Override

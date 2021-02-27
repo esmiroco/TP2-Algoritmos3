@@ -2,32 +2,38 @@
 package personaje;
 
 import lapiz.Lapiz;
+import mapa.Mapa;
 import posicion.Posicion;
-import tablero.Tablero;
 import movimiento.Movimiento;
+
 
 public class Personaje {
 	private Lapiz lapiz = new Lapiz();
 	private Posicion posicion;
-	private Tablero tablero;
 
-	public Personaje(Posicion posicion, Tablero tableroEnviado) {
+	public Personaje(Posicion posicion) {
 		this.posicion = posicion;
-		this.tablero = tableroEnviado;
 	}
 
-	public void levantarLapiz() {
+	public Posicion levantarLapiz() {
 		lapiz.levantarLapiz();
+		return posicion;
 		
 	}
 
-	public void bajarLapiz() {
+	public Posicion bajarLapiz() {
 		lapiz.bajarLapiz();
+		return posicion;
 		
 	}
 
-	public void mover(Movimiento movimiento){
-		movimiento.actualizarPosicion(posicion);
-		lapiz.pintar(posicion, tablero);
+	public Posicion mover(Movimiento movimiento, Mapa mapa){
+		posicion=movimiento.actualizarPosicion(posicion, mapa);
+		lapiz.pintar(posicion);
+		return posicion;
+	}
+
+	public Posicion obtenerPosicion(){
+		return posicion;
 	}
 }

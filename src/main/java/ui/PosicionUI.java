@@ -3,10 +3,10 @@ package ui;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
-public class PosicionUI extends Label{
-	
+public class PosicionUI extends Pane{
 	
 	public PosicionUI(){
 		int ancho = 50;

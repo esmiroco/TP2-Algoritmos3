@@ -1,6 +1,10 @@
 package bloque;
 
+import java.util.ArrayList;
+
+import mapa.Mapa;
 import personaje.Personaje;
+import posicion.Posicion;
 
 public class BloqueRepetir extends Bloque {
 
@@ -15,10 +19,12 @@ public class BloqueRepetir extends Bloque {
 
 
     @Override
-    public void ejecutar(Personaje personaje) {
+    public ArrayList<Posicion> ejecutar(Personaje personaje, Mapa mapa) {
+    	ArrayList<Posicion> listaPos = new ArrayList<Posicion>();
         for (int i = 0; i < this.repeticiones; i++) {
-            bloque.ejecutar(personaje);
+            listaPos.addAll(bloque.ejecutar(personaje, mapa));
         }
+        return listaPos;
     }
 
     @Override
