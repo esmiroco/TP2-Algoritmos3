@@ -2,6 +2,8 @@ package ui;
 
 import java.util.ArrayList;
 
+import bloque.Bloque;
+import handlers.HandlerAgregarBotonAlgoritmo;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,9 +16,9 @@ import javafx.scene.layout.VBox;
 public class ContenedorBloques extends VBox {
 	
 	Boolean recoleccion = false;
-	ArrayList<Pane> recolectados = new ArrayList<Pane>();
 	RecolectorBloques bloqueAEnviar;
 	Button terminarRecoleccion;
+	Button agregarBotonAlgoritmo;
 	VBox contenedorBoton;
 	VBox contenedorBloques;
 	
@@ -24,35 +26,35 @@ public class ContenedorBloques extends VBox {
 		super();
 		contenedorBoton = new VBox();
 		contenedorBloques = new VBox();
+		agregarBotonAlgoritmo = new Button("Agregar Bloque Algoritmo");
+		contenedorBoton.getChildren().add(agregarBotonAlgoritmo);
 		this.getChildren().add(contenedorBloques);
 		this.getChildren().add(contenedorBoton);
+		this.setVgrow(contenedorBloques, Priority.ALWAYS);
+		
+	}
+	
+	public void activarRecoleccionBloques(RecolectorBloques bloque) {
+		recoleccion = true;
+		bloqueAEnviar = bloque;
 		terminarRecoleccion = new Button("Terminar Recoleccion");
-		terminarRecoleccion.setDisable(true);
 		terminarRecoleccion.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
 				desactivarRecoleccionBloques();
 			}
         });
-		
-		this.setVgrow(contenedorBloques, Priority.ALWAYS);
+		contenedorBoton.getChildren().clear();
 		contenedorBoton.getChildren().add(terminarRecoleccion);
-	}
-	
-	public void activarRecoleccionBloques(RecolectorBloques bloque) {
-		recoleccion = true;
-		bloqueAEnviar = bloque;
-		terminarRecoleccion.setDisable(false);
 	}
 	
 	public void desactivarRecoleccionBloques() {
 		recoleccion = false;
-		recolectados = new ArrayList<Pane>();
-		terminarRecoleccion.setDisable(true);
-		
+		contenedorBoton.getChildren().clear();
+		contenedorBoton.getChildren().add(agregarBotonAlgoritmo);
 	}
 	
-	public void agregarBloque(Pane bloque) {
+	public void agregarBloque(BloqueUI bloque) {
 		if (recoleccion) {
 			bloqueAEnviar.agregarBloque(bloque);
 		}
@@ -61,12 +63,21 @@ public class ContenedorBloques extends VBox {
 		}
 	}
 	
-	public ObservableList<Node> getBloques(){
-		return contenedorBloques.getChildren();
+	public ArrayList<Bloque> getBloques(){
+		ArrayList<Bloque> listaBloques = new ArrayList<Bloque>();
+		for(Node bloque :contenedorBloques.getChildren()) {
+			listaBloques.add(((BloqueUI)bloque).devolverBloque());
+		}
+		return listaBloques;
 	}
 	
 	public void volverAEmpezar() {
 		contenedorBloques.getChildren().clear();
 		this.desactivarRecoleccionBloques();
+	}
+
+	public void agregarHandlerBotonAlgoritmo(HandlerAgregarBotonAlgoritmo handlerBoton) {
+		agregarBotonAlgoritmo.setOnAction(handlerBoton);
+		
 	}
 }

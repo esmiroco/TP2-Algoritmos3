@@ -12,6 +12,7 @@ import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 import bloque.Bloque;
+import handlers.HandlerAgregarBotonAlgoritmo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,15 +44,11 @@ import posicion.Posicion;
 import mapa.Mapa;
 
 public class Main extends Application {
-
-	ArrayList<Button> botones;
 	
-	private int x = 4;
-	private int y = 4;
-	private boolean pintar = false;
     MapaUI mapaUI;
     PersonajeUI personajeUI;
     JuegoCodigo juegoCodigo;
+    BotonAgregarBloqueAlgoritmo botonAgregarBloqueAlgoritmo;
 
 
 	public static void main(String[] args) {
@@ -87,7 +84,9 @@ public class Main extends Application {
 		VBox contenedorVertical = new VBox();
 
 		ContenedorBloques contenedorBloques = new ContenedorBloques();
-
+		HandlerAgregarBotonAlgoritmo handlerBoton = new HandlerAgregarBotonAlgoritmo(this, contenedorBloques);
+		contenedorBloques.agregarHandlerBotonAlgoritmo(handlerBoton);
+		
 	    HBox contenedorHorizontal = new HBox();
 	    contenedorHorizontal.getChildren().add(mapaUI);
 	    contenedorHorizontal.getChildren().add(contenedorBloques);
@@ -99,35 +98,27 @@ public class Main extends Application {
         BotonUI botonMoverIzquierda = new BotonAgregarBloqueMoverIzquierda(contenedorBloques);
         BotonUI botonMoverArriba = new BotonAgregarBloqueMoverArriba(contenedorBloques);
         BotonUI botonMoverAbajo = new BotonAgregarBloqueMoverAbajo(contenedorBloques);
-        
+       
         BotonUI botonBloqueLapizAbajo = new BotonAgregarBloqueLapizAbajo(contenedorBloques);
         BotonUI botonBloqueLapizArriba = new BotonAgregarBloqueLapizArriba(contenedorBloques);
-        
-        contenedorVertical.getChildren().add(botonMoverDerecha);
-        contenedorVertical.getChildren().add(botonMoverAbajo);
-        contenedorVertical.getChildren().add(botonMoverIzquierda);
-        contenedorVertical.getChildren().add(botonMoverArriba);;
-        contenedorVertical.getChildren().add(botonBloqueLapizAbajo);
-        contenedorVertical.getChildren().add(botonBloqueLapizArriba);
-
-        HashMap<String, BotonUI> botones = new HashMap<String, BotonUI>();
-
-        botones.put("Boton Mover Derecha", botonMoverDerecha);
-        botones.put("Boton Mover Izquierda", botonMoverIzquierda);
-        botones.put("Boton Mover Arriba", botonMoverArriba);
-        botones.put("Boton Mover Abajo", botonMoverAbajo); 
-        botones.put("Boton Lapiz Abajo", botonBloqueLapizAbajo); 
-        botones.put("Boton Lapiz Arriba", botonBloqueLapizArriba); 
-
         
         BotonUI botonBloqueRepetir3 = new BotonAgregarBloqueRepetirTresVeces(contenedorBloques);
         BotonUI botonBloqueRepetir2 = new BotonAgregarBloqueRepetirDosVeces(contenedorBloques);     
         
         BotonUI botonBloqueInvertir = new BotonAgregarBloqueInvertir(contenedorBloques);
         
+        botonAgregarBloqueAlgoritmo = new BotonAgregarBloqueAlgoritmo(contenedorBloques);
+        
+        contenedorVertical.getChildren().add(botonMoverDerecha);
+        contenedorVertical.getChildren().add(botonMoverAbajo);
+        contenedorVertical.getChildren().add(botonMoverIzquierda);
+        contenedorVertical.getChildren().add(botonMoverArriba);
+        contenedorVertical.getChildren().add(botonBloqueLapizAbajo);
+        contenedorVertical.getChildren().add(botonBloqueLapizArriba);
         contenedorVertical.getChildren().add(botonBloqueRepetir2);
         contenedorVertical.getChildren().add(botonBloqueRepetir3);
         contenedorVertical.getChildren().add(botonBloqueInvertir);
+        contenedorVertical.getChildren().add(botonAgregarBloqueAlgoritmo);
         
         BotonEjecutar botonEjecutar = new BotonEjecutar(contenedorBloques, this);
         contenedorVertical.getChildren().add(botonEjecutar);
@@ -145,6 +136,11 @@ public class Main extends Application {
 	public void ejecutarBloque(Bloque bloque) {
 		ArrayList<Posicion> posiciones = juegoCodigo.ejecutarBloque(bloque);
 		mapaUI.actualizarPosiciones(posiciones);
+	}
+
+	public void agregarBotonAlgoritmo(BloqueUI bloqueUI) {
+		botonAgregarBloqueAlgoritmo.agregarBloqueUI(bloqueUI);
+		
 	}	
 
 }

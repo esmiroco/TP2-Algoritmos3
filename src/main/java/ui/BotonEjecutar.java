@@ -1,10 +1,9 @@
 package ui;
 
+import bloque.Bloque;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
 
 public class BotonEjecutar extends Button {
 	
@@ -13,8 +12,8 @@ public class BotonEjecutar extends Button {
 		this.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
-				for (Node children : panel.getBloques()) {
-					juego.ejecutarBloque(((BloqueUI) children).devolverBloque());
+				for (Bloque bloque : panel.getBloques()) {
+					juego.ejecutarBloque(bloque);
 				}
 				panel.volverAEmpezar();
 			}
