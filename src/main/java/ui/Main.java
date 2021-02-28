@@ -119,5 +119,9 @@ public class Main extends Application {
 		botonAgregarBloqueAlgoritmo.agregarBloque(bloque);
 		
 	}	
+	
+	public void actualizarImagenes() {
+		mapaUI.actualizarImagenes();
+	}
 
 }

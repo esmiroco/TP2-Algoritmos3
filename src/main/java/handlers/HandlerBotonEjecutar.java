@@ -23,6 +23,7 @@ public class HandlerBotonEjecutar implements EventHandler<ActionEvent>{
 			juego.ejecutarBloque(bloque);
 		}
 		panel.volverAEmpezar();
+		juego.actualizarImagenes();
 	}
 		
 }

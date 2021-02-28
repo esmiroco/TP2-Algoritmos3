@@ -1,20 +1,25 @@
 package ui;
 
 import java.util.ArrayList;
-import java.util.Timer;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import personaje.Personaje;
+import javafx.util.Duration;
 import posicion.Posicion;
-import ui.PosicionUI;
 
 public class MapaUI extends Pane {
 
+	
+	ArrayList<Posicion> posicionesAActualizar = new ArrayList<Posicion>();
     public GridPane grid = new GridPane();
     public PosicionUI[][] gridArray = new PosicionUI[10][10];
     public PersonajeUI personaje;
-    public PosicionUI posicionActual;
+    // esto hay que refactorizarlo
+    public PosicionUI posicionActualUI;
+    public Posicion posicionActual;
 
     public MapaUI(PersonajeUI personajeEnviado) {
     	personaje = personajeEnviado;
@@ -28,25 +33,56 @@ public class MapaUI extends Pane {
                 gridArray[i][j] = pos;
             }
         }
+        posicionActualUI = gridArray[1][1];
+        posicionActual = new Posicion(-1, -1);
+        
     }
-
     public void colocarPersonaje(Posicion posicion){
-    	posicionActual = gridArray[posicion.obtenerX()][posicion.obtenerY()];
-    	posicionActual.getChildren().add(personaje);
+    	if (posicionActual.esIgualA(posicion)) {
+    		return;
+    	}
+    	posicionActualUI = gridArray[posicion.obtenerX()][posicion.obtenerY()];
+    	posicionActualUI.getChildren().add(personaje);
+    	posicionActual = posicion;
+    	pintar(posicion);
     }
 
     private void pintar(Posicion posicion){
     	if (posicion.estoyPintado()){
-        	posicionActual.pintate();
+        	posicionActualUI.pintate();
     	}
     }
 
 	public void actualizarPosiciones(ArrayList<Posicion> posiciones) {
-		for(Posicion pos : posiciones) {
-			posicionActual.getChildren().remove(personaje);
-			this.colocarPersonaje(pos);
-			this.pintar(pos);
-		}
+		posicionesAActualizar.addAll(posiciones);
+	}
+	
+	public void actualizarImagenes() {
+		int i = 0;
+		Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
+			colocarPersonaje(posicionesAActualizar.get(i));
+			if(i < posicionesAActualizar.size()) {
+				actualizarImagenes(i + 1);
+			}
+			else {
+				posicionesAActualizar.clear();
+			}
+		}));
+		timeline.play();
+	}
+
+	public void actualizarImagenes(int i) {
+		Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
+			colocarPersonaje(posicionesAActualizar.get(i));
+			if(i < (posicionesAActualizar.size()-1)) {
+				actualizarImagenes(i + 1);
+			}
+			else {
+				posicionesAActualizar.clear();
+			}
+			
+		}));
+		timeline.play();
 	}
 
 }
