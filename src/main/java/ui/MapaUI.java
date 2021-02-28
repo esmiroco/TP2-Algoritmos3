@@ -58,20 +58,10 @@ public class MapaUI extends Pane {
 	}
 	
 	public void actualizarImagenes() {
-		int i = 0;
-		Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
-			colocarPersonaje(posicionesAActualizar.get(i));
-			if(i < (posicionesAActualizar.size()-1)) {
-				actualizarImagenes(i + 1);
-			}
-			else {
-				posicionesAActualizar.clear();
-			}
-		}));
-		timeline.play();
+		actualizarImagenes(0);
 	}
 
-	public void actualizarImagenes(int i) {
+	private void actualizarImagenes(int i) {
 		Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
 			colocarPersonaje(posicionesAActualizar.get(i));
 			if(i < (posicionesAActualizar.size()-1)) {
@@ -79,6 +69,7 @@ public class MapaUI extends Pane {
 			}
 			else {
 				posicionesAActualizar.clear();
+				
 			}
 			
 		}));

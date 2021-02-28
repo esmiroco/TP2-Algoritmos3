@@ -22,8 +22,8 @@ public class HandlerBotonEjecutar implements EventHandler<ActionEvent>{
 		for (Bloque bloque : panel.getBloques()) {
 			juego.ejecutarBloque(bloque);
 		}
-		panel.volverAEmpezar();
 		juego.actualizarImagenes();
+		panel.volverAEmpezar();
 	}
 		
 }

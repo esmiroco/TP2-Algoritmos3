@@ -117,7 +117,6 @@ public class Main extends Application {
 
 	public void agregarBloqueBotonAlgoritmo(BloqueAlgoritmo bloque) {
 		botonAgregarBloqueAlgoritmo.agregarBloque(bloque);
-		
 	}	
 	
 	public void actualizarImagenes() {
