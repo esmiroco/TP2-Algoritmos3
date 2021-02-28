@@ -61,7 +61,7 @@ public class MapaUI extends Pane {
 		int i = 0;
 		Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
 			colocarPersonaje(posicionesAActualizar.get(i));
-			if(i < posicionesAActualizar.size()) {
+			if(i < (posicionesAActualizar.size()-1)) {
 				actualizarImagenes(i + 1);
 			}
 			else {
