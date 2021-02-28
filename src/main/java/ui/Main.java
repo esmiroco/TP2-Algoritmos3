@@ -1,47 +1,27 @@
 package ui;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.control.Label;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.TimeUnit;
 
 import bloque.Bloque;
+import bloque.BloqueAlgoritmo;
 import handlers.HandlerAgregarBotonAlgoritmo;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.layout.GridPane;
+
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import juegoCodigo.JuegoCodigo;
-import movimiento.MovDerecha;
-import movimiento.MovIzquierda;
-import movimiento.MovAbajo;
-import movimiento.MovArriba;
-import personaje.Personaje;
+
 import posicion.Posicion;
-import mapa.Mapa;
+
 
 public class Main extends Application {
 	
@@ -59,9 +39,6 @@ public class Main extends Application {
 	@Override
     public void start(Stage stage) throws FileNotFoundException {
 		
-		
-		
-
 		//imagenes personaje
 		
 		FileInputStream inputstreamFrente = new FileInputStream("src/main/java/recursos/down1.png");
@@ -79,7 +56,7 @@ public class Main extends Application {
         juegoCodigo = new JuegoCodigo();
 		mapaUI = new MapaUI(personajeUI);
 		mapaUI.colocarPersonaje(new Posicion(0,0));
-		
+	
 		
 		VBox contenedorVertical = new VBox();
 
@@ -138,8 +115,8 @@ public class Main extends Application {
 		mapaUI.actualizarPosiciones(posiciones);
 	}
 
-	public void agregarBotonAlgoritmo(BloqueUI bloqueUI) {
-		botonAgregarBloqueAlgoritmo.agregarBloqueUI(bloqueUI);
+	public void agregarBloqueBotonAlgoritmo(BloqueAlgoritmo bloque) {
+		botonAgregarBloqueAlgoritmo.agregarBloque(bloque);
 		
 	}	
 

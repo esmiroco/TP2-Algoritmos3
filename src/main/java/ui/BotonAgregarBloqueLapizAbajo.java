@@ -1,5 +1,6 @@
 package ui;
 
+import handlers.HandlerBloqueLapizAbajo;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -14,18 +15,8 @@ public class BotonAgregarBloqueLapizAbajo extends BotonUI{
 		boton = new Button();
 		boton.setText(msj);
 		
-		boton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent e) {
-				panelEnviado.agregarBloque(crearBloque());
-			}
-        });		
+		boton.setOnAction(new HandlerBloqueLapizAbajo(panelEnviado));		
 		this.getChildren().add(boton);
-	}
-
-	@Override
-	public BloqueUI crearBloque() {
-		return new BloqueLapizAbajoUI();
 	}
 
 }

@@ -1,7 +1,6 @@
 package ui;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import handlers.HandlerBloqueInvertir;
 import javafx.scene.control.Button;
 
 public class BotonAgregarBloqueInvertir extends BotonUI{
@@ -14,22 +13,7 @@ public class BotonAgregarBloqueInvertir extends BotonUI{
 		panel = panelEnviado;
 		boton = new Button("Bloque Invertir");
 		this.getChildren().add(boton);
-		boton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent e) {
-				bloque = crearBloque();
-				panel.agregarBloque(bloque);
-				panel.activarRecoleccionBloques((RecolectorBloques)bloque);
-			}
-        });
+		boton.setOnAction(new HandlerBloqueInvertir(panelEnviado));
 	}
-	
-	
-	@Override
-	public BloqueUI crearBloque() {
-		BloqueUI invertir = new BloqueInvertirUI();
-		return invertir;
-	}
-	
 
 }

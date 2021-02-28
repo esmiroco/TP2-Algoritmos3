@@ -30,9 +30,8 @@ public class HandlerAgregarBotonAlgoritmo implements EventHandler<ActionEvent>{
 		for(Bloque bloque : listaBloques) {
 			bloqueAlgoritmo.agregarBloque(bloque);
 		}
-		BloqueAlgoritmoUI bloqueUI = new BloqueAlgoritmoUI(bloqueAlgoritmo);
-		
-		juego.agregarBotonAlgoritmo(bloqueUI);
+	
+		juego.agregarBloqueBotonAlgoritmo(bloqueAlgoritmo);
 		panel.volverAEmpezar();
 	}
 }

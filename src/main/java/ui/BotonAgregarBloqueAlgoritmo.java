@@ -1,38 +1,34 @@
 package ui;
 
 import bloque.BloqueAlgoritmo;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import handlers.HandlerBloqueAlgoritmo;
 import javafx.scene.control.Button;
 
 public class BotonAgregarBloqueAlgoritmo extends BotonUI{
 	
 	ContenedorBloques panel;
-	BloqueUI bloque = null;
+	BloqueAlgoritmo bloque = null;
 	Button boton;
 	
 	public BotonAgregarBloqueAlgoritmo(ContenedorBloques panelEnviado){
 		panel = panelEnviado;
 		boton = new Button("Bloque Algoritmo");
 		this.getChildren().add(boton);
-		boton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent e) {
-				panel.agregarBloque(bloque);
-			}
-        });
+		boton.setOnAction(new HandlerBloqueAlgoritmo(panelEnviado, this));
 		boton.setDisable(true);
 	}
 	
-	@Override
-	public BloqueUI crearBloque() {
-		return bloque;
-	}
 	
-	public void agregarBloqueUI(BloqueUI bloqueEnviado) {
-		bloque = bloqueEnviado;
+	public BloqueUI getBloque() {
+		BloqueAlgoritmoUI bloqueUI = new BloqueAlgoritmoUI(bloque);
+		return bloqueUI;
+	}
+
+	public void agregarBloque(BloqueAlgoritmo bloqueAlgoritmo) {
+		bloque = bloqueAlgoritmo;
 		boton.setDisable(false);
+		
+		
 	}
-	
 
 }

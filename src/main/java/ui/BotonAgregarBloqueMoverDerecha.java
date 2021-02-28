@@ -1,22 +1,19 @@
 package ui;
 
+import handlers.HandlerBloqueMoverDerecha;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
 public class BotonAgregarBloqueMoverDerecha extends BotonUI{
 	
 	Pane panel;
-	BotonAgregarBloqueMover boton;
+	Button boton;
 	
 	public BotonAgregarBloqueMoverDerecha(ContenedorBloques panelEnviado){
 		
-		boton = new BotonAgregarBloqueMover(panelEnviado, "Agregar Bloque Derecha", this);
+		boton = new Button("Bloque Mover Derecha");
+		boton.setOnAction(new HandlerBloqueMoverDerecha(panelEnviado));
 		this.getChildren().add(boton);
 	}
 
-	@Override
-	public BloqueUI crearBloque() {
-		return new BloqueMoverDerechaUI();
-	}
-	
-	
 }
