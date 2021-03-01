@@ -42,8 +42,8 @@ public class Main extends Application {
 		
 		//imagenes personaje
 		
-		FileInputStream inputstreamFrente = new FileInputStream("src/main/java/recursos/down1.png");
-		Image imageFrente = new Image(inputstreamFrente);
+		//FileInputStream inputstreamFrente = new FileInputStream("src/main/java/recursos/down1.png");
+		Image imageFrente = new Image("file:src/main/java/recursos/lapizArriba/abajo.png");
 		ImageView imageViewFrente = new ImageView(imageFrente);
 		PersonajeUI personajeUI = new PersonajeUI(imageViewFrente);
 		//fin imagenes personaje       

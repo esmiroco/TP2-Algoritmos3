@@ -19,6 +19,7 @@ public class MapaUI extends Pane {
     public PersonajeUI personaje;
     public PosicionUI posicionActualUI;
     public Posicion posicionActual;
+    ImagenUI imagenPj = new ImagenUI();
 
     public MapaUI(PersonajeUI personajeEnviado) {
     	personaje = personajeEnviado;
@@ -41,6 +42,18 @@ public class MapaUI extends Pane {
     	if (posicionActual.esIgualA(posicion)) {
     		return;
     	}
+    	if(posicion.obtenerX() > posicionActual.obtenerX()){
+    		personaje.actualizarImagen(imagenPj.imgDerechaLapizArriba);
+		}
+    	if(posicion.obtenerY() < posicionActual.obtenerY()){
+    		personaje.actualizarImagen(imagenPj.imgArribaLapizArriba);
+		}
+    	if(posicion.obtenerX() < posicionActual.obtenerX()){
+			personaje.actualizarImagen(imagenPj.imgIzquierdaLapizArriba);
+		}
+		if(posicion.obtenerY() > posicionActual.obtenerY()){
+			personaje.actualizarImagen(imagenPj.imgAbajoLapizArriba);
+		}
     	posicionActualUI = gridArray[posicion.obtenerX()][posicion.obtenerY()];
     	posicionActualUI.getChildren().add(personaje);
     	posicionActual = posicion;
