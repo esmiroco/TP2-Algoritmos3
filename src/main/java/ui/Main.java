@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import bloque.Bloque;
 import bloque.BloqueAlgoritmo;
 import handlers.HandlerAgregarBotonAlgoritmo;
+import handlers.HandlerJuego;
 
 import java.util.ArrayList;
 
@@ -27,10 +28,8 @@ public class Main extends Application {
 	
     MapaUI mapaUI;
     PersonajeUI personajeUI;
-    JuegoCodigo juegoCodigo;
     BotonAgregarBloqueAlgoritmo botonAgregarBloqueAlgoritmo;
-
-
+    
 	public static void main(String[] args) {
 		launch();
 
@@ -39,30 +38,22 @@ public class Main extends Application {
 	@Override
     public void start(Stage stage) throws FileNotFoundException {
 		
+		HandlerJuego handlerJuego = new HandlerJuego(this);
+		
 		//imagenes personaje
 		
 		FileInputStream inputstreamFrente = new FileInputStream("src/main/java/recursos/down1.png");
 		Image imageFrente = new Image(inputstreamFrente);
 		ImageView imageViewFrente = new ImageView(imageFrente);
 		PersonajeUI personajeUI = new PersonajeUI(imageViewFrente);
-		FileInputStream inputstreamIzq = new FileInputStream("src/main/java/recursos/left1.png");
-		Image imageIzq = new Image(inputstreamIzq);
-		ImageView imageViewIzq = new ImageView(imageIzq);
-		FileInputStream inputstreamDer = new FileInputStream("src/main/java/recursos/right1.png");
-		Image imageDer = new Image(inputstreamDer);
-		ImageView imageViewDer = new ImageView(imageDer);
 		//fin imagenes personaje       
         
-        juegoCodigo = new JuegoCodigo();
 		mapaUI = new MapaUI(personajeUI);
 		mapaUI.colocarPersonaje(new Posicion(0,0));
-	
 		
 		VBox contenedorVertical = new VBox();
 
-		ContenedorBloques contenedorBloques = new ContenedorBloques();
-		HandlerAgregarBotonAlgoritmo handlerBoton = new HandlerAgregarBotonAlgoritmo(this, contenedorBloques);
-		contenedorBloques.agregarHandlerBotonAlgoritmo(handlerBoton);
+		ContenedorBloques contenedorBloques = new ContenedorBloques(this);
 		
 	    HBox contenedorHorizontal = new HBox();
 	    contenedorHorizontal.getChildren().add(mapaUI);
@@ -97,7 +88,7 @@ public class Main extends Application {
         contenedorVertical.getChildren().add(botonBloqueInvertir);
         contenedorVertical.getChildren().add(botonAgregarBloqueAlgoritmo);
         
-        BotonEjecutar botonEjecutar = new BotonEjecutar(contenedorBloques, this);
+        BotonEjecutar botonEjecutar = new BotonEjecutar(contenedorBloques, handlerJuego);
         contenedorVertical.getChildren().add(botonEjecutar);
         
         //fin botones
@@ -107,20 +98,22 @@ public class Main extends Application {
 
         stage.setScene(scene);
         stage.show();
+        
 		
-	}
-	
-	public void ejecutarBloque(Bloque bloque) {
-		ArrayList<Posicion> posiciones = juegoCodigo.ejecutarBloque(bloque);
-		mapaUI.actualizarPosiciones(posiciones);
 	}
 
 	public void agregarBloqueBotonAlgoritmo(BloqueAlgoritmo bloque) {
 		botonAgregarBloqueAlgoritmo.agregarBloque(bloque);
 	}	
 	
+	
 	public void actualizarImagenes() {
 		mapaUI.actualizarImagenes();
+	}
+
+	public void actualizarPosiciones(ArrayList<Posicion> posiciones) {
+		mapaUI.agregarPosiciones(posiciones);
+		
 	}
 
 }

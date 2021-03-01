@@ -10,11 +10,11 @@ import ui.Main;
 public class HandlerBotonEjecutar implements EventHandler<ActionEvent>{
 	
 	private ContenedorBloques panel;
-	private Main juego;
+	private HandlerJuego juego;
 
-	public HandlerBotonEjecutar(ContenedorBloques panelEnviado, Main juegoEnviado) {
+	public HandlerBotonEjecutar(ContenedorBloques panelEnviado, HandlerJuego handler) {
 		panel = panelEnviado;
-		juego = juegoEnviado;
+		juego = handler;
 	}
 	
 	@Override

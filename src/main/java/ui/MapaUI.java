@@ -17,7 +17,6 @@ public class MapaUI extends Pane {
     public GridPane grid = new GridPane();
     public PosicionUI[][] gridArray = new PosicionUI[10][10];
     public PersonajeUI personaje;
-    // esto hay que refactorizarlo
     public PosicionUI posicionActualUI;
     public Posicion posicionActual;
 
@@ -33,6 +32,7 @@ public class MapaUI extends Pane {
                 gridArray[i][j] = pos;
             }
         }
+        // esto hay que refactorizarlo
         posicionActualUI = gridArray[1][1];
         posicionActual = new Posicion(-1, -1);
         
@@ -53,7 +53,7 @@ public class MapaUI extends Pane {
     	}
     }
 
-	public void actualizarPosiciones(ArrayList<Posicion> posiciones) {
+	public void agregarPosiciones(ArrayList<Posicion> posiciones) {
 		posicionesAActualizar.addAll(posiciones);
 	}
 	

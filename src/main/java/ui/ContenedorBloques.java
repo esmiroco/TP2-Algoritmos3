@@ -21,9 +21,11 @@ public class ContenedorBloques extends VBox {
 	Button agregarBotonAlgoritmo;
 	VBox contenedorBoton;
 	VBox contenedorBloques;
+	Main ventanaUI;
 	
-	public ContenedorBloques() {
+	public ContenedorBloques(Main ventana) {
 		super();
+		ventanaUI = ventana;
 		contenedorBoton = new VBox();
 		contenedorBloques = new VBox();
 		agregarBotonAlgoritmo = new Button("Agregar Bloque Algoritmo");
@@ -31,6 +33,9 @@ public class ContenedorBloques extends VBox {
 		this.getChildren().add(contenedorBloques);
 		this.getChildren().add(contenedorBoton);
 		this.setVgrow(contenedorBloques, Priority.ALWAYS);
+		
+		HandlerAgregarBotonAlgoritmo handlerBoton = new HandlerAgregarBotonAlgoritmo(ventana, this);
+		agregarBotonAlgoritmo.setOnAction(handlerBoton);
 		
 	}
 	
@@ -74,10 +79,5 @@ public class ContenedorBloques extends VBox {
 	public void volverAEmpezar() {
 		contenedorBloques.getChildren().clear();
 		this.desactivarRecoleccionBloques();
-	}
-
-	public void agregarHandlerBotonAlgoritmo(HandlerAgregarBotonAlgoritmo handlerBoton) {
-		agregarBotonAlgoritmo.setOnAction(handlerBoton);
-		
 	}
 }
