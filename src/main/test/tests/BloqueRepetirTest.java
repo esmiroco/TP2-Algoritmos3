@@ -11,11 +11,11 @@ import posicion.Posicion;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BloqueRepetirTest {
-/*
     @Test
     public void test01BloqueRepetirDosVecesSinMovimientoNoSeDeberiaMover() {
         BloqueMovimiento bloqueMov = new BloqueMovimiento(new MovDerecha());
-        BloqueRepetir bloqueRep = new BloqueRepetir(bloqueMov,2);
+        BloqueRepetir bloqueRep = new BloqueRepetir(2);
+        bloqueRep.agregarBloque(bloqueMov);
         Posicion posicion = new Posicion(0,0);
         Personaje personaje = new Personaje(posicion);
         Mapa unMapa = new Mapa();
@@ -30,7 +30,8 @@ public class BloqueRepetirTest {
     @Test
     public void test02BloqueRepetirCon3Repeticiones() {
         BloqueMovimiento bloqueMov = new BloqueMovimiento(new MovDerecha());
-        BloqueRepetir bloqueRep = new BloqueRepetir(bloqueMov,3);
+        BloqueRepetir bloqueRep = new BloqueRepetir(3);
+        bloqueRep.agregarBloque(bloqueMov);
         Posicion posicion = new Posicion(0,0);
         Personaje personaje = new Personaje(posicion);
         Mapa unMapa = new Mapa();
@@ -40,5 +41,5 @@ public class BloqueRepetirTest {
         Posicion posicion1 = new Posicion(3,0);
 
         assertEquals(true, personaje.obtenerPosicion().esIgualA(posicion1));
-    }*/
+    }
 }

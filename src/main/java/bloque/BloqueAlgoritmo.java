@@ -6,7 +6,7 @@ import posicion.Posicion;
 
 import java.util.ArrayList;
 
-public class BloqueAlgoritmo extends Bloque {
+public class  BloqueAlgoritmo extends Bloque {
 
     private ArrayList<Bloque> listaBloques;
 
