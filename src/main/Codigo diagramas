@@ -120,3 +120,74 @@ test01 -> "bloqueDerecha:BloqueMovimiento" **:ejercutar(personaje)
 "personaje:Personaje" -> "movDerecha:MovDerecha" **:actualizarPosicion(posicion)
 "movDerecha:MovDerecha" -> "posicion:Posicion" **:moverDerecha(posicion)
 @enduml
+
+----------- diagrama 3 ----------------
+
+@startuml
+title test01BloqueInvertirComportamientoTest
+test01 -> BloqueInvertirComportamiento :new()
+BloqueInvertirComportamiento -> BloqueAlgoritmo **:new()
+BloqueAlgoritmo -> ArrayList **:new()
+return listaBloques:ArrayList<Bloque>
+BloqueAlgoritmo --> BloqueInvertirComportamiento : bloque:BloqueAlgoritmo
+BloqueInvertirComportamiento --> test01 : bloqInvertir:BloqueInvertirComportamiento
+
+test01 -> BloqueMovimiento **:new( new MovDerecha)
+return bloqDerecha:BloqueMovimiento
+test01 -> BloqueMovimiento :new( new MovArriba)
+return bloqArriba:BloqueMovimiento
+test01 -> BloqueMovimiento :new( new MovIzquierda)
+return bloqIzquierda:BloqueMovimiento
+
+test01 -> “bloqInvertir:BloqueInvertirComportamiento” **:agregarBloque(bloqDerecha)
+test01 -> “bloqInvertir:BloqueInvertirComportamiento” :agregarBloque(bloqArriba)
+test01 -> “bloqInvertir:BloqueInvertirComportamiento” :agregarBloque(bloqIzquierda)
+
+test01 -> “bloqInvertir:BloqueInvertirComportamiento”  :ejecutar(unPj, unMapa)
+“bloqInvertir:BloqueInvertirComportamiento”  -> “bloque:BloqueAlgoritmo” **:obtenerBloqueInvertido()
+return bloqInvertidos:BloqueAlgoritmo
+@enduml
+
+
+
+@startuml
+test01 -> “bloqInvertir:BloqueInvertirComportamiento” **:agregarBloque(bloqDerecha)
+“bloqInvertir:BloqueInvertirComportamiento” -> “bloque:BloqueAlgoritmo” **:agregarBloque(bloqDerecha)
+collections “listaBloques:ArrayList<Bloque>“
+“bloque:BloqueAlgoritmo” -> “listaBloques:ArrayList<Bloque>“ **:add(bloqDerecha)
+
+test01 -> “bloqInvertir:BloqueInvertirComportamiento” :agregarBloque(bloqArriba)
+“bloqInvertir:BloqueInvertirComportamiento” -> “bloque:BloqueAlgoritmo” :agregarBloque(bloqArriba)
+“bloque:BloqueAlgoritmo” -> “listaBloques:ArrayList<Bloque>“ :add(bloqArriba)
+
+test01 -> “bloqInvertir:BloqueInvertirComportamiento” :agregarBloque(bloqIzquierda)
+“bloqInvertir:BloqueInvertirComportamiento” -> “bloque:BloqueAlgoritmo” :agregarBloque(bloqIzquierda)
+“bloque:BloqueAlgoritmo” -> “listaBloques:ArrayList<Bloque>“ :add(bloqIzquierda)
+
+test01 -> Posicion **:new(0,0)
+return posicion:Posicion
+test01 -> Personaje **:new(posicion)
+return unPj:Personaje
+test01 -> Mapa **:new()
+return unMapa:Mapa
+@enduml
+
+
+
+@startuml
+"bloqInvertir:BloqueInvertirComportamiento" -> "bloque:BloqueAlgoritmo" **:obtenerBloqueInvertido()
+"bloque:BloqueAlgoritmo" -> BloqueAlgoritmo **:new()
+BloqueAlgoritmo -> ArrayList **:new()
+return listaBloquesInvertidos:ArrayList<Bloque>
+BloqueAlgoritmo -> "bloque:BloqueAlgoritmo" :bloqInvertidos:BloqueAlgoritmo
+
+
+collections "listaBloques:ArrayList<Bloque>"
+loop
+"bloque:BloqueAlgoritmo" -> "listaBloques:ArrayList<Bloque>" **:obtenerBloqueOnvertido()
+return bloqueInvertido:BloqueMovimiento
+"bloque:BloqueAlgoritmo" -> "bloqInvertidos:BloqueAlgoritmo" **:agregarBloque(bloqueInvertido)
+end
+
+"bloque:BloqueAlgoritmo" --> "bloqInvertir:BloqueInvertirComportamiento" :bloqInvertidos:BloqueAlgoritmo
+@enduml

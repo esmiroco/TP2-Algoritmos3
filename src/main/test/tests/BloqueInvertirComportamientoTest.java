@@ -35,7 +35,6 @@ public class BloqueInvertirComportamientoTest {
         Personaje unPj = new Personaje(posicion);
         Mapa unMapa = new Mapa();
 
-
         bloqInvertir.ejecutar(unPj, unMapa);
         Posicion posicion1 = new Posicion(0,1);
 

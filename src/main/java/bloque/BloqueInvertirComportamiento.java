@@ -6,7 +6,7 @@ import mapa.Mapa;
 import personaje.Personaje;
 import posicion.Posicion;
 
-public class BloqueInvertirComportamiento extends Bloque{
+public class    BloqueInvertirComportamiento extends Bloque{
 
     BloqueAlgoritmo bloque = new BloqueAlgoritmo();
 

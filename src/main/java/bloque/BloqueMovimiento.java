@@ -20,7 +20,6 @@ public class BloqueMovimiento extends Bloque {
         listaPos.add(personaje.mover(movimiento, mapa));
         
         return listaPos;
-
     }
 
     public Bloque obtenerBloqueInvertido(){
