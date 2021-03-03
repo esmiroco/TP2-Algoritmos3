@@ -1,18 +1,29 @@
 package ui;
 
-import handlers.HandlerBloqueMoverIzquierda;
+import arrastrable.Arrastrable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
 public class BotonAgregarBloqueMoverIzquierda extends BotonUI{
 	
-	Pane panel;	
+	ContenedorBloques panel;
 	Button boton;
+	Arrastrable arrastrable;
 	
 	public BotonAgregarBloqueMoverIzquierda(ContenedorBloques panelEnviado){
 		
 		boton = new Button("Bloque Mover Izquierda");
-		boton.setOnAction(new HandlerBloqueMoverIzquierda(panelEnviado));
+		panel = panelEnviado;
+		arrastrable = new Arrastrable(this, panel);
+		arrastrable.ejecutar();
 		this.getChildren().add(boton);
+	}
+
+	@Override
+	public Button obtenerBoton(){ return boton;}
+
+	@Override
+	public void ejecutar(){
+		panel.agregarBloque(new BloqueMoverIzquierdaUI());
 	}
 }
