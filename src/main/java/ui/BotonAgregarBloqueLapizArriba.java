@@ -1,8 +1,6 @@
 package ui;
 
-import handlers.HandlerBloqueLapizArriba;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import arrastrable.Arrastrable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
@@ -10,13 +8,24 @@ public class BotonAgregarBloqueLapizArriba extends BotonUI{
 	
 	Button boton;
 	String msj = "Bloque Lapiz Arriba";
+	ContenedorBloques panel;
+	Arrastrable arrastrable;
 	
-	public BotonAgregarBloqueLapizArriba(ContenedorBloques panelEnviado){
+	public BotonAgregarBloqueLapizArriba(ContenedorBloques panelEnviado, Pane panelArrastrable){
 		boton = new Button();
 		boton.setText(msj);
-		
-		boton.setOnAction(new HandlerBloqueLapizArriba(panelEnviado));		
+		panel = panelEnviado;
+		arrastrable = new Arrastrable(this, panelArrastrable);
+		arrastrable.ejecutar();
 		this.getChildren().add(boton);
+	}
+
+	@Override
+	public Button obtenerBoton(){ return boton;}
+
+	@Override
+	public void ejecutar(){
+		panel.agregarBloque(new BloqueLapizArribaUI());
 	}
 
 }

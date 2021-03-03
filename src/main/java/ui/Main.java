@@ -62,20 +62,20 @@ public class Main extends Application {
 	     contenedorVertical.getChildren().add(contenedorHorizontal);
         
         //botones
-        BotonUI botonMoverDerecha = new BotonAgregarBloqueMoverDerecha(contenedorBloques);
-        BotonUI botonMoverIzquierda = new BotonAgregarBloqueMoverIzquierda(contenedorBloques);
-        BotonUI botonMoverArriba = new BotonAgregarBloqueMoverArriba(contenedorBloques);
-        BotonUI botonMoverAbajo = new BotonAgregarBloqueMoverAbajo(contenedorBloques);
+        BotonUI botonMoverDerecha = new BotonAgregarBloqueMoverDerecha(contenedorBloques, contenedorHorizontal);
+        BotonUI botonMoverIzquierda = new BotonAgregarBloqueMoverIzquierda(contenedorBloques, contenedorHorizontal);
+        BotonUI botonMoverArriba = new BotonAgregarBloqueMoverArriba(contenedorBloques, contenedorHorizontal);
+        BotonUI botonMoverAbajo = new BotonAgregarBloqueMoverAbajo(contenedorBloques, contenedorHorizontal);
        
-        BotonUI botonBloqueLapizAbajo = new BotonAgregarBloqueLapizAbajo(contenedorBloques);
-        BotonUI botonBloqueLapizArriba = new BotonAgregarBloqueLapizArriba(contenedorBloques);
+        BotonUI botonBloqueLapizAbajo = new BotonAgregarBloqueLapizAbajo(contenedorBloques, contenedorHorizontal);
+        BotonUI botonBloqueLapizArriba = new BotonAgregarBloqueLapizArriba(contenedorBloques, contenedorHorizontal);
         
-        BotonUI botonBloqueRepetir3 = new BotonAgregarBloqueRepetirTresVeces(contenedorBloques);
-        BotonUI botonBloqueRepetir2 = new BotonAgregarBloqueRepetirDosVeces(contenedorBloques);     
+        BotonUI botonBloqueRepetir3 = new BotonAgregarBloqueRepetirTresVeces(contenedorBloques, contenedorHorizontal);
+        BotonUI botonBloqueRepetir2 = new BotonAgregarBloqueRepetirDosVeces(contenedorBloques, contenedorHorizontal);
         
-        BotonUI botonBloqueInvertir = new BotonAgregarBloqueInvertir(contenedorBloques);
+        BotonUI botonBloqueInvertir = new BotonAgregarBloqueInvertir(contenedorBloques, contenedorHorizontal);
         
-        botonAgregarBloqueAlgoritmo = new BotonAgregarBloqueAlgoritmo(contenedorBloques);
+        botonAgregarBloqueAlgoritmo = new BotonAgregarBloqueAlgoritmo(contenedorBloques, contenedorHorizontal);
         
         contenedorVertical.getChildren().add(botonMoverDerecha);
         contenedorVertical.getChildren().add(botonMoverAbajo);
