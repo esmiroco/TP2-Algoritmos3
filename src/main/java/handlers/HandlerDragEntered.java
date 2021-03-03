@@ -7,16 +7,13 @@ import javafx.scene.text.Text;
 
 public class HandlerDragEntered implements EventHandler<DragEvent> {
     Pane target;
-    Text drop;
 
-    public HandlerDragEntered(Pane target, Text drop){
+    public HandlerDragEntered(Pane target){
         this.target = target;
-        this.drop = drop;
     }
     @Override
     public void handle(DragEvent event) {
         if (event.getGestureSource() != target) {
-            target.getChildren().add(drop);
         }
 
         event.consume();

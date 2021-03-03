@@ -12,11 +12,11 @@ public class BotonAgregarBloqueAlgoritmo extends BotonUI{
 	Button boton;
 	Arrastrable arrastrable;
 	
-	public BotonAgregarBloqueAlgoritmo(ContenedorBloques panelEnviado, Pane panelArrastrable){
+	public BotonAgregarBloqueAlgoritmo(ContenedorBloques panelEnviado){
 		panel = panelEnviado;
 		boton = new Button("Bloque Algoritmo");
 		this.getChildren().add(boton);
-		arrastrable = new Arrastrable(this,panelArrastrable);
+		arrastrable = new Arrastrable(this,panel);
 		arrastrable.ejecutar();
 	//	boton.setOnAction(new HandlerBloqueAlgoritmo(panelEnviado, this));
 	//	boton.setDisable(true);

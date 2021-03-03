@@ -11,11 +11,11 @@ public class BotonAgregarBloqueRepetirTresVeces extends BotonUI{
 	Button boton;
 	Arrastrable arrastrable;
 	
-	public BotonAgregarBloqueRepetirTresVeces(ContenedorBloques panelEnviado, Pane panelArrastrable){
+	public BotonAgregarBloqueRepetirTresVeces(ContenedorBloques panelEnviado){
 		panel = panelEnviado;
 		boton = new Button("Bloque Repetir Tres Veces");
 		this.getChildren().add(boton);
-		arrastrable = new Arrastrable(this, panelArrastrable);
+		arrastrable = new Arrastrable(this, panel);
 		arrastrable.ejecutar();
 	}
 

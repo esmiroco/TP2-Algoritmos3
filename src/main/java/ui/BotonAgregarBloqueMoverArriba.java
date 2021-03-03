@@ -10,11 +10,11 @@ public class BotonAgregarBloqueMoverArriba extends BotonUI{
 	ContenedorBloques panel;
 	Arrastrable arrastrable;
 	
-	public BotonAgregarBloqueMoverArriba(ContenedorBloques panelEnviado, Pane panelArrastrable){
+	public BotonAgregarBloqueMoverArriba(ContenedorBloques panelEnviado){
 		
 		boton = new Button("Bloque Mover Arriba");
 		panel = panelEnviado;
-		arrastrable = new Arrastrable(this, panelArrastrable);
+		arrastrable = new Arrastrable(this, panel);
 		arrastrable.ejecutar();
 		this.getChildren().add(boton);
 				

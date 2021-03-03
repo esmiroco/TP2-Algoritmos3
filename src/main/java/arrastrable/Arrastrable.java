@@ -8,7 +8,6 @@ import javafx.scene.text.Text;
 import ui.BotonUI;
 
 public class Arrastrable {
-    final Text drop = new Text(300, 100, "Agregar aca");
     ClipboardContent content = new ClipboardContent();
     BotonUI source;
     Pane target;
@@ -24,9 +23,9 @@ public class Arrastrable {
 
         target.setOnDragOver(new HandlerDragOver(target));
 
-        target.setOnDragEntered(new HandlerDragEntered(target, drop));
+        target.setOnDragEntered(new HandlerDragEntered(target));
 
-        target.setOnDragExited(new HandlerDragExited(target, drop));
+        target.setOnDragExited(new HandlerDragExited(target));
 
         target.setOnDragDropped(new HandlerDragDropped());
 

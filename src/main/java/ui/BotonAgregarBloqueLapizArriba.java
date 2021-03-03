@@ -11,11 +11,11 @@ public class BotonAgregarBloqueLapizArriba extends BotonUI{
 	ContenedorBloques panel;
 	Arrastrable arrastrable;
 	
-	public BotonAgregarBloqueLapizArriba(ContenedorBloques panelEnviado, Pane panelArrastrable){
+	public BotonAgregarBloqueLapizArriba(ContenedorBloques panelEnviado){
 		boton = new Button();
 		boton.setText(msj);
 		panel = panelEnviado;
-		arrastrable = new Arrastrable(this, panelArrastrable);
+		arrastrable = new Arrastrable(this, panel);
 		arrastrable.ejecutar();
 		this.getChildren().add(boton);
 	}

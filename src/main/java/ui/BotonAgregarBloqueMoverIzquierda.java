@@ -10,11 +10,11 @@ public class BotonAgregarBloqueMoverIzquierda extends BotonUI{
 	Button boton;
 	Arrastrable arrastrable;
 	
-	public BotonAgregarBloqueMoverIzquierda(ContenedorBloques panelEnviado, Pane panelArrastrable){
+	public BotonAgregarBloqueMoverIzquierda(ContenedorBloques panelEnviado){
 		
 		boton = new Button("Bloque Mover Izquierda");
 		panel = panelEnviado;
-		arrastrable = new Arrastrable(this, panelArrastrable);
+		arrastrable = new Arrastrable(this, panel);
 		arrastrable.ejecutar();
 		this.getChildren().add(boton);
 	}

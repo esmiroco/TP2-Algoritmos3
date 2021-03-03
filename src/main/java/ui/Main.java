@@ -11,13 +11,16 @@ import handlers.HandlerJuego;
 import java.util.ArrayList;
 
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import juegoCodigo.JuegoCodigo;
 
@@ -53,30 +56,35 @@ public class Main extends Application {
 		
 		VBox contenedorVertical = new VBox();
 
+
 		ContenedorBloques contenedorBloques = new ContenedorBloques(this);
+        contenedorBloques.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;"
+                + "-fx-border-width: 2;" + "-fx-border-insets: 5;"
+                + "-fx-border-radius: 5;" + "-fx-border-color: blue;");
 		
 	    HBox contenedorHorizontal = new HBox();
 	    contenedorHorizontal.getChildren().add(mapaUI);
 	    contenedorHorizontal.getChildren().add(contenedorBloques);
+
 	        
-	     contenedorVertical.getChildren().add(contenedorHorizontal);
+	    contenedorVertical.getChildren().add(contenedorHorizontal);
         
         //botones
-        BotonUI botonMoverDerecha = new BotonAgregarBloqueMoverDerecha(contenedorBloques, contenedorHorizontal);
-        BotonUI botonMoverIzquierda = new BotonAgregarBloqueMoverIzquierda(contenedorBloques, contenedorHorizontal);
-        BotonUI botonMoverArriba = new BotonAgregarBloqueMoverArriba(contenedorBloques, contenedorHorizontal);
-        BotonUI botonMoverAbajo = new BotonAgregarBloqueMoverAbajo(contenedorBloques, contenedorHorizontal);
+        BotonUI botonMoverDerecha = new BotonAgregarBloqueMoverDerecha(contenedorBloques);
+        BotonUI botonMoverIzquierda = new BotonAgregarBloqueMoverIzquierda(contenedorBloques);
+        BotonUI botonMoverArriba = new BotonAgregarBloqueMoverArriba(contenedorBloques);
+        BotonUI botonMoverAbajo = new BotonAgregarBloqueMoverAbajo(contenedorBloques);
        
-        BotonUI botonBloqueLapizAbajo = new BotonAgregarBloqueLapizAbajo(contenedorBloques, contenedorHorizontal);
-        BotonUI botonBloqueLapizArriba = new BotonAgregarBloqueLapizArriba(contenedorBloques, contenedorHorizontal);
+        BotonUI botonBloqueLapizAbajo = new BotonAgregarBloqueLapizAbajo(contenedorBloques);
+        BotonUI botonBloqueLapizArriba = new BotonAgregarBloqueLapizArriba(contenedorBloques);
         
-        BotonUI botonBloqueRepetir3 = new BotonAgregarBloqueRepetirTresVeces(contenedorBloques, contenedorHorizontal);
-        BotonUI botonBloqueRepetir2 = new BotonAgregarBloqueRepetirDosVeces(contenedorBloques, contenedorHorizontal);
+        BotonUI botonBloqueRepetir3 = new BotonAgregarBloqueRepetirTresVeces(contenedorBloques);
+        BotonUI botonBloqueRepetir2 = new BotonAgregarBloqueRepetirDosVeces(contenedorBloques);
         
-        BotonUI botonBloqueInvertir = new BotonAgregarBloqueInvertir(contenedorBloques, contenedorHorizontal);
+        BotonUI botonBloqueInvertir = new BotonAgregarBloqueInvertir(contenedorBloques);
         
-        botonAgregarBloqueAlgoritmo = new BotonAgregarBloqueAlgoritmo(contenedorBloques, contenedorHorizontal);
-        
+        botonAgregarBloqueAlgoritmo = new BotonAgregarBloqueAlgoritmo(contenedorBloques);
+
         contenedorVertical.getChildren().add(botonMoverDerecha);
         contenedorVertical.getChildren().add(botonMoverAbajo);
         contenedorVertical.getChildren().add(botonMoverIzquierda);
@@ -87,7 +95,7 @@ public class Main extends Application {
         contenedorVertical.getChildren().add(botonBloqueRepetir3);
         contenedorVertical.getChildren().add(botonBloqueInvertir);
         contenedorVertical.getChildren().add(botonAgregarBloqueAlgoritmo);
-        
+
         BotonEjecutar botonEjecutar = new BotonEjecutar(contenedorBloques, handlerJuego);
         contenedorVertical.getChildren().add(botonEjecutar);
         

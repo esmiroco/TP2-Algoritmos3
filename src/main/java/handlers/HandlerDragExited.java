@@ -7,15 +7,12 @@ import javafx.scene.text.Text;
 
 public class HandlerDragExited implements EventHandler<DragEvent> {
     Pane target;
-    Text drop;
 
-    public HandlerDragExited(Pane target, Text drop){
+    public HandlerDragExited(Pane target){
         this.target = target;
-        this.drop = drop;
     }
     @Override
     public void handle(DragEvent event) {
-        target.getChildren().remove(drop);
         event.consume();
     }
 }

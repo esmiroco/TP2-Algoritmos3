@@ -11,11 +11,11 @@ public class BotonAgregarBloqueInvertir extends BotonUI{
 	Button boton;
 	Arrastrable arrastrable;
 	
-	public BotonAgregarBloqueInvertir(ContenedorBloques panelEnviado, Pane panelArrastrable){
+	public BotonAgregarBloqueInvertir(ContenedorBloques panelEnviado){
 		panel = panelEnviado;
 		boton = new Button("Bloque Invertir");
 		this.getChildren().add(boton);
-		arrastrable = new Arrastrable(this, panelArrastrable);
+		arrastrable = new Arrastrable(this, panel);
 		arrastrable.ejecutar();
 	}
 
