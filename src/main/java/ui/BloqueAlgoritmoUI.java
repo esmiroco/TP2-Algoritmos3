@@ -2,6 +2,7 @@ package ui;
 
 import bloque.Bloque;
 import bloque.BloqueAlgoritmo;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 
 public class BloqueAlgoritmoUI extends BloqueUI {
@@ -13,6 +14,10 @@ public class BloqueAlgoritmoUI extends BloqueUI {
 		Label label = new Label(msj);
 		this.getChildren().add(label);
 		bloque = bloqueEnviado;
+		
+		this.setAlignment(Pos.CENTER);
+		label.setStyle("-fx-text-fill: white;");
+		this.setStyle("-fx-background-color: slategrey ;");
 	}
 
 	@Override

@@ -2,8 +2,12 @@ package ui;
 
 import arrastrable.Arrastrable;
 import bloque.BloqueAlgoritmo;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
 public class BotonAgregarBloqueAlgoritmo extends BotonUI{
 	
@@ -18,8 +22,10 @@ public class BotonAgregarBloqueAlgoritmo extends BotonUI{
 		this.getChildren().add(boton);
 		arrastrable = new Arrastrable(this,panel);
 		arrastrable.ejecutar();
-	//	boton.setOnAction(new HandlerBloqueAlgoritmo(panelEnviado, this));
-	//	boton.setDisable(true);
+		boton.setDisable(true);
+		this.setMargin(boton, new Insets(5,5,5,5));
+		boton.setStyle("-fx-text-fill: white; -fx-background-color: slategrey;");
+		boton.setMinSize(150, 50);
 
 	}
 	

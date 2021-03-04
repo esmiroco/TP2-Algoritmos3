@@ -11,6 +11,7 @@ import handlers.HandlerJuego;
 import java.util.ArrayList;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 
@@ -19,6 +20,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -55,20 +57,44 @@ public class Main extends Application {
 		mapaUI.colocarPersonaje(new Posicion(0,0));
 		
 		VBox contenedorVertical = new VBox();
+		contenedorVertical.setStyle("-fx-background-color: lightgoldenrodyellow ;");
 
 
 		ContenedorBloques contenedorBloques = new ContenedorBloques(this);
         contenedorBloques.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;"
                 + "-fx-border-width: 2;" + "-fx-border-insets: 5;"
                 + "-fx-border-radius: 5;" + "-fx-border-color: blue;");
+        contenedorBloques.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		
 	    HBox contenedorHorizontal = new HBox();
+	  
 	    contenedorHorizontal.getChildren().add(mapaUI);
 	    contenedorHorizontal.getChildren().add(contenedorBloques);
 
 	        
 	    contenedorVertical.getChildren().add(contenedorHorizontal);
-        
+	    
+	    
+	    HBox contenedorHorizontalBotones = new HBox();
+	    VBox contenedorVerticalBotones1 = new VBox();
+	    VBox contenedorVerticalBotones2 = new VBox();
+	    VBox contenedorVerticalBotones3 = new VBox();
+	    VBox contenedorVerticalBotones4 = new VBox();
+	    VBox contenedorVerticalBotones5 = new VBox();
+	    
+	    HBox contenedorHorizontalEjecutar= new HBox();
+	    
+	    
+	    contenedorVertical.getChildren().add(contenedorHorizontalBotones);
+	    
+	    contenedorHorizontalBotones.getChildren().add(contenedorVerticalBotones1);
+	    contenedorHorizontalBotones.getChildren().add(contenedorVerticalBotones2);
+	    contenedorHorizontalBotones.getChildren().add(contenedorVerticalBotones3);
+	    contenedorHorizontalBotones.getChildren().add(contenedorVerticalBotones4);
+	    contenedorHorizontalBotones.getChildren().add(contenedorVerticalBotones5);
+	    
+	    contenedorVertical.getChildren().add(contenedorHorizontalEjecutar);
+	    
         //botones
         BotonUI botonMoverDerecha = new BotonAgregarBloqueMoverDerecha(contenedorBloques);
         BotonUI botonMoverIzquierda = new BotonAgregarBloqueMoverIzquierda(contenedorBloques);
@@ -85,25 +111,32 @@ public class Main extends Application {
         
         botonAgregarBloqueAlgoritmo = new BotonAgregarBloqueAlgoritmo(contenedorBloques);
 
-        contenedorVertical.getChildren().add(botonMoverDerecha);
-        contenedorVertical.getChildren().add(botonMoverAbajo);
-        contenedorVertical.getChildren().add(botonMoverIzquierda);
-        contenedorVertical.getChildren().add(botonMoverArriba);
-        contenedorVertical.getChildren().add(botonBloqueLapizAbajo);
-        contenedorVertical.getChildren().add(botonBloqueLapizArriba);
-        contenedorVertical.getChildren().add(botonBloqueRepetir2);
-        contenedorVertical.getChildren().add(botonBloqueRepetir3);
-        contenedorVertical.getChildren().add(botonBloqueInvertir);
-        contenedorVertical.getChildren().add(botonAgregarBloqueAlgoritmo);
+        contenedorVerticalBotones1.getChildren().add(botonMoverDerecha);
+        contenedorVerticalBotones1.getChildren().add(botonMoverAbajo);
+        contenedorVerticalBotones2.getChildren().add(botonMoverIzquierda);
+        contenedorVerticalBotones2.getChildren().add(botonMoverArriba);
+        contenedorVerticalBotones3.getChildren().add(botonBloqueLapizAbajo);
+        contenedorVerticalBotones3.getChildren().add(botonBloqueLapizArriba);
+        contenedorVerticalBotones4.getChildren().add(botonBloqueRepetir2);
+        contenedorVerticalBotones4.getChildren().add(botonBloqueRepetir3);
+        contenedorVerticalBotones5.getChildren().add(botonBloqueInvertir);
+        contenedorVerticalBotones5.getChildren().add(botonAgregarBloqueAlgoritmo);
 
         BotonEjecutar botonEjecutar = new BotonEjecutar(contenedorBloques, handlerJuego);
-        contenedorVertical.getChildren().add(botonEjecutar);
+        
+        contenedorHorizontalEjecutar.setAlignment(Pos.CENTER);
+        contenedorHorizontalEjecutar.getChildren().add(botonEjecutar);
+        contenedorHorizontalEjecutar.setHgrow(botonEjecutar, Priority.ALWAYS);
+        botonEjecutar.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        contenedorHorizontalEjecutar.setMargin(botonEjecutar, new Insets(5,5,5,5));
         
         //fin botones
         
-        var scene = new Scene(contenedorVertical, 900, 720);
+        var scene = new Scene(contenedorVertical, 800, 720);
         
-
+        stage.setMinHeight(760);
+        stage.setMinWidth(820);
+        
         stage.setScene(scene);
         stage.show();
         

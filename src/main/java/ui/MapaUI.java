@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 import posicion.Posicion;
 
-public class MapaUI extends Pane {
+public class MapaUI extends StackPane {
 
 	
 	ArrayList<Posicion> posicionesAActualizar = new ArrayList<Posicion>();
@@ -37,6 +39,8 @@ public class MapaUI extends Pane {
         posicionActualUI = gridArray[1][1];
         posicionActual = new Posicion(-1, -1);
         
+        this.setMargin(grid, new Insets(10, 10, 10, 10));
+        
     }
     public void colocarPersonaje(Posicion posicion){
     	if (posicionActual.esIgualA(posicion)) {
@@ -54,8 +58,13 @@ public class MapaUI extends Pane {
 		if(posicion.obtenerY() > posicionActual.obtenerY()){
 			personaje.actualizarImagen(imagenPj.imgAbajoLapizArriba);
 		}
-    	posicionActualUI = gridArray[posicion.obtenerX()][posicion.obtenerY()];
-    	posicionActualUI.getChildren().add(personaje);
+		try {
+			posicionActualUI = gridArray[posicion.obtenerX()][posicion.obtenerY()];
+			posicionActualUI.agregarPersonaje(personaje);
+		}
+		catch (java.lang.ArrayIndexOutOfBoundsException e) {
+			posicionActualUI.clear();
+		}
     	posicionActual = posicion;
     	pintar(posicion);
     }

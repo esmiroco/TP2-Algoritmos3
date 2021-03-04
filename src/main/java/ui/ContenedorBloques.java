@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import bloque.Bloque;
 import handlers.HandlerAgregarBotonAlgoritmo;
+import handlers.HandlerTerminarRecoleccion;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -43,12 +44,7 @@ public class ContenedorBloques extends VBox {
 		recoleccion = true;
 		bloqueAEnviar = bloque;
 		terminarRecoleccion = new Button("Terminar Recoleccion");
-		terminarRecoleccion.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent e) {
-				desactivarRecoleccionBloques();
-			}
-        });
+		terminarRecoleccion.setOnAction(new HandlerTerminarRecoleccion(this));
 		contenedorBoton.getChildren().clear();
 		contenedorBoton.getChildren().add(terminarRecoleccion);
 	}

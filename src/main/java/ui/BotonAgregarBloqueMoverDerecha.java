@@ -1,8 +1,9 @@
 package ui;
 
 import arrastrable.Arrastrable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
 
 public class BotonAgregarBloqueMoverDerecha extends BotonUI{
 	
@@ -17,6 +18,9 @@ public class BotonAgregarBloqueMoverDerecha extends BotonUI{
 		arrastrable = new Arrastrable(this, panel);
 		arrastrable.ejecutar();
 		this.getChildren().add(boton);
+		boton.setStyle("-fx-text-fill: white; -fx-background-color: mediumblue ;");
+		boton.setMinSize(150, 50);
+		this.setMargin(boton, new Insets(5,5,5,5));
 	}
 
 	@Override

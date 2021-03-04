@@ -2,6 +2,7 @@ package ui;
 
 import bloque.Bloque;
 import bloque.BloqueLapizAbajo;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 
 public class BloqueLapizAbajoUI extends BloqueUI {
@@ -13,6 +14,10 @@ public class BloqueLapizAbajoUI extends BloqueUI {
 		Label label = new Label(msj);
 		this.getChildren().add(label);
 		bloque = new BloqueLapizAbajo();
+		
+		this.setAlignment(Pos.CENTER);
+		label.setStyle("-fx-text-fill: white;");
+		this.setStyle("-fx-background-color: mediumseagreen ;");
 	}
 	
 	@Override

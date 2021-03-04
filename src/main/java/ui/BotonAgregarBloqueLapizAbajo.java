@@ -1,8 +1,8 @@
 package ui;
 
 import arrastrable.Arrastrable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
 
 public class BotonAgregarBloqueLapizAbajo extends BotonUI{
 	
@@ -18,6 +18,11 @@ public class BotonAgregarBloqueLapizAbajo extends BotonUI{
 		arrastrable = new Arrastrable(this, panel);
 		arrastrable.ejecutar();
 		this.getChildren().add(boton);
+		this.setMargin(boton, new Insets(5,5,5,5));
+		boton.setStyle("-fx-text-fill: white; -fx-background-color: mediumseagreen ;");
+		boton.setMinSize(150, 50);
+		
+		
 	}
 
 	@Override
