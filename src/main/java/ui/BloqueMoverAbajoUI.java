@@ -10,7 +10,7 @@ import movimiento.MovAbajo;
 public class BloqueMoverAbajoUI extends BloqueUI{
 	
 	String msj = "Bloque Mover Abajo";
-	Bloque bloque;
+	BloqueMovimiento bloque;
 	
 	public BloqueMoverAbajoUI() {
 		

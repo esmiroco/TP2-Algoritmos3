@@ -191,3 +191,140 @@ end
 
 "bloque:BloqueAlgoritmo" --> "bloqInvertir:BloqueInvertirComportamiento" :bloqInvertidos:BloqueAlgoritmo
 @enduml
+
+-------------------------------Diagrama4------------------------------
+@startuml
+Title DC BloqueUI
+
+interface BloqueUI{
++ mensaje():string
++ devolverBloque():Bloque
+}
+
+class BloqueAlgoritmoUI{
+-msj:String
+-bloque:BloqueAlgoritmo
+}
+class BloqueInvertirUI{
+-msj:String
+-bloque:BloqueInvertirComportamiento
+}
+class BloqueLapizAbajoUI{
+-msj:String
+-bloque:BloqueLapizAbajo
+}
+class BloqueLapizArribaUI{
+-msj:String
+-bloque:BloqueLapizArriba
+}
+class BloqueMoverArribaUI{
+-msj:String
+-bloque:BloqueMovimiento
+}
+class BloqueMoverAbajoUI{
+-msj:String
+-bloque:BloqueMovimiento
+}
+class BloqueMoverDerechaUI{
+-msj:String
+-bloque:BloqueMovimiento
+}
+class BloqueMoverIzquierdaUI{
+-msj:String
+-bloque:BloqueMovimiento
+}
+class BloqueRepetirDosVecesUI
+class BloqueRepetirTresVecesUI
+
+BloqueUI <|... BloqueRepetirDosVecesUI
+BloqueUI <|.. BloqueRepetirTresVecesUI
+BloqueUI <|... BloqueAlgoritmoUI
+BloqueUI <|.. BloqueInvertirUI
+BloqueUI <|... BloqueLapizAbajoUI
+BloqueUI <|.. BloqueLapizArribaUI
+BloqueUI <|... BloqueMoverArribaUI
+BloqueUI <|.. BloqueMoverAbajoUI
+BloqueUI <|... BloqueMoverDerechaUI
+BloqueUI <|.. BloqueMoverIzquierdaUI
+@enduml
+
+--------------------------Diagrama5---------------------------
+
+@startuml
+Title DC BotonUI
+
+interface BotonUI{
++ obtenerBoton():Button
++ ejecutar()
+}
+
+class BotonAgregarBloqueAlgoritmo{
+-panel:ContenedorBloques
+-bloque:BloqueAlgoritmo
+-boton:Button
+-arrastrable:Arrastrable
+}
+class BotonAgregarBloqueInvertir{
+-panel:ContenedorBloques
+-bloque:BloqueAlgoritmo
+-boton:Button
+-arrastrable:Arrastrable
+}
+class BotonAgregarBloqueLapizArriba{
+-panel:ContenedorBloques
+-msj:String
+-boton:Button
+-arrastrable:Arrastrable
+}
+class BotonAgregarBloqueLapizAbajo{
+-panel:ContenedorBloques
+-msj:String
+-boton:Button
+-arrastrable:Arrastrable
+}
+class BotonAgregarBloqueMoverArriba{
+-panel:ContenedorBloques
+-boton:Button
+-arrastrable:Arrastrable
+}
+class BotonAgregarBloqueMoverAbajo{
+-panel:ContenedorBloques
+-boton:Button
+-arrastrable:Arrastrable
+}
+class BotonAgregarBloqueMoverIzquierda{
+-panel:ContenedorBloques
+-boton:Button
+-arrastrable:Arrastrable
+}
+class BotonAgregarBloqueMoverDerecha{
+-panel:ContenedorBloques
+-boton:Button
+-arrastrable:Arrastrable
+}
+class BotonAgregarBloqueRepetirDosVeces{
+-panel:ContenedorBloques
+-bloque:BloqueAlgoritmo
+-boton:Button
+-arrastrable:Arrastrable
+}
+class BotonAgregarBloqueRepetirTresVeces{
+-panel:ContenedorBloques
+-bloque:BloqueAlgoritmo
+-boton:Button
+-arrastrable:Arrastrable
+}
+class BotonEjecutar
+
+BotonUI <|... BotonAgregarBloqueAlgoritmo
+BotonUI <|.. BotonAgregarBloqueInvertir
+BotonUI <|... BotonAgregarBloqueLapizArriba
+BotonUI <|.. BotonAgregarBloqueLapizAbajo
+BotonUI <|... BotonAgregarBloqueMoverArriba
+BotonUI <|.. BotonAgregarBloqueMoverAbajo
+BotonUI <|... BotonAgregarBloqueMoverIzquierda
+BotonUI <|.. BotonAgregarBloqueMoverDerecha
+BotonUI <|... BotonAgregarBloqueRepetirDosVeces
+BotonUI <|.. BotonAgregarBloqueRepetirTresVeces
+BotonUI <|... BotonEjecutar
+@enduml
