@@ -17,7 +17,7 @@ public class MapaUI extends StackPane {
 	
 	ArrayList<Posicion> posicionesAActualizar = new ArrayList<Posicion>();
     public GridPane grid = new GridPane();
-    public PosicionUI[][] gridArray = new PosicionUI[10][10];
+    public PosicionUI[][] gridArray = new PosicionUI[9][9];
     public PersonajeUI personaje;
     public PosicionUI posicionActualUI;
     public Posicion posicionActual;
