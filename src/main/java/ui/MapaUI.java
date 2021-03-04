@@ -80,6 +80,9 @@ public class MapaUI extends StackPane {
 	}
 	
 	public void actualizarImagenes() {
+		if(posicionesAActualizar.size() == 0) {
+			return;
+		}
 		actualizarImagenes(0);
 	}
 
