@@ -14,7 +14,6 @@ public class BloqueInvertirComportamiento extends Bloque{
         this.bloque.agregarBloque(unBloque);
     }
 
-
     @Override
     public ArrayList<Posicion> ejecutar(Personaje personaje, Mapa mapa) {
     	return this.bloque.obtenerBloqueInvertido().ejecutar(personaje,mapa);
