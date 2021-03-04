@@ -6,7 +6,7 @@ import mapa.Mapa;
 import personaje.Personaje;
 import posicion.Posicion;
 
-public class    BloqueInvertirComportamiento extends Bloque{
+public class BloqueInvertirComportamiento extends Bloque{
 
     BloqueAlgoritmo bloque = new BloqueAlgoritmo();
 
@@ -25,9 +25,4 @@ public class    BloqueInvertirComportamiento extends Bloque{
         return this.bloque.obtenerBloqueInvertido();
     }
 
-
-	public Bloque devolverBloque() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

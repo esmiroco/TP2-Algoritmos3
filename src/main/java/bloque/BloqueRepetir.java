@@ -33,7 +33,9 @@ public class BloqueRepetir extends Bloque {
 
     @Override
     public Bloque obtenerBloqueInvertido() {
-        return bloque.obtenerBloqueInvertido();
+    	BloqueRepetir bloqueNuevo = new BloqueRepetir(repeticiones);
+    	bloqueNuevo.agregarBloque(bloque.obtenerBloqueInvertido());
+        return bloqueNuevo;
     }
 
 }
