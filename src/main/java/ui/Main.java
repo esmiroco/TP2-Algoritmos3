@@ -74,7 +74,6 @@ public class Main extends Application {
 	        
 	    contenedorVertical.getChildren().add(contenedorHorizontal);
 	    
-	    
 	    HBox contenedorHorizontalBotones = new HBox();
 	    VBox contenedorVerticalBotones1 = new VBox();
 	    VBox contenedorVerticalBotones2 = new VBox();
@@ -83,7 +82,6 @@ public class Main extends Application {
 	    VBox contenedorVerticalBotones5 = new VBox();
 	    
 	    HBox contenedorHorizontalEjecutar= new HBox();
-	    
 	    
 	    contenedorVertical.getChildren().add(contenedorHorizontalBotones);
 	    
@@ -140,7 +138,6 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
         
-		
 	}
 
 	public void agregarBloqueBotonAlgoritmo(BloqueAlgoritmo bloque) {

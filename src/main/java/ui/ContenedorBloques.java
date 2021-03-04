@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import bloque.Bloque;
 import handlers.HandlerAgregarBotonAlgoritmo;
+import handlers.HandlerBotonLimpiarBloques;
 import handlers.HandlerTerminarRecoleccion;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,6 +21,7 @@ public class ContenedorBloques extends VBox {
 	RecolectorBloques bloqueAEnviar;
 	Button terminarRecoleccion;
 	Button agregarBotonAlgoritmo;
+	Button limpiarBloques;
 	VBox contenedorBoton;
 	VBox contenedorBloques;
 	Main ventanaUI;
@@ -29,13 +31,22 @@ public class ContenedorBloques extends VBox {
 		ventanaUI = ventana;
 		contenedorBoton = new VBox();
 		contenedorBloques = new VBox();
+		
+		limpiarBloques = new Button("Limpiar Bloques");
+		limpiarBloques.setOnAction(new HandlerBotonLimpiarBloques(this));
+		limpiarBloques.setMinSize(200, 20);
+		contenedorBoton.getChildren().add(limpiarBloques);
+		
 		agregarBotonAlgoritmo = new Button("Agregar Bloque Algoritmo");
 		contenedorBoton.getChildren().add(agregarBotonAlgoritmo);
+		agregarBotonAlgoritmo.setMinSize(200, 20);
+		
 		this.getChildren().add(contenedorBloques);
 		this.getChildren().add(contenedorBoton);
+		
 		this.setVgrow(contenedorBloques, Priority.ALWAYS);
 		
-		HandlerAgregarBotonAlgoritmo handlerBoton = new HandlerAgregarBotonAlgoritmo(ventana, this);
+		HandlerAgregarBotonAlgoritmo handlerBoton = new HandlerAgregarBotonAlgoritmo(ventana, this);	
 		agregarBotonAlgoritmo.setOnAction(handlerBoton);
 		
 	}
@@ -45,6 +56,7 @@ public class ContenedorBloques extends VBox {
 		bloqueAEnviar = bloque;
 		terminarRecoleccion = new Button("Terminar Recoleccion");
 		terminarRecoleccion.setOnAction(new HandlerTerminarRecoleccion(this));
+		terminarRecoleccion.setMinSize(200, 20);
 		contenedorBoton.getChildren().clear();
 		contenedorBoton.getChildren().add(terminarRecoleccion);
 	}
@@ -52,6 +64,7 @@ public class ContenedorBloques extends VBox {
 	public void desactivarRecoleccionBloques() {
 		recoleccion = false;
 		contenedorBoton.getChildren().clear();
+		contenedorBoton.getChildren().add(limpiarBloques);
 		contenedorBoton.getChildren().add(agregarBotonAlgoritmo);
 	}
 	
@@ -66,7 +79,7 @@ public class ContenedorBloques extends VBox {
 	
 	public ArrayList<Bloque> getBloques(){
 		ArrayList<Bloque> listaBloques = new ArrayList<Bloque>();
-		for(Node bloque :contenedorBloques.getChildren()) {
+		for(Node bloque : contenedorBloques.getChildren()) {
 			listaBloques.add(((BloqueUI)bloque).devolverBloque());
 		}
 		return listaBloques;
