@@ -328,3 +328,131 @@ BotonUI <|... BotonAgregarBloqueRepetirDosVeces
 BotonUI <|.. BotonAgregarBloqueRepetirTresVeces
 BotonUI <|... BotonEjecutar
 @enduml
+
+-----------------------Diagrama6-------------------------------
+
+@startuml
+class ContenedorBloques{
+-recoleccion:Boolean
+-bloqueAEnviar:RecolectorBloques
+-terminarRecoleccion:Button
+-agregarBotonAlgoritmo:Button
+-contenedorBoton:VBox
+-contenedorBloques:VBox
+-ventanaUI:Main
+}
+
+interface BotonUI{
++ obtenerBoton():Button
++ ejecutar()
+}
+
+
+interface BloqueUI{
++ mensaje():string
++ devolverBloque():Bloque
+}
+
+class PersonajeUI{
+-personaje:Personaje
+-imagen:ImageView
+-offsetX:int
+-offsetY:int
+-ancho:Int
+-alto:Int
++actualizarImagen(imagen)
+}
+
+class MapaUI{
+-posicionesAActualizar:ArrayList<Posicion>
+-grid:GridPane
+-gridArray:PosicionUI[][]
+-personaje:PersonajeUI
+-posicionActual:Posicion
+-imagenPJ:ImagenUI
+}
+
+class PosicionUI{
+-ancho:Int
+-alto:Int
+}
+
+class Main{
+-botonAgregarBloqueAlgoritmo
+}
+
+ContenedorBloques *-- Main
+Main *-- MapaUI
+Main *-- PersonajeUI
+ContenedorBloques --> "*" BloqueUI
+PersonajeUI *-- PosicionUI
+MapaUI *-- PosicionUI
+
+@enduml
+
+------------------------Diagrama7---------------------------
+
+@startuml
+class ContenedorBloques{
+-recoleccion:Boolean
+-bloqueAEnviar:RecolectorBloques
+-terminarRecoleccion:Button
+-agregarBotonAlgoritmo:Button
+-contenedorBoton:VBox
+-contenedorBloques:VBox
+-ventanaUI:Main
+}
+
+interface BotonUI{
++ obtenerBoton():Button
++ ejecutar()
+}
+
+
+interface BloqueUI{
++ mensaje():string
++ devolverBloque():Bloque
+}
+
+class PersonajeUI{
+-personaje:Personaje
+-imagen:ImageView
+-offsetX:int
+-offsetY:int
+-ancho:Int
+-alto:Int
++actualizarImagen(imagen)
+}
+
+class MapaUI{
+-posicionesAActualizar:ArrayList<Posicion>
+-grid:GridPane
+-gridArray:PosicionUI[][]
+-personaje:PersonajeUI
+-posicionActual:Posicion
+-imagenPJ:ImagenUI
+}
+
+class PosicionUI{
+-ancho:Int
+-alto:Int
+}
+
+class Main{
+-botonAgregarBloqueAlgoritmo
+}
+
+ContenedorBloques *-- Main
+Main *-- MapaUI
+Main *-- PersonajeUI
+ContenedorBloques --> "*" BloqueUI
+PersonajeUI *-- PosicionUI
+MapaUI *-- PosicionUI
+
+ContenedorBloques o-- BotonUI
+Main o-- BotonUI
+PersonajeUI o-- BotonUI
+PosicionUI o-- BotonUI
+MapaUI o-- BotonUI
+BloqueUI o-- BotonUI
+@enduml
