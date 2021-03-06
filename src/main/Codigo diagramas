@@ -456,3 +456,22 @@ PosicionUI o-- BotonUI
 MapaUI o-- BotonUI
 BloqueUI o-- BotonUI
 @enduml
+
+------------------------Diagrama8-----------------------------
+@startuml
+Title cambio de estado de Lapiz
+[*] --> LapizArriba
+LapizArriba --> LapizAbajo: bajarLapiz
+LapizAbajo --> LapizArriba: levantarLapiz
+LapizAbajo --> [*]
+LapizArriba --> [*]
+@enduml
+
+-------------------------Diagrama9-----------------------------
+@startuml
+Title cambio de estado de Posicion
+[*] --> EstadoSinPintar
+EstadoSinPintar --> EstadoPintado: pintar
+EstadoSinPintar --> [*]
+EstadoPintado --> [*]
+@enduml
